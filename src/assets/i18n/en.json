@@ -1,0 +1,10 @@
+{
+    "AUTH_FORM_TITLE": "CVGen by Zayats",
+    "AUTH_FORM_USERNAME_LABEL": "Username",
+    "AUTH_FORM_USERNAME_INVALID": "Please, specify the field",
+    "AUTH_FORM_PASSWORD_LABEL": "Password",
+    "AUTH_FORM_PASSWORD_INVALID": "Please, specify the field",
+    "AUTH_FORM_REMEMBER_ME": "Remember me",
+    "AUTH_FORM_FORGOT_PASSWORD": "Forgot your password?",
+    "AUTH_FORM_LOGIN": "Login"
+}

@@ -1,0 +1,10 @@
+{
+    "AUTH_FORM_TITLE": "CVGen by Zayats",
+    "AUTH_FORM_USERNAME_LABEL": "Логин",
+    "AUTH_FORM_USERNAME_INVALID": "Пожалуйста, введите логин",
+    "AUTH_FORM_PASSWORD_LABEL": "Пароль",
+    "AUTH_FORM_PASSWORD_INVALID": "Пожалуйста, введите пароль",
+    "AUTH_FORM_REMEMBER_ME": "Запомнить меня",
+    "AUTH_FORM_FORGOT_PASSWORD": "Забыли свой пароль?",
+    "AUTH_FORM_LOGIN": "Войти"
+}
