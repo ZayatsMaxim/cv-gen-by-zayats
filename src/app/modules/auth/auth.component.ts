@@ -1,11 +1,25 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { TranslateModule } from '@ngx-translate/core'
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+} from '@angular/core'
+import { TranslateModule, TranslateService } from '@ngx-translate/core'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
+import { AuthService } from './auth.service'
+import { UserTokenStorageService } from '../../shared/user-token-storage.service'
+import { Router } from '@angular/router'
+
+export type AuthResponse = {
+    access_token: string
+    refresh_token: string
+    errorMessage?: string
+}
 
 @Component({
     selector: 'app-auth',
@@ -17,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms'
         MatButtonModule,
         MatInputModule,
         ReactiveFormsModule,
+        MatIconModule,
     ],
     templateUrl: './auth.component.html',
     styleUrl: './auth.component.scss',
@@ -24,9 +39,17 @@ import { ReactiveFormsModule } from '@angular/forms'
 })
 export class AuthComponent {
     authForm: FormGroup
+    authErrorMessage: string = ''
 
-    constructor(private formBuilder: FormBuilder) {
-        this.authForm = formBuilder.group({
+    constructor(
+        private formBuilder: FormBuilder,
+        private authService: AuthService,
+        private userTokenStorage: UserTokenStorageService,
+        private router: Router,
+        private cdr: ChangeDetectorRef,
+        private translateService: TranslateService,
+    ) {
+        this.authForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required],
         })
@@ -34,5 +57,40 @@ export class AuthComponent {
 
     submit() {
         this.authForm.markAllAsTouched()
+        if (this.authForm.valid) {
+            this.authService
+                .login(
+                    this.authForm.get('username')?.value,
+                    this.authForm.get('password')?.value,
+                )
+                .subscribe({
+                    next: v => {
+                        console.log(v)
+                        this.userTokenStorage.setTokens(v)
+                        this.router.navigate(['/home/employees'])
+                    },
+                    error: err => {
+                        if (err.status == 403) {
+                            this.authErrorMessage =
+                                'AUTH_FORM_INVALID_CREDENTIALS'
+                        } else {
+                            this.authErrorMessage =
+                                'AUTH_FORM_INTERNAL_SERVER_ERROR'
+                        }
+                        this.cdr.detectChanges()
+                    },
+                })
+        }
+    }
+
+    changeLanguage() {
+        const langs = this.translateService.langs
+        const currentLang = this.translateService.currentLang
+        const currentLangIndex = langs.indexOf(currentLang)
+        const nextLangIndex =
+            currentLangIndex >= 0 && currentLangIndex < langs.length - 1
+                ? currentLangIndex + 1
+                : 0
+        this.translateService.use(langs[nextLangIndex])
     }
 }

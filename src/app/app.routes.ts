@@ -10,7 +10,7 @@ import { ProjectInfoComponent } from './modules/core/projects-module/project-inf
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/home/employees',
         pathMatch: 'full',
     },
     {

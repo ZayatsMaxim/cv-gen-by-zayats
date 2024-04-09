@@ -1,10 +1,15 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 import { provideRouter } from '@angular/router'
 import { routes } from './app.routes'
-import { HttpClient, provideHttpClient } from '@angular/common/http'
+import {
+    HttpClient,
+    provideHttpClient,
+    withInterceptors,
+} from '@angular/common/http'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { httpRequestsInterceptor } from './http-requests.interceptor'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http)
@@ -13,7 +18,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes),
-        provideHttpClient(),
+        provideHttpClient(withInterceptors([httpRequestsInterceptor])),
         importProvidersFrom(
             TranslateModule.forRoot({
                 loader: {
