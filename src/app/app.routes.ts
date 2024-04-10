@@ -27,30 +27,26 @@ export const routes: Routes = [
                 path: 'employees',
                 component: EmployeesListComponent,
                 title: 'Employees List',
-                children: [
-                    {
-                        path: ':id/info',
-                        component: EmployeeInfoComponent,
-                        title: 'Employee Info',
-                    },
-                    {
-                        path: ':id/cv',
-                        component: EmployeeCvComponent,
-                        title: 'Employee CV',
-                    },
-                ],
+            },
+            {
+                path: 'employees/:id/info',
+                component: EmployeeInfoComponent,
+                title: 'Employee Info',
+            },
+            {
+                path: 'employees/:id/cv',
+                component: EmployeeCvComponent,
+                title: 'Employee CV',
             },
             {
                 path: 'projects',
                 component: ProjectListComponent,
                 title: 'Projects List',
-                children: [
-                    {
-                        path: ':id',
-                        component: ProjectInfoComponent,
-                        title: 'Project Info',
-                    },
-                ],
+            },
+            {
+                path: 'projects/:id',
+                component: ProjectInfoComponent,
+                title: 'Project Info',
             },
         ],
     },
