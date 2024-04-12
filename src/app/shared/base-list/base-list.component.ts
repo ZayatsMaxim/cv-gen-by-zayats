@@ -11,5 +11,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 })
 export class BaseListComponent {
     options!: Array<{ [key: string]: string }>
-    header: Array<string> = ['header1', 'header2']
+    headers: Array<string> = ['header1', 'header2', 'header3', 'test1', 'test2']
 }

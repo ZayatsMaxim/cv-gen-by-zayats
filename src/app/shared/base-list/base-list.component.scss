@@ -5,8 +5,14 @@
 }
 
 .header-container {
+  display: flex;
+  flex-flow: row;
+  justify-items: stretch;
   background-color: lightgray;
+
   .header {
+    width: 50%;
     font-size: 14px;
+    font-weight: bolder;
   }
 }
