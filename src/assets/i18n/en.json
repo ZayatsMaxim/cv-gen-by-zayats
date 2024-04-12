@@ -8,5 +8,14 @@
     "AUTH_FORM_FORGOT_PASSWORD": "Forgot your password?",
     "AUTH_FORM_LOGIN": "Login",
     "AUTH_FORM_INVALID_CREDENTIALS": "Login or password is wrong",
-    "AUTH_FORM_INTERNAL_SERVER_ERROR": "Sorry, something went wrong on the server. Please try again later."
+    "AUTH_FORM_INTERNAL_SERVER_ERROR": "Sorry, something went wrong on the server. Please try again later.",
+
+    "PROJECT_FORM_NAME_LABEL":"Name",
+    "PROJECT_FORM_START_DATE_LABEL":"Start date",
+    "PROJECT_FORM_END_DATE_LABEL": "End date",
+    "PROJECT_FORM_TEAM_SIZE_LABEL": "Team size",
+    "PROJECT_FORM_TECH_STACK_LABEL": "Tech stack",
+    "PROJECT_FORM_ROLES_LABEL": "Roles",
+    "PROJECT_FORM_DESCRIPTION_LABEL": "Description",
+    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Responsibilities"
 }

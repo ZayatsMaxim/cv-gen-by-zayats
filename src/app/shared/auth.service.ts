@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs'
-import { AuthResponse } from './auth.component'
+import { AuthResponse } from '../modules/auth/auth.component'
 
 const baseUrl = 'http://localhost:3000'
 const loginUrl = 'api/auth/login'

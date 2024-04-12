@@ -19,4 +19,9 @@ export class UserTokenStorageService {
     getRefreshToken() {
         return localStorage.getItem('refresh_token')
     }
+
+    clearTokens() {
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+    }
 }

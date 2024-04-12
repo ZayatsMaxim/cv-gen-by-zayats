@@ -6,6 +6,7 @@ import { ProjectListComponent } from './modules/core/projects-module/project-lis
 import { EmployeeInfoComponent } from './modules/core/employees-module/employee-info/employee-info.component'
 import { EmployeeCvComponent } from './modules/core/employees-module/employee-cv/employee-cv.component'
 import { ProjectInfoComponent } from './modules/core/projects-module/project-info/project-info.component'
+import { authGuard } from './shared/auth.guard'
 
 export const routes: Routes = [
     {
@@ -22,6 +23,7 @@ export const routes: Routes = [
         path: 'home',
         component: CoreComponent,
         title: 'Home',
+        canActivateChild: [authGuard],
         children: [
             {
                 path: 'employees',

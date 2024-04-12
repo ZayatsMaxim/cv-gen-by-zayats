@@ -8,5 +8,14 @@
     "AUTH_FORM_FORGOT_PASSWORD": "Забыли свой пароль?",
     "AUTH_FORM_LOGIN": "Войти",
     "AUTH_FORM_INVALID_CREDENTIALS": "Неправильный логин или пароль",
-    "AUTH_FORM_INTERNAL_SERVER_ERROR": "Извините, сервис недоступен. Попробуйте повторить позже"
+    "AUTH_FORM_INTERNAL_SERVER_ERROR": "Извините, сервис недоступен. Попробуйте повторить позже",
+
+    "PROJECT_FORM_NAME_LABEL": "Название",
+    "PROJECT_FORM_START_DATE_LABEL": "Дата начала",
+    "PROJECT_FORM_END_DATE_LABEL": "Дата окончания",
+    "PROJECT_FORM_TEAM_SIZE_LABEL": "Размер команды",
+    "PROJECT_FORM_TECH_STACK_LABEL": "Стек технологий",
+    "PROJECT_FORM_ROLES_LABEL": "Роли",
+    "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
+    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности"
 }

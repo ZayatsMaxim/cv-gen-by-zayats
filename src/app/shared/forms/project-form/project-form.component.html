@@ -1,26 +1,71 @@
 <form class="project-form" [formGroup]="projectForm">
     <div class="input-field">
-        <label>Lorem Ipsum</label>
+        <label>{{ 'PROJECT_FORM_NAME_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <input matInput type="text" formControlName="projectName" />
         </mat-form-field>
     </div>
 
     <div class="input-field">
-        <label>Lorem Ipsum</label>
+        <label>{{ 'PROJECT_FORM_TEAM_SIZE_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <input matInput type="number" formControlName="teamSize" />
         </mat-form-field>
     </div>
 
     <div class="input-field">
-        <label>Lorem Ipsum</label>
+        <label>{{ 'PROJECT_FORM_DESCRIPTION_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <textarea
                 matInput
                 type="number"
                 formControlName="description"
             ></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="input-field">
+        <label>{{ 'PROJECT_FORM_ROLES_LABEL' | translate }}</label>
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="teamRoles" multiple="true">
+                <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="input-field">
+        <label>{{ 'PROJECT_FORM_TECH_STACK_LABEL' | translate }}</label>
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="techStack" multiple="true">
+                <mat-option *ngFor="let tech of techs" [value]="tech">{{ tech }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="input-field">
+        <label>{{ 'PROJECT_FORM_RESPONSIBILITIES_LABEL' | translate }}</label>
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="responsibilities" multiple="true">
+                <mat-option *ngFor="let resposibility of responsibilities" [value]="resposibility">{{ resposibility }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="input-field">
+        <label>{{ 'PROJECT_FORM_START_DATE_LABEL' | translate }}</label>
+        <mat-form-field appearance="outline">
+            <input matInput [matDatepicker]="startDataPicker" formControlName="startDate">
+            <mat-datepicker-toggle matIconSuffix [for]="startDataPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDataPicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div class="input-field">
+        <label>{{ 'PROJECT_FORM_END_DATE_LABEL' | translate }}</label>
+        <mat-form-field appearance="outline">
+            <input matInput [matDatepicker]="endDataPicker" formControlName="endDate">
+            <mat-datepicker-toggle matIconSuffix [for]="endDataPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDataPicker></mat-datepicker>
         </mat-form-field>
     </div>
 </form>

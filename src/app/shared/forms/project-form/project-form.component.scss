@@ -9,7 +9,7 @@
 form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    column-gap: 50px;
 
     .input-field {
         display: flex;
