@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs'
-import { AuthResponse } from '../modules/auth/auth.component'
-
-const baseUrl = 'http://localhost:3000'
-const loginUrl = 'api/auth/login'
-const logoutUrl = 'api/auth/logout'
+import { baseUrl, loginUrl, logoutUrl } from '../url-consts'
+import { Tokens } from '../models/responses'
 
 @Injectable({
     providedIn: 'root',
@@ -21,7 +18,7 @@ export class AuthService {
             })
             .pipe(
                 map(response => {
-                    return response as AuthResponse
+                    return response as Tokens
                 }),
             )
     }
