@@ -11,15 +11,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
-import { AuthService } from '../../shared/auth.service'
-import { UserTokenStorageService } from '../../shared/user-token-storage.service'
+import { AuthService } from '../../shared/services/auth.service'
+import { UserTokenStorageService } from '../../shared/services/user-token-storage.service'
 import { Router } from '@angular/router'
-
-export type AuthResponse = {
-    access_token: string
-    refresh_token: string
-    errorMessage?: string
-}
 
 @Component({
     selector: 'app-auth',

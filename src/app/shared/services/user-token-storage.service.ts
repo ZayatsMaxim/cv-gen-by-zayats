@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { AuthResponse } from '../modules/auth/auth.component'
+import { Tokens } from '../models/responses'
 
 @Injectable({
     providedIn: 'root',
@@ -7,7 +7,7 @@ import { AuthResponse } from '../modules/auth/auth.component'
 export class UserTokenStorageService {
     constructor() {}
 
-    setTokens(token: AuthResponse) {
+    setTokens(token: Tokens) {
         localStorage.setItem('access_token', token.access_token)
         localStorage.setItem('refresh_token', token.refresh_token)
     }
