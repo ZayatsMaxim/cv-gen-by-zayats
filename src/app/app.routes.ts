@@ -50,6 +50,11 @@ export const routes: Routes = [
                 component: ProjectInfoComponent,
                 title: 'Project Info',
             },
+            {
+                path: 'projects/new',
+                component: ProjectInfoComponent,
+                title: 'Project Info',
+            },
         ],
     },
 ]
