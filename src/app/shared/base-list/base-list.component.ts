@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 @Component({
     selector: 'app-base-list',
@@ -10,6 +10,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseListComponent {
-    options!: Array<{ [key: string]: string }>
-    headers: Array<string> = ['header1', 'header2', 'header3', 'test1', 'test2']
+    @Input() body!: Array<{ [key: string]: string }>
+    @Input() headers!: Array<string>
+
+    public keepOriginalOrder = (a: any) => a.key
 }
