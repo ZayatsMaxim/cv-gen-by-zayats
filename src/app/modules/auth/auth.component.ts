@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
-import { AuthService } from './auth.service'
+import { AuthService } from '../../shared/auth.service'
 import { UserTokenStorageService } from '../../shared/user-token-storage.service'
 import { Router } from '@angular/router'
 
@@ -64,9 +64,8 @@ export class AuthComponent {
                     this.authForm.get('password')?.value,
                 )
                 .subscribe({
-                    next: v => {
-                        console.log(v)
-                        this.userTokenStorage.setTokens(v)
+                    next: value => {
+                        this.userTokenStorage.setTokens(value)
                         this.router.navigate(['/home/employees'])
                     },
                     error: err => {

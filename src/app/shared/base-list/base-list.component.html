@@ -1,0 +1,12 @@
+<div class="header-container">
+    <div class="header" *ngFor="let header of headers">
+        <p>{{ header }}</p>
+    </div>
+</div>
+<div class="rows-container">
+    <div class="row" *ngFor="let row of body">
+        <p *ngFor="let option of row | keyvalue:keepOriginalOrder">
+            {{ option.value }}
+        </p>
+    </div>
+</div>
