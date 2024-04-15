@@ -1,3 +1,5 @@
+import { Shared } from './shared.model'
+
 export interface Project {
     id: number
     projectName: string
@@ -5,22 +7,7 @@ export interface Project {
     startDate: string
     endDate: string
     teamSize: number
-    techStack: TechStack[]
-    responsibilities: Responsibility[]
-    teamRoles: TeamRole[]
-}
-
-export interface TechStack {
-    id: number
-    name: string
-}
-
-export interface Responsibility {
-    id: number
-    name: string
-}
-
-export interface TeamRole {
-    id: number
-    name: string
+    techStack: Shared[]
+    responsibilities: Shared[]
+    teamRoles: Shared[]
 }
