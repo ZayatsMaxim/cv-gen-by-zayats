@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs'
-import { baseUrl, loginUrl, logoutUrl } from '../url-consts'
+import { loginUrl, logoutUrl } from '../consts/api-routes.consts'
 import { Tokens } from '../models/responses'
 
 @Injectable({
@@ -12,7 +12,7 @@ export class AuthService {
 
     login(login: string, password: string) {
         return this.httpClient
-            .post(`${baseUrl}/${loginUrl}`, {
+            .post(`${loginUrl}`, {
                 email: login,
                 password: password,
             })
@@ -24,6 +24,6 @@ export class AuthService {
     }
 
     logout() {
-        return this.httpClient.get(`${baseUrl}/${logoutUrl}`)
+        return this.httpClient.get(`${logoutUrl}`)
     }
 }

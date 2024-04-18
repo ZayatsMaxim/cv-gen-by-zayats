@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {
-    baseUrl,
     departmentsUrl,
     responsibilitiesUrl,
     rolesUrl,
     skillsUrl,
     specializationsUrl,
-} from '../url-consts'
+} from '../consts/api-routes.consts'
 import { map } from 'rxjs'
 import { Shared } from '../models/shared.model'
 
@@ -18,7 +17,7 @@ export class SharedService {
     constructor(private httpClient: HttpClient) {}
 
     getTeamRoles() {
-        return this.httpClient.get(`${baseUrl}/${rolesUrl}`).pipe(
+        return this.httpClient.get(`${rolesUrl}`).pipe(
             map(response => {
                 return response as Shared[]
             }),
@@ -26,7 +25,7 @@ export class SharedService {
     }
 
     getSkills() {
-        return this.httpClient.get(`${baseUrl}/${skillsUrl}`).pipe(
+        return this.httpClient.get(`${skillsUrl}`).pipe(
             map(response => {
                 return response as Shared[]
             }),
@@ -34,7 +33,7 @@ export class SharedService {
     }
 
     getResponsibilities() {
-        return this.httpClient.get(`${baseUrl}/${responsibilitiesUrl}`).pipe(
+        return this.httpClient.get(`${responsibilitiesUrl}`).pipe(
             map(response => {
                 return response as Shared[]
             }),
@@ -42,7 +41,7 @@ export class SharedService {
     }
 
     getSpecializations() {
-        return this.httpClient.get(`${baseUrl}/${specializationsUrl}`).pipe(
+        return this.httpClient.get(`${specializationsUrl}`).pipe(
             map(response => {
                 return response as Shared[]
             }),
@@ -50,7 +49,7 @@ export class SharedService {
     }
 
     getDepartments() {
-        return this.httpClient.get(`${baseUrl}/${departmentsUrl}`).pipe(
+        return this.httpClient.get(`${departmentsUrl}`).pipe(
             map(response => {
                 return response as Shared[]
             }),
