@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core'
 import { MatSelectModule } from '@angular/material/select'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
+import { SharedService } from '../../services/shared.service'
 
 @Component({
     selector: 'app-project-form',
@@ -48,12 +49,14 @@ export class ProjectFormComponent implements ControlValueAccessor, OnInit {
     projectForm!: FormGroup
     public onTouched: () => void = () => {}
 
-    //todo: get from API
-    roles: string[] = ['test1', 'test2']
-    techs: string[] = ['test3', 'test4']
-    responsibilities: string[] = ['test5', 'test6']
+    roles?: string[]
+    techs?: string[]
+    responsibilities?: string[]
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(
+        private formBuilder: FormBuilder,
+        private sharedService: SharedService,
+    ) {}
 
     ngOnInit(): void {
         this.projectForm = this.formBuilder.group({
@@ -65,6 +68,18 @@ export class ProjectFormComponent implements ControlValueAccessor, OnInit {
             techStack: [[''], Validators.required],
             responsibilities: [[''], Validators.required],
             teamRoles: [[''], Validators.required],
+        })
+
+        this.sharedService.getTeamRoles().subscribe(options => {
+            this.roles = options.map(option => option.name)
+        })
+
+        this.sharedService.getResponsibilities().subscribe(options => {
+            this.responsibilities = options.map(option => option.name)
+        })
+
+        this.sharedService.getSkills().subscribe(options => {
+            this.techs = options.map(option => option.name)
         })
     }
 
