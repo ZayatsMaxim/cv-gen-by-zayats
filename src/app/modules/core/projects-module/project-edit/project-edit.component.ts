@@ -5,14 +5,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
 
 @Component({
-    selector: 'app-project-info',
+    selector: 'app-project-edit',
     standalone: true,
     imports: [CommonModule, ProjectFormComponent, ReactiveFormsModule],
-    templateUrl: './project-info.component.html',
-    styleUrl: './project-info.component.scss',
+    templateUrl: './project-edit.component.html',
+    styleUrl: './project-edit.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectInfoComponent implements OnInit {
+export class ProjectEditComponent implements OnInit {
     projectForm!: FormGroup
 
     constructor(

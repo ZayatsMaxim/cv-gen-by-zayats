@@ -5,7 +5,7 @@ import { EmployeesListComponent } from './modules/core/employees-module/employee
 import { ProjectListComponent } from './modules/core/projects-module/project-list/project-list.component'
 import { EmployeeInfoComponent } from './modules/core/employees-module/employee-info/employee-info.component'
 import { EmployeeCvComponent } from './modules/core/employees-module/employee-cv/employee-cv.component'
-import { ProjectInfoComponent } from './modules/core/projects-module/project-info/project-info.component'
+import { ProjectEditComponent } from './modules/core/projects-module/project-edit/project-edit.component'
 import { authGuard } from './shared/auth.guard'
 
 export const routes: Routes = [
@@ -47,12 +47,12 @@ export const routes: Routes = [
             },
             {
                 path: 'projects/:id',
-                component: ProjectInfoComponent,
+                component: ProjectEditComponent,
                 title: 'Project Info',
             },
             {
                 path: 'projects/new',
-                component: ProjectInfoComponent,
+                component: ProjectEditComponent,
                 title: 'Project Info',
             },
         ],

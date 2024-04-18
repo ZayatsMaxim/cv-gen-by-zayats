@@ -28,7 +28,7 @@
         <label>{{ 'PROJECT_FORM_ROLES_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <mat-select formControlName="teamRoles" multiple="true">
-                <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+                <mat-option *ngFor="let role of roles" [value]="role">{{ role | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -37,7 +37,7 @@
         <label>{{ 'PROJECT_FORM_TECH_STACK_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <mat-select formControlName="techStack" multiple="true">
-                <mat-option *ngFor="let tech of techs" [value]="tech">{{ tech }}</mat-option>
+                <mat-option *ngFor="let tech of techs" [value]="tech">{{ tech | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -46,7 +46,7 @@
         <label>{{ 'PROJECT_FORM_RESPONSIBILITIES_LABEL' | translate }}</label>
         <mat-form-field appearance="outline">
             <mat-select formControlName="responsibilities" multiple="true">
-                <mat-option *ngFor="let resposibility of responsibilities" [value]="resposibility">{{ resposibility }}</mat-option>
+                <mat-option *ngFor="let resposibility of responsibilities" [value]="resposibility">{{ resposibility | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
