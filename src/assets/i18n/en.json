@@ -10,12 +10,21 @@
     "AUTH_FORM_INVALID_CREDENTIALS": "Login or password is wrong",
     "AUTH_FORM_INTERNAL_SERVER_ERROR": "Sorry, something went wrong on the server. Please try again later.",
 
-    "PROJECT_FORM_NAME_LABEL":"Name",
-    "PROJECT_FORM_START_DATE_LABEL":"Start date",
+    "PROJECT_FORM_NAME_LABEL": "Name",
+    "PROJECT_FORM_START_DATE_LABEL": "Start date",
     "PROJECT_FORM_END_DATE_LABEL": "End date",
     "PROJECT_FORM_TEAM_SIZE_LABEL": "Team size",
     "PROJECT_FORM_TECH_STACK_LABEL": "Tech stack",
     "PROJECT_FORM_ROLES_LABEL": "Roles",
     "PROJECT_FORM_DESCRIPTION_LABEL": "Description",
-    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Responsibilities"
+    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Responsibilities",
+
+    "EMPLOYEE_FORM_FIRST_NAME_LABEL": "First Name",
+    "EMPLOYEE_FORM_LAST_NAME_LABEL": "Last Name",
+    "EMPLOYEE_FORM_EMAIL_LABEL": "Email",
+    "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Specialization",
+    "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Department",
+
+    "INVALID_SPECIFY_THE_FIELD": "Please, specify the field",
+    "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern"
 }

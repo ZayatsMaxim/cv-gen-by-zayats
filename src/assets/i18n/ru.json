@@ -17,5 +17,14 @@
     "PROJECT_FORM_TECH_STACK_LABEL": "Стек технологий",
     "PROJECT_FORM_ROLES_LABEL": "Роли",
     "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
-    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности"
+    "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности",
+
+    "EMPLOYEE_FORM_FIRST_NAME_LABEL": "Имя",
+    "EMPLOYEE_FORM_LAST_NAME_LABEL": "Фамилия",
+    "EMPLOYEE_FORM_EMAIL_LABEL": "Электронная почта",
+    "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
+    "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
+
+    "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, укажите значения",
+    "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение"
 }
