@@ -48,7 +48,6 @@ export class AuthComponent {
     this.authForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      test: ['', Validators.required],
     });
   }
 
@@ -76,6 +75,7 @@ export class AuthComponent {
           }
         },
       });
+
     this.cdr.detectChanges();
   }
 

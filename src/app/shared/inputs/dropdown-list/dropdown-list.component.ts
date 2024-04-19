@@ -1,27 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BasicInputDirective } from '../basic-input.directive';
-import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessagePipe } from '../../pipes/error-message.pipe';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'text-input',
+  selector: 'app-dropdown-list',
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
+    ErrorMessagePipe,
     TranslateModule,
     ReactiveFormsModule,
-    ErrorMessagePipe,
+    MatSelectModule,
   ],
-  templateUrl: './text-input.component.html',
-  styleUrl: './text-input.component.scss',
+  templateUrl: './dropdown-list.component.html',
+  styleUrl: './dropdown-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextInputComponent extends BasicInputDirective {
-  @Input() type: string;
+export class DropdownListComponent extends BasicInputDirective {
+  @Input() options: string[];
 }

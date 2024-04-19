@@ -2,12 +2,12 @@
   <mat-label>
     {{ label || '' | translate }}
   </mat-label>
-  <input
+  <textarea
     matInput
-    [type]="type"
     [placeholder]="placeholder || '' | translate"
     [formControl]="valueControl"
-  />
+  >
+  </textarea>
   <mat-error>
     {{ valueControl.errors | getErrorMessage | translate }}
   </mat-error>

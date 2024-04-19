@@ -1,4 +1,5 @@
 <div class="auth-page">
+
   <div class="lang-selector">
     <button mat-icon-button (click)="changeLanguage()">
       <mat-icon>language</mat-icon>
@@ -9,6 +10,7 @@
       <mat-icon>question_mark</mat-icon>
     </button>
   </div>
+
   <form [formGroup]="authForm" (submit)="submit()">
     <div class="logo-block">
       <img src="../../../assets/auth-page/logo.svg" />
@@ -16,53 +18,23 @@
         {{ 'AUTH_FORM_TITLE' | translate }}
       </h1>
     </div>
-    
+
     <div class="form-input-block">
       <text-input
-        formControlName="test"
+        formControlName="username"
+        type="text"
         [label]="'AUTH_FORM_USERNAME_LABEL'"
-        [errorMessage]="'AUTH_FORM_USERNAME_INVALID'"
       ></text-input>
-      <div>{{ authForm.get('test').value }}</div>
     </div>
 
     <div class="form-input-block">
-      <label for="username">
-        {{ 'AUTH_FORM_USERNAME_LABEL' | translate }}
-      </label>
-      <mat-form-field>
-        <input matInput formControlName="username" type="text" id="username" />
-      </mat-form-field>
-      <div
-        class="invalid-field"
-        *ngIf="
-          !authForm.get('username')?.valid && authForm.get('username')?.touched
-        "
-      >
-        {{ 'AUTH_FORM_USERNAME_INVALID' | translate }}
-      </div>
+      <text-input
+        formControlName="password"
+        type="password"
+        [label]="'AUTH_FORM_PASSWORD_LABEL'"
+      ></text-input>
     </div>
-    <div class="form-input-block">
-      <label for="password">
-        {{ 'AUTH_FORM_PASSWORD_LABEL' | translate }}
-      </label>
-      <mat-form-field>
-        <input
-          matInput
-          formControlName="password"
-          type="password"
-          id="password"
-        />
-      </mat-form-field>
-      <div
-        class="invalid-field"
-        *ngIf="
-          !authForm.get('password')?.valid && authForm.get('password')?.touched
-        "
-      >
-        {{ 'AUTH_FORM_PASSWORD_INVALID' | translate }}
-      </div>
-    </div>
+
     <div class="optional-block">
       <mat-checkbox>
         {{ 'AUTH_FORM_REMEMBER_ME' | translate }}
