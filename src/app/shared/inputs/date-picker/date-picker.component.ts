@@ -7,9 +7,10 @@ import { ErrorMessagePipe } from '../../pipes/error-message.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BasicInputDirective } from '../basic-input.directive';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-date-picker',
+  selector: 'date-picker',
   standalone: true,
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
@@ -22,6 +23,8 @@ import { BasicInputDirective } from '../basic-input.directive';
     ErrorMessagePipe,
     TranslateModule,
     ReactiveFormsModule,
+    MatInputModule,
   ],
+  providers: [MatDatepickerModule, MatNativeDateModule],
 })
 export class DatePickerComponent extends BasicInputDirective {}

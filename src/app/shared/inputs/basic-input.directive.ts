@@ -6,6 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Directive({
   standalone: true,
@@ -15,6 +16,7 @@ export class BasicInputDirective
 {
   @Input() placeholder?: string;
   @Input() label?: string;
+  @Input() apperance?: MatFormFieldAppearance;
 
   value: any;
   disabled = false;

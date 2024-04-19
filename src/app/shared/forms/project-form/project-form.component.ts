@@ -19,6 +19,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SharedService } from '../../services/shared.service';
+import { TextInputComponent } from '../../inputs/text-input/text-input.component';
+import { NumberInputComponent } from '../../inputs/number-input/number-input.component';
+import { TextAreaInputComponent } from '../../inputs/text-area-input/text-area-input.component';
+import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
+import { DatePickerComponent } from '../../inputs/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-project-form',
@@ -31,13 +36,18 @@ import { SharedService } from '../../services/shared.service';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    TextInputComponent,
+    NumberInputComponent,
+    TextAreaInputComponent,
+    DropdownListComponent,
+    DatePickerComponent,
   ],
   templateUrl: './project-form.component.html',
   styleUrl: './project-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    MatDatepickerModule,
-    MatNativeDateModule,
+    // MatDatepickerModule,
+    // MatNativeDateModule,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ProjectFormComponent),

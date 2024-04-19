@@ -10,7 +10,7 @@ import { ErrorMessagePipe } from '../../pipes/error-message.pipe';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-dropdown-list',
+  selector: 'dropdown-list',
   standalone: true,
   imports: [
     CommonModule,

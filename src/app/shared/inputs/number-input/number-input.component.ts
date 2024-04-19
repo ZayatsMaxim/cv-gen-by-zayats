@@ -8,7 +8,7 @@ import { ErrorMessagePipe } from '../../pipes/error-message.pipe';
 import { BasicInputDirective } from '../basic-input.directive';
 
 @Component({
-  selector: 'app-number-input',
+  selector: 'number-input',
   standalone: true,
   imports: [
     CommonModule,

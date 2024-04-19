@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BasicInputDirective } from '../basic-input.directive';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatFormFieldAppearance,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessagePipe } from '../../pipes/error-message.pipe';
 
 @Component({
-  selector: 'app-text-area-input',
+  selector: 'text-area-input',
   standalone: true,
   imports: [
     CommonModule,

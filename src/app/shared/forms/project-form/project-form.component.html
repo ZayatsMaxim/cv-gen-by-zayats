@@ -1,62 +1,58 @@
 <form class="project-form" [formGroup]="projectForm">
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_NAME_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <input matInput type="text" formControlName="projectName" />
-    </mat-form-field>
+    <text-input
+      formControlName="projectName"
+      type="text"
+      apperance="outline"
+      [label]="'PROJECT_FORM_NAME_LABEL'"
+    ></text-input>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_TEAM_SIZE_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <input matInput type="number" formControlName="teamSize" />
-    </mat-form-field>
+    <number-input
+      formControlName="teamSize"
+      apperance="outline"
+      [label]="'PROJECT_FORM_TEAM_SIZE_LABEL'"
+    ></number-input>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_DESCRIPTION_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <textarea matInput type="number" formControlName="description"></textarea>
-    </mat-form-field>
+    <text-area-input
+      formControlName="description"
+      apperance="outline"
+      [label]="'PROJECT_FORM_DESCRIPTION_LABEL'"
+    ></text-area-input>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_ROLES_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <mat-select formControlName="teamRoles" multiple="true">
-        <mat-option *ngFor="let role of roles" [value]="role">
-          {{ role | titlecase }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <dropdown-list
+      formControlName="teamRoles"
+      apperance="outline"
+      [options]="roles"
+      [label]="'PROJECT_FORM_ROLES_LABEL'"
+    ></dropdown-list>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_TECH_STACK_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <mat-select formControlName="techStack" multiple="true">
-        <mat-option *ngFor="let tech of techs" [value]="tech">
-          {{ tech | titlecase }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <dropdown-list
+      formControlName="techStack"
+      apperance="outline"
+      [options]="techs"
+      [label]="'PROJECT_FORM_TECH_STACK_LABEL'"
+    ></dropdown-list>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_RESPONSIBILITIES_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <mat-select formControlName="responsibilities" multiple="true">
-        <mat-option
-          *ngFor="let resposibility of responsibilities"
-          [value]="resposibility">
-          {{ resposibility | titlecase }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <dropdown-list
+      formControlName="responsibilities"
+      apperance="outline"
+      [options]="responsibilities"
+      [label]="'PROJECT_FORM_RESPONSIBILITIES_LABEL'"
+    ></dropdown-list>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_START_DATE_LABEL' | translate }}</label>
+    <!-- <label>{{ 'PROJECT_FORM_START_DATE_LABEL' | translate }}</label>
     <mat-form-field appearance="outline">
       <input
         matInput
@@ -68,11 +64,16 @@
         [for]="startDataPicker"
       ></mat-datepicker-toggle>
       <mat-datepicker #startDataPicker></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field> -->
+    <date-picker
+      formControlName="startDate"
+      apperance="outline"
+      [label]="'PROJECT_FORM_START_DATE_LABEL'"
+    ></date-picker>
   </div>
 
   <div class="input-field">
-    <label>{{ 'PROJECT_FORM_END_DATE_LABEL' | translate }}</label>
+    <!-- <label>{{ 'PROJECT_FORM_END_DATE_LABEL' | translate }}</label>
     <mat-form-field appearance="outline">
       <input
         matInput
@@ -84,6 +85,11 @@
         [for]="endDataPicker"
       ></mat-datepicker-toggle>
       <mat-datepicker #endDataPicker></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field> -->
+    <date-picker
+      formControlName="endDate"
+      apperance="outline"
+      [label]="'PROJECT_FORM_END_DATE_LABEL'"
+    ></date-picker>
   </div>
 </form>
