@@ -1,0 +1,13 @@
+<mat-form-field [appearance]="apperance">
+  <mat-label>
+    {{ label || '' | translate }}
+  </mat-label>
+  <mat-select [formControl]="valueControl" multiple="true">
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{ option | titlecase }}
+    </mat-option>
+  </mat-select>
+  <mat-error>
+    {{ valueControl.errors | getErrorMessage | translate }}
+  </mat-error>
+</mat-form-field>

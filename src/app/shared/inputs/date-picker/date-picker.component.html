@@ -1,0 +1,14 @@
+<mat-form-field [appearance]="apperance">
+  <mat-label>
+    {{ label || '' | translate }}
+  </mat-label>
+  <input matInput [formControl]="valueControl" [matDatepicker]="dataPicker" />
+  <mat-datepicker-toggle
+    matIconSuffix
+    [for]="dataPicker"
+  ></mat-datepicker-toggle>
+  <mat-datepicker #dataPicker></mat-datepicker>
+  <mat-error>
+    {{ valueControl.errors | getErrorMessage | translate }}
+  </mat-error>
+</mat-form-field>

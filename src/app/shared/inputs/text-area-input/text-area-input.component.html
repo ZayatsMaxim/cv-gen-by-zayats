@@ -1,0 +1,14 @@
+<mat-form-field [appearance]="apperance" floatLabel="auto">
+  <mat-label>
+    {{ label || '' | translate }}
+  </mat-label>
+  <textarea
+    matInput
+    [placeholder]="placeholder || '' | translate"
+    [formControl]="valueControl"
+  >
+  </textarea>
+  <mat-error>
+    {{ valueControl.errors | getErrorMessage | translate }}
+  </mat-error>
+</mat-form-field>

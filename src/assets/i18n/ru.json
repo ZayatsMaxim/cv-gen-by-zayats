@@ -25,6 +25,6 @@
     "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
     "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
 
-    "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, укажите значения",
+    "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
     "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение"
 }

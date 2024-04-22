@@ -1,0 +1,10 @@
+export const baseUrl = 'http://localhost:3000';
+export const loginUrl = `${baseUrl}/api/auth/login`;
+export const logoutUrl = `${baseUrl}/api/auth/logout`;
+export const projectUrl = `${baseUrl}/api/auth/logout`;
+export const employeesUrl = `${baseUrl}/api/employees`;
+export const rolesUrl = `${baseUrl}/api/team-roles`;
+export const skillsUrl = `${baseUrl}/api/skills`;
+export const responsibilitiesUrl = `${baseUrl}/api/responsibilities`;
+export const departmentsUrl = `${baseUrl}/api/departments`;
+export const specializationsUrl = `${baseUrl}/api/specialization`;
