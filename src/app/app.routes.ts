@@ -9,9 +9,14 @@ import { ProjectEditComponent } from './modules/core/projects-module/project-edi
 import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
+  // {
+  //   path: '**',
+  //   redirectTo: '/auth',
+  //   pathMatch: 'full',
+  // },
   {
     path: '',
-    redirectTo: '/home/employees',
+    redirectTo: '/auth',
     pathMatch: 'full',
   },
   {
