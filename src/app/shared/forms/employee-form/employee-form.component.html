@@ -1,0 +1,48 @@
+<form class="grid-form" [formGroup]="employeeForm">
+  <div class="input-field">
+    <text-input
+      formControlName="firstName"
+      type="text"
+      apperance="outline"
+      [label]="'EMPLOYEE_FORM_FIRST_NAME_LABEL'"
+    ></text-input>
+  </div>
+
+  <div class="input-field">
+    <text-input
+      formControlName="lastName"
+      type="text"
+      apperance="outline"
+      [label]="'EMPLOYEE_FORM_LAST_NAME_LABEL'"
+    ></text-input>
+  </div>
+
+  <div class="input-field">
+    <text-input
+      formControlName="email"
+      type="text"
+      apperance="outline"
+      [label]="'EMPLOYEE_FORM_EMAIL_LABEL'"
+    ></text-input>
+  </div>
+
+  <div class="input-field">
+    <dropdown-list
+      formControlName="specialization"
+      apperance="outline"
+      [options]="specializations"
+      [multiple]="false"
+      [label]="'EMPLOYEE_FORM_SPECIALIZATION_LABEL'"
+    ></dropdown-list>
+  </div>
+
+  <div class="input-field">
+    <dropdown-list
+      formControlName="department"
+      apperance="outline"
+      [options]="departments"
+      [multiple]="false"
+      [label]="'EMPLOYEE_FORM_DEPARTMENT_LABEL'"
+    ></dropdown-list>
+  </div>
+</form>
