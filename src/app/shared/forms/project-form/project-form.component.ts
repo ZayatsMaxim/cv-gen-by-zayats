@@ -45,7 +45,8 @@ import { DatePickerComponent } from '../../inputs/date-picker/date-picker.compon
   templateUrl: './project-form.component.html',
   styleUrls: [
     './project-form.component.scss',
-    '../../../../assets/styles/inputs.scss',
+    '../../styles/inputs.scss',
+    '../../styles/form.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

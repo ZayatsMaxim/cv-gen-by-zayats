@@ -28,4 +28,5 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class DropdownListComponent extends BasicInputDirective {
   @Input() options: string[];
+  @Input() multiple: boolean;
 }

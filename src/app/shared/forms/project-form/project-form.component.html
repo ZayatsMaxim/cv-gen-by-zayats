@@ -1,4 +1,4 @@
-<form class="project-form" [formGroup]="projectForm">
+<form class="grid-form" [formGroup]="projectForm">
   <div class="input-field">
     <text-input
       formControlName="projectName"
@@ -29,6 +29,7 @@
       formControlName="teamRoles"
       apperance="outline"
       [options]="roles"
+      [multiple]="true"
       [label]="'PROJECT_FORM_ROLES_LABEL'"
     ></dropdown-list>
   </div>
@@ -38,6 +39,7 @@
       formControlName="techStack"
       apperance="outline"
       [options]="techs"
+      [multiple]="true"
       [label]="'PROJECT_FORM_TECH_STACK_LABEL'"
     ></dropdown-list>
   </div>
@@ -47,24 +49,12 @@
       formControlName="responsibilities"
       apperance="outline"
       [options]="responsibilities"
+      [multiple]="true"
       [label]="'PROJECT_FORM_RESPONSIBILITIES_LABEL'"
     ></dropdown-list>
   </div>
 
   <div class="input-field">
-    <!-- <label>{{ 'PROJECT_FORM_START_DATE_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        [matDatepicker]="startDataPicker"
-        formControlName="startDate"
-      />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="startDataPicker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #startDataPicker></mat-datepicker>
-    </mat-form-field> -->
     <date-picker
       formControlName="startDate"
       apperance="outline"
@@ -73,19 +63,6 @@
   </div>
 
   <div class="input-field">
-    <!-- <label>{{ 'PROJECT_FORM_END_DATE_LABEL' | translate }}</label>
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        [matDatepicker]="endDataPicker"
-        formControlName="endDate"
-      />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="endDataPicker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #endDataPicker></mat-datepicker>
-    </mat-form-field> -->
     <date-picker
       formControlName="endDate"
       apperance="outline"

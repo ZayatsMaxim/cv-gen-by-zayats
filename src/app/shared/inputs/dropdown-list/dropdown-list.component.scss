@@ -6,4 +6,8 @@
 
 mat-form-field {
   width: 100%;
+
+  ::ng-deep .mat-mdc-select-min-line {
+    font-size: 14px !important;
+  }
 }

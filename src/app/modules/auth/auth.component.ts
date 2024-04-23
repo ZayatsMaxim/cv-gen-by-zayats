@@ -73,7 +73,7 @@ export class AuthComponent {
           } else {
             this.authErrorMessage = 'AUTH_FORM_INTERNAL_SERVER_ERROR';
           }
-          this.cdr.detectChanges();
+          // this.cdr.detectChanges();
         },
       });
     this.cdr.detectChanges();
