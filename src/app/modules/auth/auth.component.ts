@@ -19,6 +19,9 @@ import { TextInputComponent } from '../../shared/inputs/text-input/text-input.co
 @Component({
   selector: 'app-auth',
   standalone: true,
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     TranslateModule,
@@ -29,9 +32,6 @@ import { TextInputComponent } from '../../shared/inputs/text-input/text-input.co
     MatIconModule,
     TextInputComponent,
   ],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent {
   authForm: FormGroup;
@@ -73,9 +73,9 @@ export class AuthComponent {
           } else {
             this.authErrorMessage = 'AUTH_FORM_INTERNAL_SERVER_ERROR';
           }
+          this.cdr.detectChanges();
         },
       });
-
     this.cdr.detectChanges();
   }
 

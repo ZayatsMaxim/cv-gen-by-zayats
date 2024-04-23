@@ -1,11 +1,10 @@
-<mat-form-field [appearance]="apperance" floatLabel="auto">
+<mat-form-field [appearance]="apperance" floatLabel="always">
   <mat-label>
     {{ label || '' | translate }}
   </mat-label>
   <input
     matInput
     [type]="type"
-    [placeholder]="placeholder || '' | translate"
     [formControl]="valueControl"
   />
   <mat-error>

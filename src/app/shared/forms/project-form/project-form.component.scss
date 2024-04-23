@@ -8,9 +8,5 @@ form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2vw;
-
-  .input-field {
-    display: flex;
-    flex-flow: column;
-  }
+  row-gap: 1vh;
 }
