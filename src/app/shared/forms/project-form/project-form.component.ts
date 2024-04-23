@@ -43,11 +43,12 @@ import { DatePickerComponent } from '../../inputs/date-picker/date-picker.compon
     DatePickerComponent,
   ],
   templateUrl: './project-form.component.html',
-  styleUrl: './project-form.component.scss',
+  styleUrls: [
+    './project-form.component.scss',
+    '../../../../assets/styles/inputs.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    // MatDatepickerModule,
-    // MatNativeDateModule,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ProjectFormComponent),
