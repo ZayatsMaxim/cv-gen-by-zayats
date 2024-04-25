@@ -1,1 +1,11 @@
-<p>cv-list works!</p>,
+<div class="cv-list">
+  <div 
+    *ngFor="let option of options" 
+    (click)="selectCv(option)"
+    [ngClass]="{ 'cv':true, 'selected': option === value }">
+    <span> {{ option }} </span>
+      <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

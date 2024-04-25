@@ -26,7 +26,7 @@ import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.
 import { DatePickerComponent } from '../../inputs/date-picker/date-picker.component';
 
 @Component({
-  selector: 'app-project-form',
+  selector: 'project-form',
   standalone: true,
   imports: [
     CommonModule,

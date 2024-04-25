@@ -7,6 +7,7 @@ import { EmployeeInfoComponent } from './modules/core/employees-module/employee-
 import { EmployeeCvComponent } from './modules/core/employees-module/employee-cv/employee-cv.component';
 import { ProjectEditComponent } from './modules/core/projects-module/project-edit/project-edit.component';
 import { authGuard } from './shared/guards/auth.guard';
+import { EmployeeEditComponent } from './modules/core/employees-module/employee-edit/employee-edit.component';
 
 export const routes: Routes = [
   // {
@@ -35,15 +36,25 @@ export const routes: Routes = [
         component: EmployeesListComponent,
         title: 'Employees List',
       },
+      // {
+      //   path: 'employees/:id/edit/info',
+      //   component: EmployeeInfoComponent,
+      //   title: 'Edit employee',
+      // },
+      // {
+      //   path: 'employees/:id/edit/cv',
+      //   component: EmployeeCvComponent,
+      //   title: 'Edit employee',
+      // },
+      // {
+      //   path: 'employees/:id/cv',
+      //   component: EmployeeCvComponent,
+      //   title: 'Employee CV',
+      // },
       {
-        path: 'employees/:id/info',
-        component: EmployeeInfoComponent,
-        title: 'Employee Info',
-      },
-      {
-        path: 'employees/:id/cv',
-        component: EmployeeCvComponent,
-        title: 'Employee CV',
+        path: 'employees/edit/:id',
+        component: EmployeeEditComponent,
+        title: 'Edit employee',
       },
       {
         path: 'projects',
