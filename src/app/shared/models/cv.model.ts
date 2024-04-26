@@ -9,10 +9,10 @@ export interface CV {
   skills: Shared[];
   firstName: string;
   lastName: string;
-  email: number;
-  department: Shared[];
+  email: string;
+  department: Shared;
   departmentId: number;
-  specialization: Shared[];
+  specialization: Shared;
   specializationId: number;
   employeeId: number;
   cvsProjects: Project[];

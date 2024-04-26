@@ -6,7 +6,7 @@ import { ProjectFormComponent } from '../../forms/project-form/project-form.comp
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cv-projects-list',
+  selector: 'cv-projects-list',
   standalone: true,
   imports: [
     CommonModule,

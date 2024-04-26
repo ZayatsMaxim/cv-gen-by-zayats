@@ -8,3 +8,4 @@ export const skillsUrl = `${baseUrl}/api/skills`;
 export const responsibilitiesUrl = `${baseUrl}/api/responsibilities`;
 export const departmentsUrl = `${baseUrl}/api/departments`;
 export const specializationsUrl = `${baseUrl}/api/specializations`;
+export const cvsUrl = `${baseUrl}/api/cvs`;
