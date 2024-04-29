@@ -1,15 +1,13 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import {
   FormArray,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { CV } from '../../models/cv.model';
-import { EmployeeDTO } from '../../models/dto.model';
 import { CvDataService } from '../../services/cv-data.service';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -44,37 +42,46 @@ export class CvFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cvForm = this.formBuilder.group({
-      employeeForm: this.formBuilder.group({
-        firstName: ['sdf'],
-        lastName: ['sdf'],
-        email: ['fdg'],
-        specialization: ['Angular'],
-        department: ['Javascript'],
+      employee: this.formBuilder.control({
+        firstName: '',
+        lastName: '',
+        email: '',
+        specialization: '',
+        department: '',
       }),
       projects: this.formBuilder.array([]),
     });
-    this.getCvProjects();
+    this.getCvInfo();
   }
 
-  getCvProjects() {
+  getCvInfo() {
     this.cvService.getCvById(this.CVid).subscribe(Cv => {
-      // console.log(Cv);
       this.CV = Cv;
+
       const projectsControls = this.CV.cvsProjects.map(project =>
-        this.formBuilder.group({
-          projectName: [project.projectName],
-          teamSize: [project.teamSize],
-          description: [project.description],
-          teamRoles: [project.teamRoles],
-          techStack: [project.techStack],
-          responsibilities: [project.responsibilities],
-          startDate: [project.startDate],
-          endDate: [project.endDate],
+        this.formBuilder.control({
+          projectName: project.projectName,
+          teamSize: project.teamSize,
+          description: project.description,
+          teamRoles: project.teamRoles.map(role => role.name),
+          techStack: project.techStack.map(tech => tech.name),
+          responsibilities: project.responsibilities.map(resp => resp.name),
+          startDate: project.startDate,
+          endDate: project.endDate,
         }),
       );
-      console.log(projectsControls);
 
-      (this.cvForm.get('projects') as FormArray).push(projectsControls);
+      for (const projectControl of projectsControls) {
+        (this.cvForm.get('projects') as FormArray).push(projectControl);
+      }
+
+      this.cvForm.get('employee').setValue({
+        firstName: this.CV.firstName,
+        lastName: this.CV.lastName,
+        email: this.CV.email,
+        specialization: this.CV.specialization.name,
+        department: this.CV.department.name,
+      });
     });
   }
 }
