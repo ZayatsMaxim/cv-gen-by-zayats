@@ -1,9 +1,10 @@
-<mat-form-field [appearance]="apperance" floatLabel="always">
+<mat-form-field [appearance]="apperance" floatLabel="always" aria-setsize="auto">
   <mat-label>
     {{ label || '' | translate }}
   </mat-label>
   <textarea
     matInput
+    cdkTextareaAutosize
     [formControl]="valueControl"
   >
   </textarea>

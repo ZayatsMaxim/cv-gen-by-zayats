@@ -1,7 +1,7 @@
 export const baseUrl = 'http://localhost:3000';
 export const loginUrl = `${baseUrl}/api/auth/login`;
 export const logoutUrl = `${baseUrl}/api/auth/logout`;
-export const projectUrl = `${baseUrl}/api/auth/logout`;
+export const projectUrl = `${baseUrl}/api/projects`;
 export const employeesUrl = `${baseUrl}/api/employees`;
 export const rolesUrl = `${baseUrl}/api/team-roles`;
 export const skillsUrl = `${baseUrl}/api/skills`;

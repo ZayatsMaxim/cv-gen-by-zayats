@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
+import { ActivatedRoute } from '@angular/router';
+import { Employee } from '../../../../shared/models/employee.model';
+import { EmployeesDataService } from '../../../../shared/services/employees-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-edit',
@@ -9,4 +13,18 @@ import { EmployeeDetailsComponent } from '../employee-details/employee-details.c
   templateUrl: './employee-edit.component.html',
   styleUrl: './employee-edit.component.scss',
 })
-export class EmployeeEditComponent {}
+export class EmployeeEditComponent implements OnInit {
+  employee: Observable<Employee>;
+
+  constructor(
+    private route: ActivatedRoute,
+    private employeeService: EmployeesDataService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.employee = this.employeeService.getEmployeeById(params['id']);
+    });
+  }
+}

@@ -3,8 +3,6 @@ import { CoreComponent } from './modules/core/core.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { EmployeesListComponent } from './modules/core/employees-module/employees-list/employees-list.component';
 import { ProjectListComponent } from './modules/core/projects-module/project-list/project-list.component';
-import { EmployeeInfoComponent } from './modules/core/employees-module/employee-info/employee-info.component';
-import { EmployeeCvComponent } from './modules/core/employees-module/employee-cv/employee-cv.component';
 import { ProjectEditComponent } from './modules/core/projects-module/project-edit/project-edit.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { EmployeeEditComponent } from './modules/core/employees-module/employee-edit/employee-edit.component';

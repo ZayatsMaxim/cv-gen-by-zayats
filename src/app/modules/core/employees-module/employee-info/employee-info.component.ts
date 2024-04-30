@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-employee-info',
   standalone: true,
-  imports: [CommonModule, EmployeeFormComponent],
+  imports: [CommonModule],
   templateUrl: './employee-info.component.html',
   styleUrl: './employee-info.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeInfoComponent {}
