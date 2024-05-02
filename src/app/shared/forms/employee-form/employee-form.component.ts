@@ -43,7 +43,7 @@ import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeFormComponent implements ControlValueAccessor, OnInit {
-  employeeForm!: FormGroup;
+  employeeForm: FormGroup;
 
   specializations?: string[];
   departments?: string[];

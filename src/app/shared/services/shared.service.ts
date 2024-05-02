@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   departmentsUrl,
+  languagesUrl,
+  levelsUrl,
   responsibilitiesUrl,
   rolesUrl,
   skillsUrl,
@@ -50,6 +52,22 @@ export class SharedService {
 
   getDepartments() {
     return this.httpClient.get(`${departmentsUrl}`).pipe(
+      map(response => {
+        return response as Shared[];
+      }),
+    );
+  }
+
+  getLanguages() {
+    return this.httpClient.get(`${languagesUrl}`).pipe(
+      map(response => {
+        return response as Shared[];
+      }),
+    );
+  }
+
+  getLevels() {
+    return this.httpClient.get(`${levelsUrl}`).pipe(
       map(response => {
         return response as Shared[];
       }),

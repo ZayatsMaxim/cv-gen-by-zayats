@@ -30,7 +30,6 @@ export class EmployeeCvComponent implements OnInit {
 
   selectCv(option: string) {
     this.selectedCv = this.employeeCvs.find(CV => CV.cvName === option);
-    console.log(this.selectedCv);
   }
 
   ngOnInit(): void {

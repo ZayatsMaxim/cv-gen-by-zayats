@@ -26,5 +26,8 @@
     "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Department",
 
     "INVALID_SPECIFY_THE_FIELD": "Please, specify the field",
-    "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern"
+    "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern",
+
+    "EMPLOYEE_PAGE_INFO_TAB_TITLE": "Info",
+    "EMPLOYEE_PAGE_CV_TAB_TITLE": "CV"
 }

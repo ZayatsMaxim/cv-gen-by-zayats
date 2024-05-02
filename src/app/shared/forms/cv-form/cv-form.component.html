@@ -1,5 +1,5 @@
 <form [formGroup]="cvForm">
-  <employee-form formControlName="employee"></employee-form>
+  <!-- <employee-form formControlName="employee"></employee-form> -->
 
   <div formArrayName="projects" class="projects">
     <ng-container *ngFor="let project of projectsControlsArray.controls; let i = index">
@@ -11,6 +11,4 @@
       </mat-expansion-panel>
     </ng-container>
   </div>
-
-  {{ cvForm.value | json }}
 </form>
