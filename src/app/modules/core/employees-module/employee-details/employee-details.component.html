@@ -1,1 +1,13 @@
-<app-employee-cv></app-employee-cv>
+<mat-tab-group
+  animationDuration="0"
+  dynamicHeight
+  mat-stretch-tabs="false"
+  mat-align-tabs="start"
+>
+  <mat-tab label="{{ 'EMPLOYEE_PAGE_INFO_TAB_TITLE' | translate }}" *ngIf="employee">
+    <app-employee-info [employee]="employee"></app-employee-info>
+  </mat-tab>
+  <mat-tab label="{{ 'EMPLOYEE_PAGE_CV_TAB_TITLE' | translate }}" *ngIf="employee">
+    <app-employee-cv [employeeCvs]="employee.cvs"></app-employee-cv>
+  </mat-tab>
+</mat-tab-group>

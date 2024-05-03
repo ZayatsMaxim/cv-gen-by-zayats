@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { projectUrl } from '../consts/api-routes.consts';
+import { employeesUrl, projectUrl } from '../consts/api-routes.consts';
 import { map } from 'rxjs';
 import { Employee } from '../models/employee.model';
 
@@ -11,7 +11,7 @@ export class EmployeesDataService {
   constructor(private httpClient: HttpClient) {}
 
   getEmployees() {
-    return this.httpClient.get(`${projectUrl}`).pipe(
+    return this.httpClient.get(`${employeesUrl}`).pipe(
       map(response => {
         return response as Employee[];
       }),
@@ -19,9 +19,9 @@ export class EmployeesDataService {
   }
 
   getEmployeeById(id: number) {
-    return this.httpClient.get(`${projectUrl}/${id}`).pipe(
+    return this.httpClient.get(`${employeesUrl}/${id}`).pipe(
       map(response => {
-        response as Employee;
+        return response as Employee;
       }),
     );
   }

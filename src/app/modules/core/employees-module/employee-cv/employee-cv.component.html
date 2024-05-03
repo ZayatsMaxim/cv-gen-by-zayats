@@ -1,1 +1,4 @@
-<app-cv-list></app-cv-list>
+<div class="cv-page">
+  <cv-list [options]="options" (selectedCv)="selectCv($event)"></cv-list>
+  <cv-form [CV]="selectedCv"></cv-form>
+</div>

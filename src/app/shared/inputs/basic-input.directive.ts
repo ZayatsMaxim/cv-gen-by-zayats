@@ -18,14 +18,13 @@ export class BasicInputDirective
   @Input() label?: string;
   @Input() apperance?: MatFormFieldAppearance;
 
-  value: any;
   disabled = false;
   hasError = false;
   valueControl = new FormControl('');
 
   constructor(
     public ngControl: NgControl,
-    private cdr: ChangeDetectorRef,
+    public cdr: ChangeDetectorRef,
   ) {
     ngControl.valueAccessor = this;
   }
@@ -34,7 +33,7 @@ export class BasicInputDirective
   onTouched!: () => void;
 
   writeValue(value: any): void {
-    this.value = value;
+    this.valueControl.setValue(value);
   }
 
   registerOnChange(fn: any): void {
@@ -47,10 +46,6 @@ export class BasicInputDirective
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
-  }
-
-  validateRequired() {
-    return this.value == false;
   }
 
   ngDoCheck(): void {

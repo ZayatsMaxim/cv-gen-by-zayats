@@ -12,9 +12,3 @@ export interface Employee {
   specializationId: number;
   cvs: CV[];
 }
-
-export interface Language {
-  id: number;
-  nameId: number;
-  levelId: number;
-}

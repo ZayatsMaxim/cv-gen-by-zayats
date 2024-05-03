@@ -1,9 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  OnInit,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormBuilder,
   FormGroup,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -12,7 +19,7 @@ import { TextInputComponent } from '../../inputs/text-input/text-input.component
 import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
 
 @Component({
-  selector: 'app-employee-form',
+  selector: 'employee-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -26,19 +33,28 @@ import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.
     '../../styles/inputs.scss',
     '../../styles/form.scss',
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => EmployeeFormComponent),
+      multi: true,
+    },
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeFormComponent implements ControlValueAccessor, OnInit {
-  employeeForm!: FormGroup;
+  employeeForm: FormGroup;
 
   specializations?: string[];
   departments?: string[];
 
-  public onTouched: () => void = () => {};
+  onTouched = () => {};
+  onChange = (value: any) => {};
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -52,23 +68,25 @@ export class EmployeeFormComponent implements ControlValueAccessor, OnInit {
 
     this.sharedService.getDepartments().subscribe(options => {
       this.departments = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
 
     this.sharedService.getSpecializations().subscribe(options => {
       this.specializations = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
   }
 
   writeValue(obj: { [key: string]: unknown }): void {
-    obj && this.employeeForm.setValue(obj);
+    this.employeeForm.setValue(obj);
   }
 
   registerOnChange(fn: any): void {
+    this.onChange = fn;
     this.employeeForm.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: any): void {
-    console.log(fn);
     this.onTouched = fn;
   }
 }

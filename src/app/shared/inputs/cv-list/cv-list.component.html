@@ -2,7 +2,7 @@
   <div 
     *ngFor="let option of options" 
     (click)="selectCv(option)"
-    [ngClass]="{ 'cv':true, 'selected': option === value }">
+    [ngClass]="{ 'cv':true, 'selected': option === cv }">
     <span> {{ option }} </span>
       <button mat-icon-button>
         <mat-icon>delete</mat-icon>

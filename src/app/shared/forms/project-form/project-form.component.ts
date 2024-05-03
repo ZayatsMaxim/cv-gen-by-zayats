@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   forwardRef,
   OnInit,
@@ -59,7 +60,8 @@ import { DatePickerComponent } from '../../inputs/date-picker/date-picker.compon
 })
 export class ProjectFormComponent implements ControlValueAccessor, OnInit {
   projectForm!: FormGroup;
-  public onTouched: () => void = () => {};
+  onTouched: () => void = () => {};
+  onChange = (value: any) => {};
 
   roles?: string[];
   techs?: string[];
@@ -68,6 +70,7 @@ export class ProjectFormComponent implements ControlValueAccessor, OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -84,27 +87,30 @@ export class ProjectFormComponent implements ControlValueAccessor, OnInit {
 
     this.sharedService.getTeamRoles().subscribe(options => {
       this.roles = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
 
     this.sharedService.getResponsibilities().subscribe(options => {
       this.responsibilities = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
 
     this.sharedService.getSkills().subscribe(options => {
       this.techs = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
   }
 
   writeValue(obj: { [key: string]: unknown }): void {
-    obj && this.projectForm.setValue(obj);
+    this.projectForm.setValue(obj);
   }
 
   registerOnChange(fn: any): void {
+    this.onChange = fn;
     this.projectForm.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: any): void {
-    console.log(fn);
     this.onTouched = fn;
   }
 }

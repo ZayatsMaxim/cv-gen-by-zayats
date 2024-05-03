@@ -1,8 +1,0 @@
-<mat-expansion-panel *ngFor="let project of value">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{ project.projectName }}
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <project-form [formControl]="project"></project-form>
-</mat-expansion-panel>

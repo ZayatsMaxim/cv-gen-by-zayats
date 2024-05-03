@@ -1,4 +1,3 @@
-import { Language } from './employee.model';
 import { Project } from './project.model';
 import { Shared } from './shared.model';
 
@@ -9,11 +8,17 @@ export interface CV {
   skills: Shared[];
   firstName: string;
   lastName: string;
-  email: number;
-  department: Shared[];
+  email: string;
+  department: Shared;
   departmentId: number;
-  specialization: Shared[];
+  specialization: Shared;
   specializationId: number;
   employeeId: number;
   cvsProjects: Project[];
+}
+
+export interface Language {
+  id: number;
+  nameId: number;
+  levelId: number;
 }
