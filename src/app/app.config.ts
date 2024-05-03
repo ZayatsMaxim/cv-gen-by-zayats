@@ -13,6 +13,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { httpRequestsInterceptor } from './shared/interceptors/http-requests.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserTokenStorageService } from './shared/services/user-token-storage.service';
+import { provideStore } from '@ngrx/store';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,27 +26,21 @@ export function tokenGetter() {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(
-      withInterceptors([httpRequestsInterceptor]),
-      withInterceptorsFromDi(),
-    ),
-    importProvidersFrom(
-      TranslateModule.forRoot({
+    provideHttpClient(withInterceptors([httpRequestsInterceptor]), withInterceptorsFromDi()),
+    importProvidersFrom(TranslateModule.forRoot({
         loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient],
         },
-      }),
-    ),
-    importProvidersFrom(
-      JwtModule.forRoot({
+    })),
+    importProvidersFrom(JwtModule.forRoot({
         config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:4200'],
+            tokenGetter: tokenGetter,
+            allowedDomains: ['localhost:4200'],
         },
-      }),
-    ),
+    })),
     provideAnimationsAsync(),
-  ],
+    provideStore()
+],
 };
