@@ -1,5 +1,11 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import {
   FormArray,
@@ -13,6 +19,10 @@ import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedService } from '../../services/shared.service';
 import { forkJoin, map, share } from 'rxjs';
+import { TextInputComponent } from '../../inputs/text-input/text-input.component';
+import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
+import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv-employee-language-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'cv-form',
@@ -24,17 +34,29 @@ import { forkJoin, map, share } from 'rxjs';
     MatExpansionModule,
     ProjectFormComponent,
     EmployeeFormComponent,
+    TextInputComponent,
+    DropdownListComponent,
+    CvEmployeeLanguageFormComponent,
+    TranslateModule,
   ],
   templateUrl: './cv-form.component.html',
-  styleUrl: './cv-form.component.scss',
+  styleUrls: [
+    '../../styles/form.scss',
+    './cv-form.component.scss',
+    '../../styles/inputs.scss',
+  ],
 })
 export class CvFormComponent implements OnInit, OnChanges {
   @Input() CV: CV;
   cvForm: FormGroup;
 
+  specializations?: string[];
+  departments?: string[];
+
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   get projectsControlsArray() {
@@ -42,22 +64,28 @@ export class CvFormComponent implements OnInit, OnChanges {
   }
 
   get languagesControlsArray() {
-    // const employeeControl = this.cvForm.get('employee') as FormControl;
-    // return employeeControl.get('languages') as FormArray;
-    return this.cvForm.get('employee').get('languages') as FormArray;
+    return this.cvForm.get('languages') as FormArray;
   }
 
   ngOnInit(): void {
     this.cvForm = this.formBuilder.group({
-      employee: this.formBuilder.control({
-        firstName: this.CV.firstName,
-        lastName: this.CV.lastName,
-        email: this.CV.email,
-        specialization: this.CV.specialization.name,
-        department: this.CV.department.name,
-        languages: this.formBuilder.array([]),
-      }),
+      firstName: this.CV.firstName,
+      lastName: this.CV.lastName,
+      email: this.CV.email,
+      specialization: this.CV.specialization.name,
+      department: this.CV.department.name,
+      languages: this.formBuilder.array([]),
       projects: this.formBuilder.array([]),
+    });
+
+    this.sharedService.getDepartments().subscribe(options => {
+      this.departments = options.map(option => option.name);
+      this.cdr.detectChanges();
+    });
+
+    this.sharedService.getSpecializations().subscribe(options => {
+      this.specializations = options.map(option => option.name);
+      this.cdr.detectChanges();
     });
 
     this.createProjectsForms();
@@ -68,17 +96,17 @@ export class CvFormComponent implements OnInit, OnChanges {
     if (!this.cvForm) return;
 
     this.cvForm.patchValue({
-      employee: {
-        firstName: this.CV.firstName,
-        lastName: this.CV.lastName,
-        email: this.CV.email,
-        specialization: this.CV.specialization.name,
-        department: this.CV.department.name,
-      },
+      firstName: this.CV.firstName,
+      lastName: this.CV.lastName,
+      email: this.CV.email,
+      specialization: this.CV.specialization.name,
+      department: this.CV.department.name,
     });
 
     this.projectsControlsArray.clear();
+    this.languagesControlsArray.clear();
     this.createProjectsForms();
+    this.setLanguages();
   }
 
   createProjectsForms(): void {
@@ -96,7 +124,7 @@ export class CvFormComponent implements OnInit, OnChanges {
     );
 
     for (const projectControl of projectsControls) {
-      (this.cvForm.get('projects') as FormArray).push(projectControl);
+      this.projectsControlsArray.push(projectControl);
     }
   }
 
@@ -119,21 +147,9 @@ export class CvFormComponent implements OnInit, OnChanges {
       )
       .subscribe(controlGroup => {
         for (const control of controlGroup) {
-          // console.log(controlGroup);
-          console.log(this.languagesControlsArray);
-          console.log(this.cvForm.get('employee'));
-          
-
           this.languagesControlsArray.push(control);
+          console.log(this.cvForm.controls);
         }
-
       });
-
-    // const languageControlsGroup = this.CV.language.map(language => {});
-
-    // langAndLevel.push({
-    //   name: languages.find(lang => language.nameId === lang.id).name,
-    //   level: levels.find(level => language.levelId === level.id).name,
-    // });
   }
 }

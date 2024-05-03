@@ -24,10 +24,13 @@
   "EMPLOYEE_FORM_EMAIL_LABEL": "Электронная почта",
   "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
   "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
+  "EMPLOYEE_FORM_LANGUAGE_LABEL": "Язык",
+  "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
   "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
-  "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме"
+  "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
+  "CV_LANGUAGES": "Языки"
 }

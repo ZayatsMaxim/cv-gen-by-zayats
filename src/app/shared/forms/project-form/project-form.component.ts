@@ -60,7 +60,7 @@ import { DatePickerComponent } from '../../inputs/date-picker/date-picker.compon
 })
 export class ProjectFormComponent implements ControlValueAccessor, OnInit {
   projectForm!: FormGroup;
-  public onTouched: () => void = () => {};
+  onTouched: () => void = () => {};
   onChange = (value: any) => {};
 
   roles?: string[];
