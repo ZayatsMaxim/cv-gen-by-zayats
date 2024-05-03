@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CvDataService {
+export class CvService {
   constructor(private httpClient: HttpClient) {}
 
   getCvById(id: number) {
@@ -16,5 +16,9 @@ export class CvDataService {
         return response as CV;
       }),
     );
+  }
+
+  deleteCvById(id: number) {
+    this.httpClient.delete(`${cvsUrl}/${id}`);
   }
 }

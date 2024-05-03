@@ -32,5 +32,12 @@
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
-  "CV_LANGUAGES": "Языки"
+  "CV_LANGUAGES": "Языки",
+
+  "CV_DELETE_TITLE": "Удаление",
+  "CV_DELETE_QUESTION": "Вы уверены, что хотите удалить резюме?",
+  "CV_DELETE_NOTIFICATION": "Это действие необратимо",
+
+  "CV_DELETE_CANCEL": "Отмена",
+  "CV_DELETE_CONFIRM": "Подтвердить"
 }

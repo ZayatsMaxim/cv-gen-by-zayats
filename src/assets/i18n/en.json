@@ -32,5 +32,11 @@
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "Info",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "CV",
-  "CV_LANGUAGES": "Languages"
+  "CV_LANGUAGES": "Languages",
+
+  "CV_DELETE_TITLE": "Deleting",
+  "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",
+  "CV_DELETE_NOTIFICATION": "This action is irreversible",
+  "CV_DELETE_CANCEL": "Cancel",
+  "CV_DELETE_CONFIRM": "Confirm"
 }

@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DeleteCvDialogComponent } from './delete-cv-dialog/delete-cv-dialog.component';
 
 @Component({
   selector: 'cv-list',
@@ -36,7 +37,15 @@ export class CvListComponent implements OnInit {
   }
 
   deleteCv(option: string) {
-    this.selectCv(this.options[0]);
-    this.deletedCv.emit(option);
+    const dialogRef = this.dialog.open(DeleteCvDialogComponent, {
+      data: { cvName: option },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.deletedCv.emit(option);
+      this.selectCv(this.options[0]);
+    });
   }
 }
