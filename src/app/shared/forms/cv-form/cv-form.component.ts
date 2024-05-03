@@ -148,7 +148,6 @@ export class CvFormComponent implements OnInit, OnChanges {
       .subscribe(controlGroup => {
         for (const control of controlGroup) {
           this.languagesControlsArray.push(control);
-          console.log(this.cvForm.controls);
         }
       });
   }

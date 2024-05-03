@@ -1,11 +1,14 @@
 <div class="cv-list">
-  <div 
-    *ngFor="let option of options" 
-    (click)="selectCv(option)"
-    [ngClass]="{ 'cv':true, 'selected': option === cv }">
-    <span> {{ option }} </span>
-      <button mat-icon-button>
-        <mat-icon>delete</mat-icon>
+  <div></div>
+  <div
+    *ngFor="let option of options"
+    [ngClass]="{ cv: true, selected: option === cv }"
+  >
+    <div (click)="selectCv(option)" class="selector">
+      <span> {{ option }} </span>
+    </div>
+    <button mat-icon-button (click)="deleteCv(option)">
+      <mat-icon>delete</mat-icon>
     </button>
   </div>
 </div>
