@@ -30,6 +30,7 @@ export class EmployeeEditComponent implements OnInit {
       // this.employee$ = this.employeeService.getEmployeeById(params['id']);
       this.employee$ = this.store.select(selectEmployee);
       this.fetchEmployee(params['id']);
+      console.log(this.employee$);
     });
   }
 

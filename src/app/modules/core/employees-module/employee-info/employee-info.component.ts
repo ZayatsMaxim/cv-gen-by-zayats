@@ -18,6 +18,8 @@ export class EmployeeInfoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    console.log(this.employee);
+
     this.employeeForm = this.formBuilder.group({
       employee: {
         firstName: this.employee.firstName,

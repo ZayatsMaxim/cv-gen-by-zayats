@@ -18,7 +18,8 @@ export const employeeReducer = createReducer(
   employeeInitialtate,
   on(
     EmployeeActions.getEmployeeByIdSuccess,
-    (employee): Employee => ({
+    (state, { employee }): Employee => ({
+      ...state,
       ...employee,
     }),
   ),
