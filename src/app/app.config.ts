@@ -16,6 +16,8 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { employeeReducer } from './store/reducers/employee.reducers';
 import { EmployeeEffects } from './store/effects/employee.effects';
+import { ProjectEffects } from './store/effects/project.effects';
+import { projectReducer } from './store/reducers/project.reducers';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,7 +53,8 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimationsAsync(),
     provideStore(),
+    provideState({ name: 'project', reducer: projectReducer }),
     provideState({ name: 'employee', reducer: employeeReducer }),
-    provideEffects(EmployeeEffects),
+    provideEffects(EmployeeEffects, ProjectEffects),
   ],
 };

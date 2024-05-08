@@ -25,6 +25,7 @@
   "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
   "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
   "EMPLOYEE_FORM_LANGUAGE_LABEL": "Язык",
+  "EMPLOYEE_FORM_SKILLS_LABEL": "Навыки",
   "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",

@@ -52,6 +52,7 @@ export class CvFormComponent implements OnInit, OnChanges {
 
   specializations?: string[];
   departments?: string[];
+  skills?: string[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,9 +75,14 @@ export class CvFormComponent implements OnInit, OnChanges {
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
+      // skills: this.CV.skills.map(skill => skill.name),
+      skills: [''],
       languages: this.formBuilder.array([]),
       projects: this.formBuilder.array([]),
     });
+
+    const names = this.CV.skills.map(skill => skill.name);
+    this.cvForm.get('skills').setValue(names);
 
     this.sharedService.getDepartments().subscribe(options => {
       this.departments = options.map(option => option.name);
@@ -85,6 +91,11 @@ export class CvFormComponent implements OnInit, OnChanges {
 
     this.sharedService.getSpecializations().subscribe(options => {
       this.specializations = options.map(option => option.name);
+      this.cdr.detectChanges();
+    });
+
+    this.sharedService.getSkills().subscribe(options => {
+      this.skills = options.map(option => option.name);
       this.cdr.detectChanges();
     });
 
@@ -101,6 +112,7 @@ export class CvFormComponent implements OnInit, OnChanges {
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
+      skills: this.CV.skills.map(skill => skill.name),
     });
 
     this.projectsControlsArray.clear();

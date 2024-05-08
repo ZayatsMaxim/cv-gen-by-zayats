@@ -36,7 +36,6 @@ export class EmployeeCvComponent implements OnInit {
   }
 
   deleteCv(option: string) {
-    console.log(option);
     const id = this.employeeCvs.find(CV => CV.cvName === option).id;
     this.cvService.deleteCvById(id);
   }

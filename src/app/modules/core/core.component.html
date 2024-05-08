@@ -1,2 +1,7 @@
-<p>core works!</p>
-<router-outlet></router-outlet>
+<app-top-toolbar></app-top-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

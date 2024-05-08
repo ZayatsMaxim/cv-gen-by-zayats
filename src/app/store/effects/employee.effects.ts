@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EmployeesDataService } from '../../shared/services/employees-data.service';
+import { EmployeesService } from '../../shared/services/employees.service';
 import * as EmployeeActions from '../actions/employee.actions';
 import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 export class EmployeeEffects {
   constructor(
     private $actions: Actions,
-    private employeeService: EmployeesDataService,
+    private employeeService: EmployeesService,
   ) {}
 
   getEmployeeById = createEffect(() => {

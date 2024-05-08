@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee.model';
-import { EmployeesDataService } from '../../../../shared/services/employees-data.service';
+import { EmployeesService } from '../../../../shared/services/employees.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectEmployee } from '../../../../store/selectors/employee.selectors';
@@ -21,7 +21,7 @@ export class EmployeeEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private employeeService: EmployeesDataService,
+    private employeeService: EmployeesService,
     private store: Store,
   ) {}
 
@@ -30,7 +30,6 @@ export class EmployeeEditComponent implements OnInit {
       // this.employee$ = this.employeeService.getEmployeeById(params['id']);
       this.employee$ = this.store.select(selectEmployee);
       this.fetchEmployee(params['id']);
-      console.log(this.employee$);
     });
   }
 

@@ -8,7 +8,7 @@ export const getCvById = createAction(
 );
 
 export const getCvByIdSuccess = createAction(
-  '[Employee Effect] Get CV Success',
+  '[CV Effects] Get CV Success',
   props<{ cv: CV }>(),
 );
 

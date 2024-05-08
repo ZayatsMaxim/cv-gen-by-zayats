@@ -8,11 +8,15 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectsDataApiService {
+export class ProjectsService {
   constructor(private httpClient: HttpClient) {}
 
   getProjectById(id: number) {
-    return this.httpClient.get(`${projectUrl}/${id}`);
+    return this.httpClient.get(`${projectUrl}/${id}`).pipe(
+      map(response => {
+        return response as Project;
+      }),
+    );
   }
 
   getProjects() {

@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+mat-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #001529;
+  height: 48px;
+  color: white;
+}
+
+.logo-block {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 12px;
+  font-size: 18pt;
+  width: 100%;
+
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.options {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-self: flex-end;
+
+  img {
+    margin-left: 12px;
+  }
+
+  .user {
+    margin-left: 8px;
+    margin-right: 12px;
+    font-size: 12pt;
+  }
+
+  .avatar {
+    height: 24px;
+    width: 24px;
+  }
+}

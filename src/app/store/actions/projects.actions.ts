@@ -1,8 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 import { ProjectDTO } from '../../shared/models/dto.model';
+import { Project } from '../../shared/models/project.model';
 
 export const getAllProjects = createAction(
   '[Projects List Page] Get All Projects',
+);
+
+export const getAllProjectsSuccess = createAction(
+  '[Project Effects] Get All Projects Success',
+  props<{ projects: Project[] }>(),
 );
 
 export const createProject = createAction(
@@ -13,6 +19,11 @@ export const createProject = createAction(
 export const getProjectById = createAction(
   '[Project Edit Page] Get Project',
   props<{ id: number }>(),
+);
+
+export const getProjectByIdSuccess = createAction(
+  '[Project Effects] Get Project Success',
+  props<{ project: Project }>(),
 );
 
 export const updateProjectById = createAction(

@@ -1,1 +1,3 @@
-<project-form></project-form>
+<form *ngIf="this.project$ | async" [formGroup]="projectForm">
+  <project-form formControlName="project"></project-form>
+</form>

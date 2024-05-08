@@ -7,7 +7,7 @@ export const getAllEmployees = createAction(
 );
 
 export const getAllEmployeesSuccess = createAction(
-  '[Employee Effect] Get All Employees Success',
+  '[Employee Effects] Get All Employees Success',
   props<{ employees: Employee[] }>(),
 );
 
@@ -17,7 +17,7 @@ export const getEmployeeById = createAction(
 );
 
 export const getEmployeeByIdSuccess = createAction(
-  '[Employee Effect] Get Employee Success',
+  '[Employee Effects] Get Employee Success',
   props<{ employee: Employee }>(),
 );
 
