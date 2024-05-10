@@ -20,7 +20,11 @@ import {
 } from './store/reducers/employee.reducers';
 import { EmployeeEffects } from './store/effects/employee.effects';
 import { ProjectEffects } from './store/effects/project.effects';
-import { projectReducer } from './store/reducers/project.reducers';
+import {
+  projectReducer,
+  projectsListReducer,
+} from './store/reducers/project.reducers';
+import { reduce } from 'rxjs';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -59,6 +63,7 @@ export const appConfig: ApplicationConfig = {
     provideState({ name: 'project', reducer: projectReducer }),
     provideState({ name: 'employee', reducer: employeeReducer }),
     provideState({ name: 'employeesList', reducer: employeesListReducer }),
+    provideState({ name: 'projectsList', reducer: projectsListReducer }),
     provideEffects(EmployeeEffects, ProjectEffects),
   ],
 };

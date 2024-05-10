@@ -32,11 +32,11 @@ export class EmployeesListComponent implements OnInit {
   employeeList$: Observable<Employee[]>;
 
   headers = [
-    'EMPLOYEE_TABLE_HEADER_FIRST_NAME',
-    'EMPLOYEE_TABLE_HEADER_LAST_NAME',
-    'EMPLOYEE_TABLE_HEADER_EMAIL',
-    'EMPLOYEE_TABLE_HEADER_DEPARTMENT',
-    'EMPLOYEE_TABLE_HEADER_SPECIALIZATION',
+    'EMPLOYEES_TABLE_HEADER_FIRST_NAME',
+    'EMPLOYEES_TABLE_HEADER_LAST_NAME',
+    'EMPLOYEES_TABLE_HEADER_EMAIL',
+    'EMPLOYEES_TABLE_HEADER_DEPARTMENT',
+    'EMPLOYEES_TABLE_HEADER_SPECIALIZATION',
   ];
   tableBody: EmployeeTableData[];
 
@@ -49,9 +49,6 @@ export class EmployeesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeList$ = this.store.select(selectEmployeesList);
-    this.store.dispatch(getAllEmployees());
-
     this.employeeList$.subscribe((employees: Employee[]) => {
       if (employees) {
         this.tableBody = this.mapEmployeesToTableData(employees);
