@@ -3,6 +3,7 @@ import { Employee } from '../../shared/models/employee.model';
 import * as EmployeeActions from '../actions/employee.actions';
 
 export const employeeInitialState: Employee = null;
+export const employeesListInitialState: Employee[] = null;
 
 export const employeeReducer = createReducer(
   employeeInitialState,
@@ -12,5 +13,13 @@ export const employeeReducer = createReducer(
       ...state,
       ...employee,
     }),
+  ),
+);
+
+export const employeesListReducer = createReducer(
+  employeesListInitialState,
+  on(
+    EmployeeActions.getAllEmployeesSuccess,
+    (state, { employees }): Employee[] => [...employees],
   ),
 );

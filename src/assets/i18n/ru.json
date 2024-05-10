@@ -38,7 +38,12 @@
   "CV_DELETE_TITLE": "Удаление",
   "CV_DELETE_QUESTION": "Вы уверены, что хотите удалить резюме?",
   "CV_DELETE_NOTIFICATION": "Это действие необратимо",
-
   "CV_DELETE_CANCEL": "Отмена",
-  "CV_DELETE_CONFIRM": "Подтвердить"
+  "CV_DELETE_CONFIRM": "Подтвердить",
+
+  "EMPLOYEE_TABLE_HEADER_FIRST_NAME": "Имя",
+  "EMPLOYEE_TABLE_HEADER_LAST_NAME": "Фамилия",
+  "EMPLOYEE_TABLE_HEADER_EMAIL": "Эл. почта",
+  "EMPLOYEE_TABLE_HEADER_DEPARTMENT": "Отдел",
+  "EMPLOYEE_TABLE_HEADER_SPECIALIZATION": "Специализация"
 }

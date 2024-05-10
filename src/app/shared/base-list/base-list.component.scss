@@ -21,6 +21,7 @@
     p {
       padding-left: 15px;
       margin-block: 8px;
+      word-wrap: break-word;
     }
   }
 
@@ -39,9 +40,11 @@
     height: 56px;
 
     p {
+      font-size: 14px;
       width: 50%;
       margin: 0;
       padding-left: 15px;
+      word-wrap: break-word;
     }
   }
 }
