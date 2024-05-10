@@ -9,6 +9,7 @@ import { CvListComponent } from '../../../../shared/inputs/cv-list/cv-list.compo
 import { CvFormComponent } from '../../../../shared/forms/cv-form/cv-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CV } from '../../../../shared/models/cv.model';
+import { CvService } from '../../../../shared/services/cv.service';
 
 @Component({
   selector: 'app-employee-cv',
@@ -28,8 +29,15 @@ export class EmployeeCvComponent implements OnInit {
   options: string[];
   selectedCv: CV;
 
+  constructor(private cvService: CvService) {}
+
   selectCv(option: string) {
     this.selectedCv = this.employeeCvs.find(CV => CV.cvName === option);
+  }
+
+  deleteCv(option: string) {
+    const id = this.employeeCvs.find(CV => CV.cvName === option).id;
+    this.cvService.deleteCvById(id);
   }
 
   ngOnInit(): void {

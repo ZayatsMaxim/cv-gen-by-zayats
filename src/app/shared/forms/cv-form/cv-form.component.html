@@ -47,6 +47,16 @@
           [label]="'EMPLOYEE_FORM_DEPARTMENT_LABEL'"
         ></dropdown-list>
       </div>
+
+      <div class="input-field">
+        <dropdown-list
+          formControlName="skills"
+          apperance="outline"
+          [options]="skills"
+          [multiple]="true"
+          [label]="'EMPLOYEE_FORM_SKILLS_LABEL'"
+        ></dropdown-list>
+      </div>
     </div>
     <p>{{ 'CV_LANGUAGES' | translate }}</p>
     <div class="languages" formArrayName="languages">

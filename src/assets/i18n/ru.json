@@ -25,6 +25,7 @@
   "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
   "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
   "EMPLOYEE_FORM_LANGUAGE_LABEL": "Язык",
+  "EMPLOYEE_FORM_SKILLS_LABEL": "Навыки",
   "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
@@ -32,5 +33,12 @@
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
-  "CV_LANGUAGES": "Языки"
+  "CV_LANGUAGES": "Языки",
+
+  "CV_DELETE_TITLE": "Удаление",
+  "CV_DELETE_QUESTION": "Вы уверены, что хотите удалить резюме?",
+  "CV_DELETE_NOTIFICATION": "Это действие необратимо",
+
+  "CV_DELETE_CANCEL": "Отмена",
+  "CV_DELETE_CONFIRM": "Подтвердить"
 }

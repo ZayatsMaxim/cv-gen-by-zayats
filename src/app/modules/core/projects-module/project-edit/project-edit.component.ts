@@ -2,7 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Project } from '../../../../shared/models/project.model';
+import { ActivatedRoute } from '@angular/router';
+import { selectProject } from '../../../../store/selectors/project.selectors';
+import { getProjectById } from '../../../../store/actions/projects.actions';
 
 @Component({
   selector: 'app-project-edit',
@@ -14,15 +19,39 @@ import { Router } from '@angular/router';
 })
 export class ProjectEditComponent implements OnInit {
   projectForm!: FormGroup;
+  project$: Observable<Project>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private store: Store,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
-    this.projectForm = this.formBuilder.group({
-      project: {},
+    this.route.params.subscribe(params => {
+      this.project$ = this.store.select(selectProject);
+      this.fetchProject(params['id']);
+    });
+  }
+
+  fetchProject(id: number) {
+    this.project$.subscribe(fetchedProject => {
+      this.store.dispatch(getProjectById({ id }));
+      if (!fetchedProject) return;
+      this.projectForm = this.formBuilder.group({
+        project: this.formBuilder.control({
+          projectName: fetchedProject.projectName,
+          teamSize: fetchedProject.teamSize,
+          description: fetchedProject.description,
+          teamRoles: fetchedProject.teamRoles.map(role => role.name),
+          techStack: fetchedProject.techStack.map(tech => tech.name),
+          responsibilities: fetchedProject.responsibilities.map(
+            resp => resp.name,
+          ),
+          startDate: fetchedProject.startDate,
+          endDate: fetchedProject.endDate,
+        }),
+      });
     });
   }
 }

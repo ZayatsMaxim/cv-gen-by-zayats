@@ -12,7 +12,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { httpRequestsInterceptor } from './shared/interceptors/http-requests.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
-import { UserTokenStorageService } from './shared/services/user-token-storage.service';
+import { provideState, provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { employeeReducer } from './store/reducers/employee.reducers';
+import { EmployeeEffects } from './store/effects/employee.effects';
+import { ProjectEffects } from './store/effects/project.effects';
+import { projectReducer } from './store/reducers/project.reducers';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,5 +52,9 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideAnimationsAsync(),
+    provideStore(),
+    provideState({ name: 'project', reducer: projectReducer }),
+    provideState({ name: 'employee', reducer: employeeReducer }),
+    provideEffects(EmployeeEffects, ProjectEffects),
   ],
 };

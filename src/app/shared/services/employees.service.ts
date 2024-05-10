@@ -7,7 +7,7 @@ import { Employee } from '../models/employee.model';
 @Injectable({
   providedIn: 'root',
 })
-export class EmployeesDataService {
+export class EmployeesService {
   constructor(private httpClient: HttpClient) {}
 
   getEmployees() {

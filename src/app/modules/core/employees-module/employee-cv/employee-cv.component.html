@@ -1,4 +1,4 @@
 <div class="cv-page">
-  <cv-list [options]="options" (selectedCv)="selectCv($event)"></cv-list>
+  <cv-list [options]="options" (selectedCv)="selectCv($event)" (deletedCv)="deleteCv($event)"></cv-list>
   <cv-form [CV]="selectedCv"></cv-form>
 </div>

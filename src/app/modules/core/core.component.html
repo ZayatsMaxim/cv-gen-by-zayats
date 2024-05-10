@@ -1,2 +1,12 @@
-<p>core works!</p>
-<router-outlet></router-outlet>
+<app-top-toolbar></app-top-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened">
+    <app-sidenav-content></app-sidenav-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
