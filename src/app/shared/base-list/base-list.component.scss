@@ -31,6 +31,10 @@
 }
 
 .rows-container {
+  a {
+    text-decoration: none;
+  }
+  
   .row {
     display: flex;
     flex-flow: row;
@@ -45,6 +49,7 @@
       margin: 0;
       padding-left: 15px;
       word-wrap: break-word;
+      color: black;
     }
   }
 }

@@ -39,6 +39,7 @@ export class EmployeesListComponent implements OnInit {
     'EMPLOYEES_TABLE_HEADER_SPECIALIZATION',
   ];
   tableBody: EmployeeTableData[];
+  routerLinks: string[];
 
   constructor(
     private store: Store,
@@ -52,6 +53,7 @@ export class EmployeesListComponent implements OnInit {
     this.employeeList$.subscribe((employees: Employee[]) => {
       if (employees) {
         this.tableBody = this.mapEmployeesToTableData(employees);
+        this.routerLinks = this.mapRouterLinks(employees);
         this.cdr.detectChanges();
       }
     });
@@ -66,16 +68,8 @@ export class EmployeesListComponent implements OnInit {
       specialization: employee.specialization.name,
     }));
   }
-}
 
-// ngOnInit(): void {
-//   this.employeeList$.subscribe(list => {
-//     this.tableBody = list.map(employee => ({
-//       firstName: employee.firstName,
-//       lastName: employee.lastName,
-//       email: employee.email,
-//       department: employee.department.name,
-//       specialization: employee.specialization.name,
-//     }));
-//   });
-// }
+  private mapRouterLinks(employees: Employee[]): string[] {
+    return employees.map(employee => `/home/employees/edit/${employee.id}`);
+  }
+}

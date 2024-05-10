@@ -39,6 +39,7 @@ export class ProjectListComponent implements OnInit {
     'PROJECTS_TABLE_HEADER_TECH_STACK',
   ];
   tableBody: ProjectTableData[];
+  routerLinks: string[];
 
   constructor(
     private store: Store,
@@ -52,6 +53,7 @@ export class ProjectListComponent implements OnInit {
     this.projectsList$.subscribe((projects: Project[]) => {
       if (projects) {
         this.tableBody = this.mapProjectsToTableData(projects);
+        this.routerLinks = this.mapRouterLinks(projects);
         this.cdr.detectChanges();
       }
     });
@@ -65,5 +67,9 @@ export class ProjectListComponent implements OnInit {
       teamSize: project.teamSize,
       techStack: project.techStack.map(project => project.name).join(','),
     }));
+  }
+
+  private mapRouterLinks(employees: Project[]): string[] {
+    return employees.map(employee => `/home/projects/edit/${employee.id}`);
   }
 }
