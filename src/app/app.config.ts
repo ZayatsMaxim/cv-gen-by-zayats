@@ -14,7 +14,10 @@ import { httpRequestsInterceptor } from './shared/interceptors/http-requests.int
 import { JwtModule } from '@auth0/angular-jwt';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { employeeReducer } from './store/reducers/employee.reducers';
+import {
+  employeeReducer,
+  employeesListReducer,
+} from './store/reducers/employee.reducers';
 import { EmployeeEffects } from './store/effects/employee.effects';
 import { ProjectEffects } from './store/effects/project.effects';
 import { projectReducer } from './store/reducers/project.reducers';
@@ -55,6 +58,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState({ name: 'project', reducer: projectReducer }),
     provideState({ name: 'employee', reducer: employeeReducer }),
+    provideState({ name: 'employeesList', reducer: employeesListReducer }),
     provideEffects(EmployeeEffects, ProjectEffects),
   ],
 };

@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { TranslateModule } from '@ngx-translate/core';
 
 // export interface PeriodicElement {
 //   name: string;
@@ -25,17 +32,14 @@ import { MatTableModule } from '@angular/material/table';
 @Component({
   selector: 'app-base-list',
   standalone: true,
-  imports: [CommonModule, MatTableModule],
+  imports: [CommonModule, MatTableModule, TranslateModule],
   templateUrl: './base-list.component.html',
   styleUrl: './base-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseListComponent {
-  @Input() body!: Array<{ [key: string]: string }>;
-  @Input() headers!: Array<string>;
+  @Input() body: any[];
+  @Input() headers: string[];
 
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
-
-  // public keepOriginalOrder = (a: any) => a.key;
+  public keepOriginalOrder = (a: any) => a.key;
 }

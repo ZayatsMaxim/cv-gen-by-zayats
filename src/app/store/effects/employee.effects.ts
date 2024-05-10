@@ -26,4 +26,19 @@ export class EmployeeEffects {
       ),
     );
   });
+
+  getAllEmployees = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(EmployeeActions.getAllEmployees),
+      exhaustMap(() =>
+        this.employeeService.getEmployees().pipe(
+          map(fetchedEmployees =>
+            EmployeeActions.getAllEmployeesSuccess({
+              employees: fetchedEmployees,
+            }),
+          ),
+        ),
+      ),
+    );
+  });
 }
