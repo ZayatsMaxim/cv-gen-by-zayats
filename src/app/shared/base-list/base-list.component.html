@@ -4,11 +4,19 @@
   </div>
 </div>
 <div class="rows-container" *ngIf="body">
-  <a routerLink="{{ routerLinks[i] }}" *ngFor="let row of body; let i = index">
+  <a routerLink="{{ routerLinks[i] }}" *ngFor="let row of page; let i = index">
     <div class="row">
       <p *ngFor="let option of row | keyvalue: keepOriginalOrder">
         {{ option.value.toString() }}
       </p>
     </div>
   </a>
+</div>
+<div>
+  <mat-paginator [length]="body.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page">
+  </mat-paginator>
 </div>
