@@ -1,0 +1,20 @@
+<form [formGroup]="languageForm">
+  <div class="input-field">
+    <dropdown-list
+      formControlName="name"
+      apperance="outline"
+      [options]="languages"
+      [multiple]="false"
+      [label]="'EMPLOYEE_FORM_LANGUAGE_LABEL'"
+    ></dropdown-list>
+  </div>
+  <div class="input-field">
+    <dropdown-list
+      formControlName="level"
+      apperance="outline"
+      [options]="levels"
+      [multiple]="false"
+      [label]="'EMPLOYEE_FORM_LEVEL_LABEL'"
+    ></dropdown-list>
+  </div>
+</form>

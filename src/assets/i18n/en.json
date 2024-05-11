@@ -1,10 +1,58 @@
 {
-    "AUTH_FORM_TITLE": "CVGen by Zayats",
-    "AUTH_FORM_USERNAME_LABEL": "Username",
-    "AUTH_FORM_USERNAME_INVALID": "Please, specify the field",
-    "AUTH_FORM_PASSWORD_LABEL": "Password",
-    "AUTH_FORM_PASSWORD_INVALID": "Please, specify the field",
-    "AUTH_FORM_REMEMBER_ME": "Remember me",
-    "AUTH_FORM_FORGOT_PASSWORD": "Forgot your password?",
-    "AUTH_FORM_LOGIN": "Login"
+  "AUTH_FORM_TITLE": "CVGen by Zayats",
+  "AUTH_FORM_USERNAME_LABEL": "Username",
+  "AUTH_FORM_USERNAME_INVALID": "Please, specify the field",
+  "AUTH_FORM_PASSWORD_LABEL": "Password",
+  "AUTH_FORM_PASSWORD_INVALID": "Please, specify the field",
+  "AUTH_FORM_REMEMBER_ME": "Remember me",
+  "AUTH_FORM_FORGOT_PASSWORD": "Forgot your password?",
+  "AUTH_FORM_LOGIN": "Login",
+  "AUTH_FORM_INVALID_CREDENTIALS": "Login or password is wrong",
+  "AUTH_FORM_INTERNAL_SERVER_ERROR": "Sorry, something went wrong on the server. Please try again later.",
+
+  "PROJECT_FORM_NAME_LABEL": "Name",
+  "PROJECT_FORM_START_DATE_LABEL": "Start date",
+  "PROJECT_FORM_END_DATE_LABEL": "End date",
+  "PROJECT_FORM_TEAM_SIZE_LABEL": "Team size",
+  "PROJECT_FORM_TECH_STACK_LABEL": "Tech stack",
+  "PROJECT_FORM_ROLES_LABEL": "Roles",
+  "PROJECT_FORM_DESCRIPTION_LABEL": "Description",
+  "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Responsibilities",
+
+  "EMPLOYEE_FORM_FIRST_NAME_LABEL": "First Name",
+  "EMPLOYEE_FORM_LAST_NAME_LABEL": "Last Name",
+  "EMPLOYEE_FORM_EMAIL_LABEL": "Email",
+  "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Specialization",
+  "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Department",
+  "EMPLOYEE_FORM_LANGUAGE_LABEL": "Language",
+  "EMPLOYEE_FORM_SKILLS_LABEL": "Skills",
+  "EMPLOYEE_FORM_LEVEL_LABEL": "Level",
+
+  "INVALID_SPECIFY_THE_FIELD": "Please, specify the field",
+  "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern",
+
+  "EMPLOYEE_PAGE_INFO_TAB_TITLE": "Info",
+  "EMPLOYEE_PAGE_CV_TAB_TITLE": "CV",
+  "CV_LANGUAGES": "Languages",
+
+  "CV_DELETE_TITLE": "Deleting",
+  "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",
+  "CV_DELETE_NOTIFICATION": "This action is irreversible",
+  "CV_DELETE_CANCEL": "Cancel",
+  "CV_DELETE_CONFIRM": "Confirm",
+
+  "EMPLOYEES_TABLE_HEADER_FIRST_NAME": "First name",
+  "EMPLOYEES_TABLE_HEADER_LAST_NAME": "Last name",
+  "EMPLOYEES_TABLE_HEADER_EMAIL": "Email",
+  "EMPLOYEES_TABLE_HEADER_DEPARTMENT": "Department",
+  "EMPLOYEES_TABLE_HEADER_SPECIALIZATION": "Specialization",
+
+  "PROJECTS_TABLE_HEADER_NAME": "Project name",
+  "PROJECTS_TABLE_HEADER_START_DATE": "Start date",
+  "PROJECTS_TABLE_HEADER_END_DATE": "End date",
+  "PROJECTS_TABLE_HEADER_TEAM_SIZE": "Team size",
+  "PROJECTS_TABLE_HEADER_TECH_STACK": "Tech stack",
+
+  "SIDENAV_OPTION_EMPLOYEES":"Employees",
+  "SIDENAV_OPTION_PROJECTS":"Projects"
 }

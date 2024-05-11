@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{ 'CV_DELETE_TITLE' | translate }} {{ data.cvName }}</h2>
+<mat-dialog-content>
+  <p>{{ 'CV_DELETE_QUESTION' | translate }}</p>
+  <p class="notify">{{ 'CV_DELETE_NOTIFICATION' | translate }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="secondary" (click)="onNoClick()">
+    {{ 'CV_DELETE_CANCEL' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    {{ 'CV_DELETE_CONFIRM' | translate }}
+  </button>
+</mat-dialog-actions>

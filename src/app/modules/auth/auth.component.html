@@ -1,41 +1,55 @@
 <div class="auth-page">
-    <form [formGroup]="authForm" (submit)="submit()">
-        <div class="logo-block">
-            <img src="../../../assets/auth-page/logo.svg" />
-            <h1>
-                {{ 'AUTH_FORM_TITLE' | translate }}
-            </h1>
-        </div>
-        <div class="form-input-block">
-            <label for="username">
-                {{ 'AUTH_FORM_USERNAME_LABEL' | translate }}
-            </label>
-            <mat-form-field>
-                <input matInput formControlName="username" type="text" id="username" formControlName="username"/>
-            </mat-form-field>
-            <div class="invalid-field" *ngIf="!authForm.get('username')?.valid && authForm.get('username')?.touched">
-                {{ 'AUTH_FORM_USERNAME_INVALID' | translate }}
-            </div>
-        </div>
-        <div class="form-input-block">
-            <label for="password">
-                {{ 'AUTH_FORM_PASSWORD_LABEL' | translate }}
-            </label>
-            <mat-form-field>
-                    <input matInput formControlName="password" type="password" id="password" formControlName="password"/>
-            </mat-form-field>
-            <div class="invalid-field" *ngIf="!authForm.get('password')?.valid && authForm.get('password')?.touched">
-                {{ 'AUTH_FORM_PASSWORD_INVALID' | translate }}
-            </div>
-        </div>
-        <div class="optional-block">
-            <mat-checkbox> {{ 'AUTH_FORM_REMEMBER_ME' | translate }} </mat-checkbox>
-            <a href="#">
-                {{ 'AUTH_FORM_FORGOT_PASSWORD' | translate }}
-            </a>
-        </div>
-        <button mat-flat-button color="primary">
-            {{ 'AUTH_FORM_LOGIN' | translate }}
-        </button>
-    </form>
+
+  <div class="lang-selector">
+    <button mat-icon-button (click)="changeLanguage()">
+      <mat-icon>language</mat-icon>
+    </button>
+  </div>
+  <div class="help">
+    <button mat-mini-fab>
+      <mat-icon>question_mark</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="authForm" (submit)="submit()">
+    <div class="logo-block">
+      <img src="../../../assets/auth-page/logo.svg" />
+      <h1>
+        {{ 'AUTH_FORM_TITLE' | translate }}
+      </h1>
+    </div>
+
+    <div class="form-input-block">
+      <text-input
+        formControlName="username"
+        type="text"
+        apperance="fill"
+        [label]="'AUTH_FORM_USERNAME_LABEL'"
+      ></text-input>
+    </div>
+
+    <div class="form-input-block">
+      <text-input
+        formControlName="password"
+        type="password"
+        apperance="fill"
+        [label]="'AUTH_FORM_PASSWORD_LABEL'"
+      ></text-input>
+    </div>
+
+    <div class="optional-block">
+      <mat-checkbox>
+        {{ 'AUTH_FORM_REMEMBER_ME' | translate }}
+      </mat-checkbox>
+      <a href="#">
+        {{ 'AUTH_FORM_FORGOT_PASSWORD' | translate }}
+      </a>
+    </div>
+    <div class="auth-error">
+      {{ authErrorMessage | translate }}
+    </div>
+    <button mat-flat-button color="primary">
+      {{ 'AUTH_FORM_LOGIN' | translate }}
+    </button>
+  </form>
 </div>

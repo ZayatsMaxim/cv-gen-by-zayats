@@ -1,10 +1,58 @@
 {
-    "AUTH_FORM_TITLE": "CVGen by Zayats",
-    "AUTH_FORM_USERNAME_LABEL": "Логин",
-    "AUTH_FORM_USERNAME_INVALID": "Пожалуйста, введите логин",
-    "AUTH_FORM_PASSWORD_LABEL": "Пароль",
-    "AUTH_FORM_PASSWORD_INVALID": "Пожалуйста, введите пароль",
-    "AUTH_FORM_REMEMBER_ME": "Запомнить меня",
-    "AUTH_FORM_FORGOT_PASSWORD": "Забыли свой пароль?",
-    "AUTH_FORM_LOGIN": "Войти"
+  "AUTH_FORM_TITLE": "CVGen by Zayats",
+  "AUTH_FORM_USERNAME_LABEL": "Логин",
+  "AUTH_FORM_USERNAME_INVALID": "Пожалуйста, введите логин",
+  "AUTH_FORM_PASSWORD_LABEL": "Пароль",
+  "AUTH_FORM_PASSWORD_INVALID": "Пожалуйста, введите пароль",
+  "AUTH_FORM_REMEMBER_ME": "Запомнить меня",
+  "AUTH_FORM_FORGOT_PASSWORD": "Забыли свой пароль?",
+  "AUTH_FORM_LOGIN": "Войти",
+  "AUTH_FORM_INVALID_CREDENTIALS": "Неправильный логин или пароль",
+  "AUTH_FORM_INTERNAL_SERVER_ERROR": "Извините, сервис недоступен. Попробуйте повторить позже",
+
+  "PROJECT_FORM_NAME_LABEL": "Название",
+  "PROJECT_FORM_START_DATE_LABEL": "Дата начала",
+  "PROJECT_FORM_END_DATE_LABEL": "Дата окончания",
+  "PROJECT_FORM_TEAM_SIZE_LABEL": "Размер команды",
+  "PROJECT_FORM_TECH_STACK_LABEL": "Стек технологий",
+  "PROJECT_FORM_ROLES_LABEL": "Роли",
+  "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
+  "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности",
+
+  "EMPLOYEE_FORM_FIRST_NAME_LABEL": "Имя",
+  "EMPLOYEE_FORM_LAST_NAME_LABEL": "Фамилия",
+  "EMPLOYEE_FORM_EMAIL_LABEL": "Электронная почта",
+  "EMPLOYEE_FORM_SPECIALIZATION_LABEL": "Специализация",
+  "EMPLOYEE_FORM_DEPARTMENT_LABEL": "Отдел",
+  "EMPLOYEE_FORM_LANGUAGE_LABEL": "Язык",
+  "EMPLOYEE_FORM_SKILLS_LABEL": "Навыки",
+  "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
+
+  "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
+  "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
+
+  "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
+  "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
+  "CV_LANGUAGES": "Языки",
+
+  "CV_DELETE_TITLE": "Удаление",
+  "CV_DELETE_QUESTION": "Вы уверены, что хотите удалить резюме?",
+  "CV_DELETE_NOTIFICATION": "Это действие необратимо",
+  "CV_DELETE_CANCEL": "Отмена",
+  "CV_DELETE_CONFIRM": "Подтвердить",
+
+  "EMPLOYEE_TABLE_HEADER_FIRST_NAME": "Имя",
+  "EMPLOYEE_TABLE_HEADER_LAST_NAME": "Фамилия",
+  "EMPLOYEE_TABLE_HEADER_EMAIL": "Эл. почта",
+  "EMPLOYEE_TABLE_HEADER_DEPARTMENT": "Отдел",
+  "EMPLOYEE_TABLE_HEADER_SPECIALIZATION": "Специализация",
+
+  "PROJECTS_TABLE_HEADER_NAME": "Название проекта",
+  "PROJECTS_TABLE_HEADER_START_DATE": "Дата начала",
+  "PROJECTS_TABLE_HEADER_END_DATE": "Дата окончания",
+  "PROJECTS_TABLE_HEADER_TEAM_SIZE": "Размер команды",
+  "PROJECTS_TABLE_HEADER_TECH_STACK": "Стек технологий",
+
+  "SIDENAV_OPTION_EMPLOYEES":"Сотрудники",
+  "SIDENAV_OPTION_PROJECTS":"Проекты"
 }

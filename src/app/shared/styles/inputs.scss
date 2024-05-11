@@ -1,0 +1,68 @@
+.input-field:not(.no-custom-size) {
+  display: flex;
+  flex-flow: column;
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    height: 32px !important;
+    font-size: 14px !important;
+    max-width: 250px !important;
+  }
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+
+  ::ng-deep .mat-mdc-input-element {
+    top: -12px !important;
+    position: relative;
+  }
+
+  ::ng-deep
+    .mat-mdc-text-field-wrapper
+    .mat-mdc-form-field-flex
+    .mat-mdc-form-field-infix {
+    height: 32px !important;
+    min-height: auto;
+  }
+
+  ::ng-deep
+    .mat-mdc-text-field-wrapper
+    .mat-mdc-form-field-flex
+    .mat-mdc-form-field-icon-suffix {
+    height: 32px !important;
+    width: 32px !important;
+
+    min-height: auto;
+
+    button {
+      padding: 4px 0 0 0;
+      height: 32px !important;
+      width: 32px !important;
+
+      .mat-mdc-focus-indicator {
+        height: 32px !important;
+        width: 32px !important;
+      }
+
+      .mat-mdc-button-touch-target {
+        height: 32px !important;
+        width: 32px !important;
+      }
+
+      .mat-mdc-button-ripple {
+        height: 32px !important;
+        width: 32px !important;
+      }
+    }
+  }
+
+  ::ng-deep
+    .mat-mdc-text-field-wrapper
+    .mat-mdc-form-field-flex
+    .mat-mdc-form-field-infix
+    .mat-mdc-select {
+    top: -12px !important;
+    position: relative;
+  }
+}
