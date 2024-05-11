@@ -1,12 +1,14 @@
 <div class="header-container" *ngIf="headers">
-    <div class="header" *ngFor="let header of headers">
-        <p>{{ header | translate }}</p>
-    </div>
+  <div class="header" *ngFor="let header of headers">
+    <p>{{ header | translate }}</p>
+  </div>
 </div>
 <div class="rows-container" *ngIf="body">
-    <div class="row" *ngFor="let row of body">
-        <p *ngFor="let option of row | keyvalue:keepOriginalOrder">
-            {{ option.value.toString() }}
-        </p>
+  <a routerLink="{{ routerLinks[i] }}" *ngFor="let row of body; let i = index">
+    <div class="row">
+      <p *ngFor="let option of row | keyvalue: keepOriginalOrder">
+        {{ option.value.toString() }}
+      </p>
     </div>
+  </a>
 </div>
