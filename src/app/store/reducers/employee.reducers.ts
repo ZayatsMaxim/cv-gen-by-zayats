@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { Employee } from '../../shared/models/employee.model';
 import * as EmployeeActions from '../actions/employee.actions';
+import * as CvActions from '../actions/cv.actions';
 
 export const employeeInitialState: Employee = null;
 export const employeesListInitialState: Employee[] = null;
@@ -12,6 +13,13 @@ export const employeeReducer = createReducer(
     (state, { employee }): Employee => ({
       ...state,
       ...employee,
+    }),
+  ),
+  on(
+    CvActions.createNewCv,
+    (state, { cv }): Employee => ({
+      ...state,
+      cvs: [...state.cvs, cv],
     }),
   ),
 );

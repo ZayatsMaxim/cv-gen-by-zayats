@@ -10,7 +10,6 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
@@ -18,11 +17,13 @@ import { CV } from '../../models/cv.model';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedService } from '../../services/shared.service';
-import { forkJoin, map, share } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 import { TextInputComponent } from '../../inputs/text-input/text-input.component';
 import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
 import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv-employee-language-form.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'cv-form',
@@ -38,6 +39,8 @@ import { TranslateModule } from '@ngx-translate/core';
     DropdownListComponent,
     CvEmployeeLanguageFormComponent,
     TranslateModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './cv-form.component.html',
   styleUrls: [
@@ -75,7 +78,6 @@ export class CvFormComponent implements OnInit, OnChanges {
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
-      // skills: this.CV.skills.map(skill => skill.name),
       skills: [''],
       languages: this.formBuilder.array([]),
       projects: this.formBuilder.array([]),

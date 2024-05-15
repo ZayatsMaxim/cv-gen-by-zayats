@@ -1,4 +1,18 @@
 <div class="cv-page">
-  <cv-list [options]="options" (selectedCv)="selectCv($event)" (deletedCv)="deleteCv($event)"></cv-list>
-  <cv-form [CV]="selectedCv"></cv-form>
+  <div class="cv-list">
+    <ng-container *ngIf="options.length === 0">
+      <p>{{ 'EMPLOYEE_PAGE_NO_CV' | translate }}</p>
+    </ng-container>
+    <cv-list
+      *ngIf="options.length !== 0"
+      [options]="options"
+      (selectedCv)="selectCv($event)"
+      (deletedCv)="deleteCv($event)"
+    ></cv-list>
+    <button mat-mini-fab (click)="addCv()">
+      <mat-icon fontIcon="add"></mat-icon>
+    </button>
+  </div>
+
+  <cv-form *ngIf="options.length !== 0" [CV]="selectedCv"></cv-form>
 </div>

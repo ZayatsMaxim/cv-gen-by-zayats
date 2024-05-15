@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee.model';
@@ -16,7 +16,7 @@ import { getEmployeeById } from '../../../../store/actions/employee.actions';
   templateUrl: './employee-edit.component.html',
   styleUrl: './employee-edit.component.scss',
 })
-export class EmployeeEditComponent implements OnInit {
+export class EmployeeEditComponent {
   employee$: Observable<Employee>;
 
   constructor(

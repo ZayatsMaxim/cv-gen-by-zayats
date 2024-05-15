@@ -17,8 +17,13 @@ export const updateCvById = createAction(
   props<{ id: number; cv: CvDTO }>(),
 );
 
-export const createCv = createAction(
-  '[Employee CV Page] Create CV',
+export const createNewCv = createAction(
+  '[Employee CV page] Create New CV',
+  props<{ cv: CV }>(),
+);
+
+export const saveCv = createAction(
+  '[Employee CV Page] Save CV',
   props<{ cv: CvDTO }>(),
 );
 

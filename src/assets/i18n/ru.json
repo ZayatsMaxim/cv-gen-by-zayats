@@ -33,7 +33,12 @@
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
+  "EMPLOYEE_PAGE_NO_CV": "У этого сотрудника пока что нет резюме!",
   "CV_LANGUAGES": "Языки",
+
+  "SAVE_BUTTON": "Сохранить",
+  "ADD_PROJECT_BUTTON": "Добавить проект",
+  "ADD_CV_BUTTON": "Добавить резюме",
 
   "CV_DELETE_TITLE": "Удаление",
   "CV_DELETE_QUESTION": "Вы уверены, что хотите удалить резюме?",

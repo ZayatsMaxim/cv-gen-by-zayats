@@ -31,6 +31,10 @@ export class CvListComponent implements OnInit {
     this.selectCv(this.options[0]);
   }
 
+  ngOnChanges(): void {
+    this.selectCv(this.options[0]);
+  }
+
   selectCv(option: string) {
     this.cv = option;
     this.selectedCv.emit(option);

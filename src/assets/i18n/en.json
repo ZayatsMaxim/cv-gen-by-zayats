@@ -33,7 +33,12 @@
 
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "Info",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "CV",
+  "EMPLOYEE_PAGE_NO_CV": "There are no CVs for this employee yet!",
   "CV_LANGUAGES": "Languages",
+
+  "SAVE_BUTTON": "Save",
+  "ADD_PROJECT_BUTTON": "Add project",
+  "ADD_CV_BUTTON": "Add CV",
 
   "CV_DELETE_TITLE": "Deleting",
   "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",

@@ -5,6 +5,8 @@ import { EmployeeInfoComponent } from '../employee-info/employee-info.component'
 import { Employee } from '../../../../shared/models/employee.model';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
+import { CV } from '../../../../shared/models/cv.model';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-employee-details',
@@ -21,4 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class EmployeeDetailsComponent {
   @Input() employee: Employee;
+
+  constructor(private store: Store) {}
 }

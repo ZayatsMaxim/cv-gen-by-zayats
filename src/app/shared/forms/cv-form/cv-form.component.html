@@ -58,12 +58,19 @@
         ></dropdown-list>
       </div>
     </div>
-    <p>{{ 'CV_LANGUAGES' | translate }}</p>
+    <div class="languages-header">
+      <p>{{ 'CV_LANGUAGES' | translate }}</p>
+      <button mat-mini-fab>
+      <mat-icon fontIcon="add"></mat-icon>
+    </button>
+    </div>
     <div class="languages" formArrayName="languages">
       <ng-container
         *ngFor="let language of languagesControlsArray.controls; index as j"
       >
-        <cv-employee-language-form formControlName="{{ j }}"></cv-employee-language-form>
+        <cv-employee-language-form
+          formControlName="{{ j }}"
+        ></cv-employee-language-form>
       </ng-container>
     </div>
   </div>
@@ -81,5 +88,11 @@
         <project-form formControlName="{{ i }}"></project-form>
       </mat-expansion-panel>
     </ng-container>
+  </div>
+
+  <div class="buttons">
+    <button mat-flat-button color="primary">
+      {{ 'SAVE_BUTTON' | translate }}
+    </button>
   </div>
 </form>

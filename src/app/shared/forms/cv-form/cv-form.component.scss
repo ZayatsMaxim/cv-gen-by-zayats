@@ -19,10 +19,32 @@ form {
   //   }
   // }
 
-  .employee-form .languages {
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
+  .employee-form {
+    .languages-header {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 15px;
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        background-color: #fafafa;
+        color: black;
+        border-radius: 4px;
+        box-shadow: none;
+        align-self: flex-end;
+      }
+    }
+
+    .languages {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+    }
   }
 
   .projects {
@@ -37,5 +59,13 @@ form {
         padding-top: 35px;
       }
     }
+  }
+
+  .buttons {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
   }
 }
