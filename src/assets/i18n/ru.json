@@ -53,6 +53,16 @@
   "PROJECTS_TABLE_HEADER_TEAM_SIZE": "Размер команды",
   "PROJECTS_TABLE_HEADER_TECH_STACK": "Стек технологий",
 
-  "SIDENAV_OPTION_EMPLOYEES":"Сотрудники",
-  "SIDENAV_OPTION_PROJECTS":"Проекты"
+  "SIDENAV_OPTION_EMPLOYEES": "Сотрудники",
+  "SIDENAV_OPTION_PROJECTS": "Проекты",
+
+  "PAGE_HEADER_EMPLOYEES": "Сотрудники",
+  "PAGE_HEADER_EMPLOYEES_LIST": "Список сотрудников",
+  "PAGE_HEADER_EMPLOYEE_PROFILE": "Профиль сотрудника",
+  "PAGE_HEADER_NEW_EMPLOYEE": "Создание нового сотрудника",
+  "PAGE_HEADER_PROJECTS": "Проекты",
+  "PAGE_HEADER_PROJECTS_LIST": "Список проектов",
+  "PAGE_HEADER_PROJECT_INFO": "Информация о проекте",
+  "PAGE_HEADER_NEW_PROJECT": "Создать новый проект",
+  "PAGE_HEADER_HOME_PAGE": "Домашняя страница"
 }

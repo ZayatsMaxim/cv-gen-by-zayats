@@ -1,7 +1,7 @@
 <app-top-toolbar></app-top-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened">
-    <app-sidenav-content></app-sidenav-content>
+    <app-sidenav-content (toggleSidenavEvent)="sidenav.toggle()"></app-sidenav-content>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="page-container">

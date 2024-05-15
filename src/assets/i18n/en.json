@@ -54,5 +54,15 @@
   "PROJECTS_TABLE_HEADER_TECH_STACK": "Tech stack",
 
   "SIDENAV_OPTION_EMPLOYEES":"Employees",
-  "SIDENAV_OPTION_PROJECTS":"Projects"
+  "SIDENAV_OPTION_PROJECTS":"Projects",
+
+  "PAGE_HEADER_EMPLOYEES": "Employees",
+  "PAGE_HEADER_EMPLOYEES_LIST": "Employees list",
+  "PAGE_HEADER_EMPLOYEE_PROFILE": "Employee's profile",
+  "PAGE_HEADER_NEW_EMPLOYEE": "Create new employee",
+  "PAGE_HEADER_PROJECTS": "Projects",
+  "PAGE_HEADER_PROJECTS_LIST": "Projects list",
+  "PAGE_HEADER_PROJECT_INFO": "Project info",
+  "PAGE_HEADER_NEW_PROJECT": "Create new project",
+  "PAGE_HEADER_HOME_PAGE": "Home page"
 }

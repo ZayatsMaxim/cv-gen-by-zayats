@@ -34,6 +34,8 @@ export class BreadcrumbService {
       const routeURL: string = child.snapshot.url
         .map(segment => segment.path)
         .join('/');
+      console.log(routeURL);
+
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }
