@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Project } from '../../../../shared/models/project.model';
@@ -26,6 +31,10 @@ export class ProjectEditComponent implements OnInit {
     private store: Store,
     private route: ActivatedRoute,
   ) {}
+
+  get projectControl() {
+    return this.projectForm.get('project') as FormControl;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
