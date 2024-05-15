@@ -25,4 +25,12 @@ export class EmployeesService {
       }),
     );
   }
+
+  getEmployeeNameById(id: number) {
+    return this.httpClient.get(`${employeesUrl}/${id}`).pipe(
+      map(response => {
+        return `${(response as Employee).firstName} ${(response as Employee).lastName}`;
+      }),
+    );
+  }
 }

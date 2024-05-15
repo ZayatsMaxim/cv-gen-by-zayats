@@ -4,9 +4,13 @@
     <app-sidenav-content></app-sidenav-content>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <router-outlet></router-outlet>
+    <div class="page-container">
+      <app-page-header
+        (toggleSidenavEvent)="sidenav.toggle()">
+      </app-page-header>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

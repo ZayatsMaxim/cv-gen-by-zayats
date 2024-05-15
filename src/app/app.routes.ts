@@ -7,6 +7,8 @@ import { ProjectEditComponent } from './modules/core/projects-module/project-edi
 import { authGuard } from './shared/guards/auth.guard';
 import { EmployeeEditComponent } from './modules/core/employees-module/employee-edit/employee-edit.component';
 import { EmployeeCreateComponent } from './modules/core/employees-module/employee-create/employee-create.component';
+import { EmployeeCorePageComponent } from './modules/core/employees-module/employee-core-page/employee-core-page.component';
+import { ProjectsCorePageComponent } from './modules/core/projects-module/projects-core-page/projects-core-page.component';
 
 export const routes: Routes = [
   // {
@@ -20,6 +22,21 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'home/employees',
+    redirectTo: 'home/employees/list',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    redirectTo: 'home/employees/list',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home/projects',
+    redirectTo: 'home/projects/list',
+    pathMatch: 'full',
+  },
+  {
     path: 'auth',
     component: AuthComponent,
     title: 'Authorize',
@@ -29,36 +46,59 @@ export const routes: Routes = [
     component: CoreComponent,
     title: 'Home',
     canActivateChild: [authGuard],
+    data: { breadcrumb: 'Home' },
     children: [
       {
         path: 'employees',
-        component: EmployeesListComponent,
-        title: 'Employees List',
-      },
-      {
-        path: 'employees/edit/:id',
-        component: EmployeeEditComponent,
-        title: 'Edit employee',
-      },
-      {
-        path: 'employees/create',
-        component: EmployeeCreateComponent,
-        title: 'Create Employee',
+        component: EmployeeCorePageComponent,
+        title: 'Employees',
+        data: { breadcrumb: 'Employees' },
+        children: [
+          {
+            path: 'list',
+            component: EmployeesListComponent,
+            title: 'Employees List',
+            data: { breadcrumb: 'List' },
+          },
+          {
+            path: 'edit/:id',
+            component: EmployeeEditComponent,
+            title: 'Edit employee',
+            data: { breadcrumb: 'Edit employee' },
+          },
+          {
+            path: 'create',
+            component: EmployeeCreateComponent,
+            title: 'Create Employee',
+            data: { breadcrumb: 'Create new employee' },
+          },
+        ],
       },
       {
         path: 'projects',
-        component: ProjectListComponent,
-        title: 'Projects List',
-      },
-      {
-        path: 'projects/edit/:id',
-        component: ProjectEditComponent,
-        title: 'Project Info',
-      },
-      {
-        path: 'projects/create',
-        component: ProjectEditComponent,
-        title: 'Project Info',
+        component: ProjectsCorePageComponent,
+        title: 'Projects',
+        data: { breadcrumb: 'Projects' },
+        children: [
+          {
+            path: 'list',
+            component: ProjectListComponent,
+            title: 'Projects List',
+            data: { breadcrumb: 'List' },
+          },
+          {
+            path: 'edit/:id',
+            component: ProjectEditComponent,
+            title: 'Project Info',
+            data: { breadcrumb: 'Edit project' },
+          },
+          {
+            path: 'create',
+            component: ProjectEditComponent,
+            title: 'Create Project',
+            data: { breadcrumb: 'Create new project' },
+          },
+        ],
       },
     ],
   },

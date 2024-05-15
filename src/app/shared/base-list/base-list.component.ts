@@ -37,7 +37,6 @@ export class BaseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.page = this.body.slice(0, this.pageSize);
-    console.log(this.page);
   }
 
   handlePageEvent(e: PageEvent) {
@@ -48,7 +47,6 @@ export class BaseListComponent implements OnInit {
       this.pageIndex * this.pageSize,
       this.pageIndex * this.pageSize + this.pageSize,
     );
-    console.log(this.page);
   }
 
   public keepOriginalOrder = (a: any) => a.key;
