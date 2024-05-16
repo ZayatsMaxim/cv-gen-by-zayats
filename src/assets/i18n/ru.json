@@ -47,6 +47,7 @@
   "CV_DELETE_NOTIFICATION": "Это действие необратимо",
   "CV_DELETE_CANCEL": "Отмена",
   "CV_DELETE_CONFIRM": "Подтвердить",
+  "CV_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранено!",
 
   "EMPLOYEE_TABLE_HEADER_FIRST_NAME": "Имя",
   "EMPLOYEE_TABLE_HEADER_LAST_NAME": "Фамилия",

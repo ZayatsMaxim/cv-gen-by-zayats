@@ -41,6 +41,7 @@
   "REMOVE_BUTTON": "Remove",
   "ADD_PROJECT_BUTTON": "Add project",
   "ADD_CV_BUTTON": "Add CV",
+  "CV_UPDATE_SUCCESS_SNACKBAR": "CV updated successfully!",
 
   "CV_DELETE_TITLE": "Deleting",
   "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",

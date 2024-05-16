@@ -8,6 +8,6 @@
     <app-employee-info [employee]="employee"></app-employee-info>
   </mat-tab>
   <mat-tab label="{{ 'EMPLOYEE_PAGE_CV_TAB_TITLE' | translate }}" *ngIf="employee">
-    <app-employee-cv [employeeCvs]="employee.cvs"></app-employee-cv>
+    <app-employee-cv [employeeCvs]="employee.cvs" [employeeId]="employee.id"></app-employee-cv>
   </mat-tab>
 </mat-tab-group>

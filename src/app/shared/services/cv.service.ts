@@ -30,4 +30,12 @@ export class CvService {
   deleteCvById(id: number) {
     return this.httpClient.delete(`${cvsUrl}/${id}`);
   }
+
+  createCv(cv: CvDTO) {
+    return this.httpClient.post(`${cvsUrl}`, cv).pipe(
+      map(response => {
+        return response as CV;
+      }),
+    );
+  }
 }

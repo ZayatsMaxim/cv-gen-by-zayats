@@ -11,7 +11,7 @@ export const employeeReducer = createReducer(
   on(
     EmployeeActions.getEmployeeByIdSuccess,
     (state, { employee }): Employee => ({
-      ...state,
+      // ...state,
       ...employee,
     }),
   ),
@@ -22,6 +22,24 @@ export const employeeReducer = createReducer(
       cvs: [...state.cvs, cv],
     }),
   ),
+  on(CvActions.updateCvSuccess, (state, { cv }): Employee => {
+    const newCvs = [...state.cvs];
+    newCvs.splice(
+      newCvs.findIndex(oldCv => oldCv.id === cv.id),
+      1,
+      cv,
+    );
+    return { ...state, cvs: newCvs };
+  }),
+  on(CvActions.saveNewCvSuccess, (state, { cv }): Employee => {
+    const newCvs = [...state.cvs];
+    newCvs.splice(
+      newCvs.findIndex(oldCv => oldCv.cvName === cv.cvName),
+      1,
+      cv,
+    );
+    return { ...state, cvs: newCvs };
+  }),
 );
 
 export const employeesListReducer = createReducer(
@@ -31,5 +49,3 @@ export const employeesListReducer = createReducer(
     (state, { employees }): Employee[] => [...employees],
   ),
 );
-
-// state.cvs.find(cv => cv.id === cvId).cvsProjects.push(project)

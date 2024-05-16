@@ -2,11 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
   OnChanges,
-  OnInit,
-  Output,
 } from '@angular/core';
 import { CvListComponent } from '../../../../shared/inputs/cv-list/cv-list.component';
 import { CvFormComponent } from '../../../../shared/forms/cv-form/cv-form.component';
@@ -18,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { createNewCv } from '../../../../store/actions/cv.actions';
+import { selectEmployee } from '../../../../store/selectors/employee.selectors';
 
 @Component({
   selector: 'app-employee-cv',
@@ -37,6 +35,7 @@ import { createNewCv } from '../../../../store/actions/cv.actions';
 })
 export class EmployeeCvComponent implements OnChanges {
   @Input() employeeCvs: CV[];
+  @Input() employeeId: number;
 
   options: string[];
   selectedCv: CV;
@@ -68,11 +67,10 @@ export class EmployeeCvComponent implements OnChanges {
       departmentId: -1,
       specialization: { id: -1, name: '' },
       specializationId: -1,
-      employeeId: -1,
+      employeeId: this.employeeId,
       cvsProjects: [],
     };
     this.store.dispatch(createNewCv({ cv: newCV }));
-    this.selectCv(newCV.cvName);
     this.options.push(newCV.cvName);
   }
 

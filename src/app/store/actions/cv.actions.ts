@@ -33,6 +33,16 @@ export const createNewCv = createAction(
   props<{ cv: CV }>(),
 );
 
+export const saveNewCv = createAction(
+  '[Employee CV page] Save New CV',
+  props<{ cv: CvDTO }>(),
+);
+
+export const saveNewCvSuccess = createAction(
+  '[CV effects] Save New CV Success',
+  props<{ cv: CV }>(),
+);
+
 export const deleteCvById = createAction(
   '[Employee CV Page] Delete CV',
   props<{ id: number }>(),

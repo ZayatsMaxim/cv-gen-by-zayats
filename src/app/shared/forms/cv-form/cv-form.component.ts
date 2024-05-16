@@ -12,6 +12,7 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { CV } from '../../models/cv.model';
 import { ProjectFormComponent } from '../project-form/project-form.component';
@@ -24,8 +25,9 @@ import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CvService } from '../../services/cv.service';
 import { CvDTO } from '../../models/dto.model';
+import { Store } from '@ngrx/store';
+import { saveNewCv, updateCvById } from '../../../store/actions/cv.actions';
 
 @Component({
   selector: 'cv-form',
@@ -63,8 +65,8 @@ export class CvFormComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
-    private cvService: CvService,
     private cdr: ChangeDetectorRef,
+    private store: Store,
   ) {}
 
   get projectsControlsArray() {
@@ -77,12 +79,12 @@ export class CvFormComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cvForm = this.formBuilder.group({
-      cvName: this.CV.cvName,
-      firstName: this.CV.firstName,
-      lastName: this.CV.lastName,
-      email: this.CV.email,
-      specialization: this.CV.specialization.name,
-      department: this.CV.department.name,
+      cvName: [this.CV.cvName, Validators.required],
+      firstName: [this.CV.firstName, Validators.required],
+      lastName: [this.CV.lastName, Validators.required],
+      email: [this.CV.email, Validators.required],
+      specialization: [this.CV.specialization.name, Validators.required],
+      department: [this.CV.department.name, Validators.required],
       employeeId: this.CV.employeeId,
       skills: [''],
       languages: this.formBuilder.array([]),
@@ -179,6 +181,8 @@ export class CvFormComponent implements OnInit, OnChanges {
   }
 
   saveCv() {
+    if (!this.cvForm.valid) return;
+
     const cvDto: CvDTO = {
       cvName: this.cvForm.value.cvName,
       language: this.cvForm.value.languages.map(
@@ -203,14 +207,11 @@ export class CvFormComponent implements OnInit, OnChanges {
       projects: this.cvForm.value.projects,
     };
 
-    console.log(cvDto);
-    console.log(this.CV.id);
-
-    this.cvService.updateCvById(this.CV.id, cvDto).subscribe({
-      error: err => {
-        console.error(err);
-      },
-    });
+    if (this.CV.id === -1) {
+      this.store.dispatch(saveNewCv({ cv: cvDto }));
+    } else {
+      this.store.dispatch(updateCvById({ id: this.CV.id, cv: cvDto }));
+    }
   }
 
   name: {
