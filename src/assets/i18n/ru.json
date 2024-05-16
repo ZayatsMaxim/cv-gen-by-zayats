@@ -27,6 +27,7 @@
   "EMPLOYEE_FORM_LANGUAGE_LABEL": "Язык",
   "EMPLOYEE_FORM_SKILLS_LABEL": "Навыки",
   "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
+  "EMPLOYEE_FORM_CV_NAME_LABEL": "Название резюме",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
   "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
@@ -37,6 +38,7 @@
   "CV_LANGUAGES": "Языки",
 
   "SAVE_BUTTON": "Сохранить",
+  "REMOVE_BUTTON": "Удалить",
   "ADD_PROJECT_BUTTON": "Добавить проект",
   "ADD_CV_BUTTON": "Добавить резюме",
 

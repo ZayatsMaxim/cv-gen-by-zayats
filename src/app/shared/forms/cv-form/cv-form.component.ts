@@ -24,6 +24,8 @@ import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CvService } from '../../services/cv.service';
+import { CvDTO } from '../../models/dto.model';
 
 @Component({
   selector: 'cv-form',
@@ -56,10 +58,12 @@ export class CvFormComponent implements OnInit, OnChanges {
   specializations?: string[];
   departments?: string[];
   skills?: string[];
+  projectsNames: string[];
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
+    private cvService: CvService,
     private cdr: ChangeDetectorRef,
   ) {}
 
@@ -73,11 +77,13 @@ export class CvFormComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cvForm = this.formBuilder.group({
+      cvName: this.CV.cvName,
       firstName: this.CV.firstName,
       lastName: this.CV.lastName,
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
+      employeeId: this.CV.employeeId,
       skills: [''],
       languages: this.formBuilder.array([]),
       projects: this.formBuilder.array([]),
@@ -109,11 +115,13 @@ export class CvFormComponent implements OnInit, OnChanges {
     if (!this.cvForm) return;
 
     this.cvForm.patchValue({
+      cvName: this.CV.cvName,
       firstName: this.CV.firstName,
       lastName: this.CV.lastName,
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
+      employeeId: this.CV.employeeId,
       skills: this.CV.skills.map(skill => skill.name),
     });
 
@@ -140,6 +148,10 @@ export class CvFormComponent implements OnInit, OnChanges {
     for (const projectControl of projectsControls) {
       this.projectsControlsArray.push(projectControl);
     }
+
+    this.projectsNames = this.CV.cvsProjects.map(
+      project => project.projectName,
+    );
   }
 
   setLanguages() {
@@ -164,5 +176,102 @@ export class CvFormComponent implements OnInit, OnChanges {
           this.languagesControlsArray.push(control);
         }
       });
+  }
+
+  saveCv() {
+    const cvDto: CvDTO = {
+      cvName: this.cvForm.value.cvName,
+      language: this.cvForm.value.languages.map(
+        (language: { name: string; level: string }) => {
+          return {
+            name: {
+              name: language.name,
+            },
+            level: {
+              name: language.level,
+            },
+          };
+        },
+      ),
+      skills: this.cvForm.value.skills,
+      firstName: this.cvForm.value.firstName,
+      lastName: this.cvForm.value.lastName,
+      email: this.cvForm.value.email,
+      department: this.cvForm.value.department,
+      specialization: this.cvForm.value.specialization,
+      employeeId: this.cvForm.value.employeeId,
+      projects: this.cvForm.value.projects,
+    };
+
+    console.log(cvDto);
+    console.log(this.CV.id);
+
+    this.cvService.updateCvById(this.CV.id, cvDto).subscribe({
+      error: err => {
+        console.error(err);
+      },
+    });
+  }
+
+  name: {
+    name: string;
+  };
+  level: {
+    name: string;
+  };
+
+  addLanguage() {
+    this.languagesControlsArray.push(
+      this.formBuilder.control({
+        name: '',
+        level: '',
+      }),
+    );
+  }
+
+  removeLanguage(index: number) {
+    this.languagesControlsArray.removeAt(index);
+  }
+
+  addProject() {
+    const newProjectName: string = generateNewProjectName(
+      this.projectsNames,
+    ).next().value;
+    console.log(newProjectName);
+    this.projectsNames.push(newProjectName);
+
+    this.projectsControlsArray.push(
+      this.formBuilder.control({
+        projectName: newProjectName,
+        teamSize: 0,
+        description: '',
+        teamRoles: [''],
+        techStack: [''],
+        responsibilities: [''],
+        startDate: '',
+        endDate: '',
+      }),
+    );
+  }
+
+  deleteProject(index: number) {
+    this.projectsControlsArray.removeAt(index);
+    this.projectsNames.splice(index, 1);
+  }
+}
+
+function* generateNewProjectName(
+  existingNames: string[],
+  baseName = 'New Project',
+): IterableIterator<string> {
+  let counter = 1;
+  while (true) {
+    const name = `${baseName} ${counter}`;
+    if (!existingNames.includes(name)) {
+      yield name;
+      counter++;
+    } else {
+      counter++;
+    }
   }
 }

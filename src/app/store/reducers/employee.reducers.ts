@@ -31,3 +31,5 @@ export const employeesListReducer = createReducer(
     (state, { employees }): Employee[] => [...employees],
   ),
 );
+
+// state.cvs.find(cv => cv.id === cvId).cvsProjects.push(project)

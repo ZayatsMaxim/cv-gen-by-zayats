@@ -72,6 +72,7 @@ export class EmployeeCvComponent implements OnChanges {
       cvsProjects: [],
     };
     this.store.dispatch(createNewCv({ cv: newCV }));
+    this.selectCv(newCV.cvName);
     this.options.push(newCV.cvName);
   }
 
@@ -84,7 +85,7 @@ function* generateNewCVName(
   existingNames: string[],
   baseName = 'New CV',
 ): IterableIterator<string> {
-  let counter = 0;
+  let counter = 1;
   while (true) {
     const name = `${baseName} ${counter}`;
     if (!existingNames.includes(name)) {
