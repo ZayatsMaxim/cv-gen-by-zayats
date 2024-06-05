@@ -10,19 +10,24 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { CV } from '../../models/cv.model';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedService } from '../../services/shared.service';
-import { forkJoin, map, share } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 import { TextInputComponent } from '../../inputs/text-input/text-input.component';
 import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
 import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv-employee-language-form.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CvDTO } from '../../models/dto.model';
+import { Store } from '@ngrx/store';
+import { saveNewCv, updateCvById } from '../../../store/actions/cv.actions';
 
 @Component({
   selector: 'cv-form',
@@ -38,6 +43,8 @@ import { TranslateModule } from '@ngx-translate/core';
     DropdownListComponent,
     CvEmployeeLanguageFormComponent,
     TranslateModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './cv-form.component.html',
   styleUrls: [
@@ -53,11 +60,13 @@ export class CvFormComponent implements OnInit, OnChanges {
   specializations?: string[];
   departments?: string[];
   skills?: string[];
+  projectsNames: string[];
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
     private cdr: ChangeDetectorRef,
+    private store: Store,
   ) {}
 
   get projectsControlsArray() {
@@ -70,12 +79,13 @@ export class CvFormComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cvForm = this.formBuilder.group({
-      firstName: this.CV.firstName,
-      lastName: this.CV.lastName,
-      email: this.CV.email,
-      specialization: this.CV.specialization.name,
-      department: this.CV.department.name,
-      // skills: this.CV.skills.map(skill => skill.name),
+      cvName: [this.CV.cvName, Validators.required],
+      firstName: [this.CV.firstName, Validators.required],
+      lastName: [this.CV.lastName, Validators.required],
+      email: [this.CV.email, Validators.required],
+      specialization: [this.CV.specialization.name, Validators.required],
+      department: [this.CV.department.name, Validators.required],
+      employeeId: this.CV.employeeId,
       skills: [''],
       languages: this.formBuilder.array([]),
       projects: this.formBuilder.array([]),
@@ -107,11 +117,13 @@ export class CvFormComponent implements OnInit, OnChanges {
     if (!this.cvForm) return;
 
     this.cvForm.patchValue({
+      cvName: this.CV.cvName,
       firstName: this.CV.firstName,
       lastName: this.CV.lastName,
       email: this.CV.email,
       specialization: this.CV.specialization.name,
       department: this.CV.department.name,
+      employeeId: this.CV.employeeId,
       skills: this.CV.skills.map(skill => skill.name),
     });
 
@@ -138,6 +150,10 @@ export class CvFormComponent implements OnInit, OnChanges {
     for (const projectControl of projectsControls) {
       this.projectsControlsArray.push(projectControl);
     }
+
+    this.projectsNames = this.CV.cvsProjects.map(
+      project => project.projectName,
+    );
   }
 
   setLanguages() {
@@ -162,5 +178,101 @@ export class CvFormComponent implements OnInit, OnChanges {
           this.languagesControlsArray.push(control);
         }
       });
+  }
+
+  saveCv() {
+    if (!this.cvForm.valid) return;
+
+    const cvDto: CvDTO = {
+      cvName: this.cvForm.value.cvName,
+      language: this.cvForm.value.languages.map(
+        (language: { name: string; level: string }) => {
+          return {
+            name: {
+              name: language.name,
+            },
+            level: {
+              name: language.level,
+            },
+          };
+        },
+      ),
+      skills: this.cvForm.value.skills,
+      firstName: this.cvForm.value.firstName,
+      lastName: this.cvForm.value.lastName,
+      email: this.cvForm.value.email,
+      department: this.cvForm.value.department,
+      specialization: this.cvForm.value.specialization,
+      employeeId: this.cvForm.value.employeeId,
+      projects: this.cvForm.value.projects,
+    };
+
+    if (this.CV.id === -1) {
+      this.store.dispatch(saveNewCv({ cv: cvDto }));
+    } else {
+      this.store.dispatch(updateCvById({ id: this.CV.id, cv: cvDto }));
+    }
+  }
+
+  name: {
+    name: string;
+  };
+  level: {
+    name: string;
+  };
+
+  addLanguage() {
+    this.languagesControlsArray.push(
+      this.formBuilder.control({
+        name: '',
+        level: '',
+      }),
+    );
+  }
+
+  removeLanguage(index: number) {
+    this.languagesControlsArray.removeAt(index);
+  }
+
+  addProject() {
+    const newProjectName: string = generateNewProjectName(
+      this.projectsNames,
+    ).next().value;
+    console.log(newProjectName);
+    this.projectsNames.push(newProjectName);
+
+    this.projectsControlsArray.push(
+      this.formBuilder.control({
+        projectName: newProjectName,
+        teamSize: 0,
+        description: '',
+        teamRoles: [''],
+        techStack: [''],
+        responsibilities: [''],
+        startDate: '',
+        endDate: '',
+      }),
+    );
+  }
+
+  deleteProject(index: number) {
+    this.projectsControlsArray.removeAt(index);
+    this.projectsNames.splice(index, 1);
+  }
+}
+
+function* generateNewProjectName(
+  existingNames: string[],
+  baseName = 'New Project',
+): IterableIterator<string> {
+  let counter = 1;
+  while (true) {
+    const name = `${baseName} ${counter}`;
+    if (!existingNames.includes(name)) {
+      yield name;
+      counter++;
+    } else {
+      counter++;
+    }
   }
 }

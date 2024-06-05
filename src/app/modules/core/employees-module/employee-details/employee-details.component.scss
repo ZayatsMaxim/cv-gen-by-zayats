@@ -3,3 +3,7 @@
   width: 100%;
   height: 100%;
 }
+
+::ng-deep .mat-mdc-tab-label-container {
+  border-bottom: 1px #f0f0f0 solid !important;
+}

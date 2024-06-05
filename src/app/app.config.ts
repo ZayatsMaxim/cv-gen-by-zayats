@@ -25,6 +25,7 @@ import {
   projectsListReducer,
 } from './store/reducers/project.reducers';
 import { reduce } from 'rxjs';
+import { CvEffects } from './store/effects/cv.effects';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,6 +65,6 @@ export const appConfig: ApplicationConfig = {
     provideState({ name: 'employee', reducer: employeeReducer }),
     provideState({ name: 'employeesList', reducer: employeesListReducer }),
     provideState({ name: 'projectsList', reducer: projectsListReducer }),
-    provideEffects(EmployeeEffects, ProjectEffects),
+    provideEffects(EmployeeEffects, ProjectEffects, CvEffects),
   ],
 };

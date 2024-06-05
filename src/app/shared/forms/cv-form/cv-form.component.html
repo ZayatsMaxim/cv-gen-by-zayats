@@ -57,29 +57,67 @@
           [label]="'EMPLOYEE_FORM_SKILLS_LABEL'"
         ></dropdown-list>
       </div>
+
+      <div class="input-field">
+        <text-input
+          formControlName="cvName"
+          type="text"
+          apperance="outline"
+          [label]="'EMPLOYEE_FORM_CV_NAME_LABEL'"
+        ></text-input>
+      </div>
     </div>
-    <p>{{ 'CV_LANGUAGES' | translate }}</p>
+    <div class="languages-header">
+      <p>{{ 'CV_LANGUAGES' | translate }}</p>
+      <button mat-mini-fab (click)="addLanguage()">
+        <mat-icon fontIcon="add"></mat-icon>
+      </button>
+    </div>
     <div class="languages" formArrayName="languages">
       <ng-container
         *ngFor="let language of languagesControlsArray.controls; index as j"
       >
-        <cv-employee-language-form formControlName="{{ j }}"></cv-employee-language-form>
+        <div class="language">
+          <cv-employee-language-form
+            formControlName="{{ j }}"
+          ></cv-employee-language-form>
+          <button mat-flat-button color="warn" (click)="removeLanguage(j)">
+            {{ 'REMOVE_BUTTON' | translate }}
+          </button>
+        </div>
       </ng-container>
     </div>
   </div>
 
   <div formArrayName="projects" class="projects">
+    <div class="add-project-button">
+      <button mat-flat-button color="primary" (click)="addProject()">
+        {{ 'ADD_PROJECT_BUTTON' | translate }}
+      </button>
+    </div>
+
     <ng-container
       *ngFor="let project of projectsControlsArray.controls; index as i"
     >
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ this.CV.cvsProjects[i].projectName }}
+            {{ this.projectsNames[i] }}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <project-form formControlName="{{ i }}"></project-form>
+        <mat-action-row>
+          <button mat-icon-button (click)="deleteProject(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-action-row>
       </mat-expansion-panel>
     </ng-container>
+  </div>
+
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="saveCv()">
+      {{ 'SAVE_BUTTON' | translate }}
+    </button>
   </div>
 </form>

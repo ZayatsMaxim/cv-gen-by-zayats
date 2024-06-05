@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 :host {
   display: block;
   width: 100%;
@@ -7,6 +9,20 @@
 .cv-page {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 0.4fr 2fr;
   gap: 20px;
+
+  .cv-list {
+    display: flex;
+    flex-flow: column;
+    max-width: 250px;
+
+    button {
+      background-color: #fafafa;
+      color: black;
+      border-radius: 4px;
+      box-shadow: none;
+      align-self: flex-end;
+    }
+  }
 }

@@ -3,7 +3,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
-import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 

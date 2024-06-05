@@ -19,13 +19,54 @@ form {
   //   }
   // }
 
-  .employee-form .languages {
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
+  .employee-form {
+    .languages-header {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 15px;
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        background-color: #fafafa;
+        color: black;
+        border-radius: 4px;
+        box-shadow: none;
+        align-self: flex-end;
+      }
+    }
+
+    .languages {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+
+      .language {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: row;
+        width: fit-content;
+        gap: 20px;
+      }
+    }
   }
 
   .projects {
+    margin-top: 10px;
+
+    .add-project-button {
+      margin-bottom: 10px;
+      width: 100%;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     mat-expansion-panel {
       margin-bottom: 15px;
 
@@ -37,5 +78,13 @@ form {
         padding-top: 35px;
       }
     }
+  }
+
+  .buttons {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
   }
 }
