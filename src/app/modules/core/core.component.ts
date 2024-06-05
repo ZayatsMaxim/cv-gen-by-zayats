@@ -5,6 +5,8 @@ import { TopToolbarComponent } from './core-page-components/top-toolbar/top-tool
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavContentComponent } from './core-page-components/sidenav-content/sidenav-content.component';
 import { PageHeaderComponent } from './core-page-components/page-header/page-header.component';
+import { Store } from '@ngrx/store';
+import { getAllProjects } from '../../store/actions/projects.actions';
 
 @Component({
   selector: 'app-core',
@@ -23,4 +25,8 @@ import { PageHeaderComponent } from './core-page-components/page-header/page-hea
 })
 export class CoreComponent {
   sidenavOpened: boolean = true;
+
+  constructor(private store: Store) {
+    this.store.dispatch(getAllProjects());
+  }
 }
