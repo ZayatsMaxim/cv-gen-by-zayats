@@ -14,3 +14,13 @@ export const selectProjectsList = createSelector(
   selectProjectsListState,
   (state: Project[]) => state,
 );
+
+export const selectProjectsNames = createSelector(
+  selectProjectsListState,
+  (state: Project[]) => state.map(project => project.projectName),
+);
+
+export const selectProjectByName = (name: string) =>
+  createSelector(selectProjectsList, (state: Project[]) =>
+    state.find(project => project.projectName === name),
+  );

@@ -18,7 +18,7 @@ import { CV } from '../../models/cv.model';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedService } from '../../services/shared.service';
-import { forkJoin, map } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { TextInputComponent } from '../../inputs/text-input/text-input.component';
 import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
 import { CvEmployeeLanguageFormComponent } from '../cv-employee-language-form/cv-employee-language-form.component';
@@ -26,8 +26,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CvDTO } from '../../models/dto.model';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { saveNewCv, updateCvById } from '../../../store/actions/cv.actions';
+import { MatFormField } from '@angular/material/form-field';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
+import {
+  selectProjectByName,
+  selectProjectsNames,
+} from '../../../store/selectors/project.selectors';
 
 @Component({
   selector: 'cv-form',
@@ -45,6 +51,8 @@ import { saveNewCv, updateCvById } from '../../../store/actions/cv.actions';
     TranslateModule,
     MatButtonModule,
     MatIconModule,
+    MatFormField,
+    MatSelectModule,
   ],
   templateUrl: './cv-form.component.html',
   styleUrls: [
@@ -61,6 +69,8 @@ export class CvFormComponent implements OnInit, OnChanges {
   departments?: string[];
   skills?: string[];
   projectsNames: string[];
+
+  existingProjectsNames$: Observable<string[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -108,6 +118,8 @@ export class CvFormComponent implements OnInit, OnChanges {
       this.skills = options.map(option => option.name);
       this.cdr.detectChanges();
     });
+
+    this.existingProjectsNames$ = this.store.select(selectProjectsNames);
 
     this.createProjectsForms();
     this.setLanguages();
@@ -238,7 +250,6 @@ export class CvFormComponent implements OnInit, OnChanges {
     const newProjectName: string = generateNewProjectName(
       this.projectsNames,
     ).next().value;
-    console.log(newProjectName);
     this.projectsNames.push(newProjectName);
 
     this.projectsControlsArray.push(
@@ -258,6 +269,29 @@ export class CvFormComponent implements OnInit, OnChanges {
   deleteProject(index: number) {
     this.projectsControlsArray.removeAt(index);
     this.projectsNames.splice(index, 1);
+  }
+
+  onAddExistingProjectOptionSelected($event: MatSelectChange) {
+    const selectedProject$ = this.store.select(
+      selectProjectByName($event.value),
+    );
+    selectedProject$.subscribe(selectedProject => {
+      this.projectsNames.push(selectedProject.projectName);
+      this.projectsControlsArray.push(
+        this.formBuilder.control({
+          projectName: selectedProject.projectName,
+          teamSize: selectedProject.teamSize,
+          description: selectedProject.description,
+          teamRoles: selectedProject.teamRoles.map(role => role.name),
+          techStack: selectedProject.techStack.map(tech => tech.name),
+          responsibilities: selectedProject.responsibilities.map(
+            resp => resp.name,
+          ),
+          startDate: selectedProject.startDate,
+          endDate: selectedProject.endDate,
+        }),
+      );
+    });
   }
 }
 

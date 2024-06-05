@@ -46,7 +46,6 @@ export class ProjectListComponent implements OnInit {
     private cdr: ChangeDetectorRef,
   ) {
     this.projectsList$ = this.store.select(selectProjectsList);
-    this.store.dispatch(getAllProjects());
   }
 
   ngOnInit(): void {

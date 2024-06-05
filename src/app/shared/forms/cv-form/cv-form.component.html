@@ -91,6 +91,19 @@
 
   <div formArrayName="projects" class="projects">
     <div class="add-project-button">
+      <div class="input-field">
+        <mat-form-field *ngIf="existingProjectsNames$ | async as options" appearance="outline">
+          <mat-label>{{ 'ADD_EXISTING_PROJECT_BUTTON' | translate }}</mat-label>
+          <mat-select
+            (selectionChange)="onAddExistingProjectOptionSelected($event)"
+          >
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <button mat-flat-button color="primary" (click)="addProject()">
         {{ 'ADD_PROJECT_BUTTON' | translate }}
       </button>

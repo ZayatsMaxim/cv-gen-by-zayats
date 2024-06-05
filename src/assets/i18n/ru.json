@@ -39,7 +39,8 @@
 
   "SAVE_BUTTON": "Сохранить",
   "REMOVE_BUTTON": "Удалить",
-  "ADD_PROJECT_BUTTON": "Добавить проект",
+  "ADD_PROJECT_BUTTON": "Добавить новый проект",
+  "ADD_EXISTING_PROJECT_BUTTON": "Cуществующий проект",
   "ADD_CV_BUTTON": "Добавить резюме",
 
   "CV_DELETE_TITLE": "Удаление",
