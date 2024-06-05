@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { CvDTO } from '../../shared/models/dto.model';
 import { CV } from '../../shared/models/cv.model';
-import { Project } from '../../shared/models/project.model';
 
 export const getCvById = createAction(
   '[Employee CV Page] Get CV',
@@ -23,11 +22,6 @@ export const updateCvSuccess = createAction(
   props<{ cv: CV }>(),
 );
 
-export const updateCvError = createAction(
-  '[CV Effects] Update CV Error',
-  props<{ message: string }>(),
-);
-
 export const createNewCv = createAction(
   '[Employee CV page] Create New CV',
   props<{ cv: CV }>(),
@@ -43,7 +37,17 @@ export const saveNewCvSuccess = createAction(
   props<{ cv: CV }>(),
 );
 
+export const removeCvFromStoreByName = createAction(
+  '[Employee CV Page] Remove CV from store',
+  props<{ cvName: string }>(),
+);
+
 export const deleteCvById = createAction(
   '[Employee CV Page] Delete CV',
   props<{ id: number }>(),
+);
+
+export const deleteCvSuccess = createAction(
+  '[CV Effects] Delete CV Success',
+  props<{ cv: CV }>(),
 );

@@ -40,6 +40,22 @@ export const employeeReducer = createReducer(
     );
     return { ...state, cvs: newCvs };
   }),
+  on(CvActions.deleteCvSuccess, (state, { cv }): Employee => {
+    const newCvs = [...state.cvs];
+    newCvs.splice(
+      newCvs.findIndex(cvToDelete => cvToDelete.id === cv.id),
+      1,
+    );
+    return { ...state, cvs: newCvs };
+  }),
+  on(CvActions.removeCvFromStoreByName, (state, { cvName }): Employee => {
+    const newCvs = [...state.cvs];
+    newCvs.splice(
+      newCvs.findIndex(cvToDelete => cvToDelete.cvName === cvName),
+      1,
+    );
+    return { ...state, cvs: newCvs };
+  }),
 );
 
 export const employeesListReducer = createReducer(

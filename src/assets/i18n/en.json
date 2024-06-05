@@ -42,6 +42,7 @@
   "ADD_PROJECT_BUTTON": "Add project",
   "ADD_CV_BUTTON": "Add CV",
   "CV_UPDATE_SUCCESS_SNACKBAR": "CV updated successfully!",
+  "CV_DELETE_SUCCESS_SNACKBAR": "CV deleted successfully!",
 
   "CV_DELETE_TITLE": "Deleting",
   "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",
@@ -61,8 +62,8 @@
   "PROJECTS_TABLE_HEADER_TEAM_SIZE": "Team size",
   "PROJECTS_TABLE_HEADER_TECH_STACK": "Tech stack",
 
-  "SIDENAV_OPTION_EMPLOYEES":"Employees",
-  "SIDENAV_OPTION_PROJECTS":"Projects",
+  "SIDENAV_OPTION_EMPLOYEES": "Employees",
+  "SIDENAV_OPTION_PROJECTS": "Projects",
 
   "PAGE_HEADER_EMPLOYEES": "Employees",
   "PAGE_HEADER_EMPLOYEES_LIST": "Employees list",
