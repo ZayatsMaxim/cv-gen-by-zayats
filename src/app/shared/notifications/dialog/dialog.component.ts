@@ -29,12 +29,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDialogClose,
     TranslateModule,
   ],
-  templateUrl: './delete-cv-dialog.component.html',
-  styleUrl: './delete-cv-dialog.component.scss',
+  templateUrl: './dialog.component.html',
+  styleUrl: './dialog.component.scss',
 })
-export class DeleteCvDialogComponent {
+export class DialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<DeleteCvDialogComponent>,
+    public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
@@ -44,5 +44,11 @@ export class DeleteCvDialogComponent {
 }
 
 export interface DialogData {
-  cvName: string;
+  cvName?: string;
+  warn?: boolean;
+  title: string;
+  question: string;
+  notification?: string;
+  dismissButton: string;
+  confirmButton: string;
 }

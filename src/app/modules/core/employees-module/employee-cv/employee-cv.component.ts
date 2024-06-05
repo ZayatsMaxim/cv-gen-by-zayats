@@ -15,8 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { createNewCv } from '../../../../store/actions/cv.actions';
-import { selectEmployee } from '../../../../store/selectors/employee.selectors';
-
+import { deleteCvById } from '../../../../store/actions/cv.actions';
+import { removeCvFromStoreByName } from '../../../../store/actions/cv.actions';
 @Component({
   selector: 'app-employee-cv',
   standalone: true,
@@ -51,7 +51,9 @@ export class EmployeeCvComponent implements OnChanges {
 
   deleteCv(option: string) {
     const id = this.employeeCvs.find(CV => CV.cvName === option).id;
-    this.cvService.deleteCvById(id);
+    if (id === -1) {
+      this.store.dispatch(removeCvFromStoreByName({ cvName: option }));
+    } else this.store.dispatch(deleteCvById({ id: id }));
   }
 
   addCv() {
