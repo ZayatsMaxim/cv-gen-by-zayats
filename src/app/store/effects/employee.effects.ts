@@ -17,7 +17,7 @@ export class EmployeeEffects {
       exhaustMap(({ id }) =>
         this.employeeService.getEmployeeById(id).pipe(
           map(fetchedEmployee =>
-            EmployeeActions.getEmployeeByIdSuccess({
+            EmployeeActions.getEmployeeSuccess({
               employee: fetchedEmployee,
             }),
           ),
@@ -35,6 +35,21 @@ export class EmployeeEffects {
           map(fetchedEmployees =>
             EmployeeActions.getAllEmployeesSuccess({
               employees: fetchedEmployees,
+            }),
+          ),
+        ),
+      ),
+    );
+  });
+
+  updateEmployee = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(EmployeeActions.updateEmployeeById),
+      exhaustMap(({ id, employee }) =>
+        this.employeeService.updateEmployeeById(id, employee).pipe(
+          map(updatedEmployee =>
+            EmployeeActions.updateEmployeeSuccess({
+              employee: updatedEmployee,
             }),
           ),
         ),

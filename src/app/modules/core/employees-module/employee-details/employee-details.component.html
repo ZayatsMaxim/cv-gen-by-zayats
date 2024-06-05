@@ -4,10 +4,29 @@
   mat-stretch-tabs="false"
   mat-align-tabs="start"
 >
-  <mat-tab label="{{ 'EMPLOYEE_PAGE_INFO_TAB_TITLE' | translate }}" *ngIf="employee">
-    <app-employee-info [employee]="employee"></app-employee-info>
+  <mat-tab
+    label="{{ 'EMPLOYEE_PAGE_INFO_TAB_TITLE' | translate }}"
+    *ngIf="employee"
+  >
+    <form [formGroup]="employeeForm">
+      <employee-form formControlName="employee"></employee-form>
+      <div class="buttons">
+        <button mat-flat-button color="primary" (click)="saveEmployee()">
+          {{ 'SAVE_BUTTON' | translate }}
+        </button>
+        <button mat-stroked-button="secondary">
+          {{ 'CANCEL_BUTTON' | translate }}
+        </button>
+      </div>
+    </form>
   </mat-tab>
-  <mat-tab label="{{ 'EMPLOYEE_PAGE_CV_TAB_TITLE' | translate }}" *ngIf="employee">
-    <app-employee-cv [employeeCvs]="employee.cvs" [employeeId]="employee.id"></app-employee-cv>
+  <mat-tab
+    label="{{ 'EMPLOYEE_PAGE_CV_TAB_TITLE' | translate }}"
+    *ngIf="employee"
+  >
+    <app-employee-cv
+      [employeeCvs]="employee.cvs"
+      [employeeId]="employee.id"
+    ></app-employee-cv>
   </mat-tab>
 </mat-tab-group>

@@ -9,9 +9,14 @@ export const employeesListInitialState: Employee[] = null;
 export const employeeReducer = createReducer(
   employeeInitialState,
   on(
-    EmployeeActions.getEmployeeByIdSuccess,
+    EmployeeActions.getEmployeeSuccess,
     (state, { employee }): Employee => ({
-      // ...state,
+      ...employee,
+    }),
+  ),
+  on(
+    EmployeeActions.updateEmployeeSuccess,
+    (state, { employee }): Employee => ({
       ...employee,
     }),
   ),
