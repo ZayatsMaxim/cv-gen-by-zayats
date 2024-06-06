@@ -13,11 +13,17 @@ import { Project } from '../../../../shared/models/project.model';
 import { ActivatedRoute } from '@angular/router';
 import { selectProject } from '../../../../store/selectors/project.selectors';
 import { getProjectById } from '../../../../store/actions/projects.actions';
+import { NewProjectFormComponent } from '../../../../shared/forms/new-project-form/new-project-form.component';
 
 @Component({
   selector: 'app-project-edit',
   standalone: true,
-  imports: [CommonModule, ProjectFormComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ProjectFormComponent,
+    ReactiveFormsModule,
+    NewProjectFormComponent,
+  ],
   templateUrl: './project-edit.component.html',
   styleUrl: './project-edit.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,7 +54,7 @@ export class ProjectEditComponent implements OnInit {
       this.store.dispatch(getProjectById({ id }));
       if (!fetchedProject) return;
       this.projectForm = this.formBuilder.group({
-        project: this.formBuilder.control({
+        project: this.formBuilder.group({
           projectName: fetchedProject.projectName,
           teamSize: fetchedProject.teamSize,
           description: fetchedProject.description,
