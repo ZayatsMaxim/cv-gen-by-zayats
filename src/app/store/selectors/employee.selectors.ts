@@ -10,6 +10,11 @@ export const selectEmployee = createSelector(
   (state: Employee) => state,
 );
 
+export const selectEmployeeId = createSelector(
+  selectEmployeeState,
+  (state: Employee) => state.id,
+);
+
 export const selectEmployeesList = createSelector(
   selectEmployeesListState,
   (state: Employee[]) => state,

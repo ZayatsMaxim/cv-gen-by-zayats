@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { EmployeeCvComponent } from '../employee-cv/employee-cv.component';
-import { EmployeeInfoComponent } from '../employee-info/employee-info.component';
 import { Employee } from '../../../../shared/models/employee.model';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
-import { CV } from '../../../../shared/models/cv.model';
-import { Store } from '@ngrx/store';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
+import { MatButtonModule } from '@angular/material/button';
+import { DropdownListComponent } from '../../../../shared/inputs/dropdown-list/dropdown-list.component';
+import { TextInputComponent } from '../../../../shared/inputs/text-input/text-input.component';
 
 @Component({
   selector: 'app-employee-details',
@@ -14,15 +16,17 @@ import { Store } from '@ngrx/store';
   imports: [
     CommonModule,
     EmployeeCvComponent,
-    EmployeeInfoComponent,
+    EmployeeFormComponent,
     MatTabsModule,
     TranslateModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    TextInputComponent,
+    DropdownListComponent,
   ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
 })
 export class EmployeeDetailsComponent {
   @Input() employee: Employee;
-
-  constructor(private store: Store) {}
 }

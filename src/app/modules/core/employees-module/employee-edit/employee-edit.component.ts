@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee.model';
-import { EmployeesService } from '../../../../shared/services/employees.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectEmployee } from '../../../../store/selectors/employee.selectors';
@@ -21,13 +20,11 @@ export class EmployeeEditComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private employeeService: EmployeesService,
     private store: Store,
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      // this.employee$ = this.employeeService.getEmployeeById(params['id']);
       this.employee$ = this.store.select(selectEmployee);
       this.fetchEmployee(params['id']);
     });

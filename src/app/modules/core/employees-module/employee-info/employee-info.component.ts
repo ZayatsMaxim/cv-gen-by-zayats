@@ -3,11 +3,19 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Employee } from '../../../../shared/models/employee.model';
+import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee-info',
   standalone: true,
-  imports: [CommonModule, EmployeeFormComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    EmployeeFormComponent,
+    ReactiveFormsModule,
+    TranslateModule,
+    MatButtonModule,
+  ],
   templateUrl: './employee-info.component.html',
   styleUrl: './employee-info.component.scss',
 })
