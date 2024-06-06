@@ -28,6 +28,8 @@
   "EMPLOYEE_FORM_SKILLS_LABEL": "Skills",
   "EMPLOYEE_FORM_LEVEL_LABEL": "Level",
   "EMPLOYEE_FORM_CV_NAME_LABEL": "CV name",
+  "EMPLOYEE_INFO_CREATE_SUCCESS": "Employee has been created successfully!",
+  "EMPLOYEE_INFO_SAVE_SUCCESS": "Employee has been saved successfully!",
 
   "INVALID_SPECIFY_THE_FIELD": "Please, specify the field",
   "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern",
@@ -35,6 +37,7 @@
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "Info",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "CV",
   "EMPLOYEE_PAGE_NO_CV": "There are no CVs for this employee yet!",
+  "EMPLOYEE_PAGE_NO_EMPLOYEE_FOR_CV": "Save employee before adding CVs!",
   "CV_LANGUAGES": "Languages",
 
   "SAVE_BUTTON": "Save",
@@ -42,8 +45,8 @@
   "REMOVE_BUTTON": "Remove",
   "ADD_PROJECT_BUTTON": "Add project",
   "ADD_CV_BUTTON": "Add CV",
-  "CV_UPDATE_SUCCESS_SNACKBAR": "CV updated successfully!",
-  "CV_DELETE_SUCCESS_SNACKBAR": "CV deleted successfully!",
+  "CV_UPDATE_SUCCESS_SNACKBAR": "CV has been updated successfully!",
+  "CV_DELETE_SUCCESS_SNACKBAR": "CV has been deleted successfully!",
 
   "CV_DELETE_TITLE": "Deleting",
   "CV_DELETE_QUESTION": "Are you sure you want to delete CV?",
@@ -56,6 +59,7 @@
   "EMPLOYEES_TABLE_HEADER_EMAIL": "Email",
   "EMPLOYEES_TABLE_HEADER_DEPARTMENT": "Department",
   "EMPLOYEES_TABLE_HEADER_SPECIALIZATION": "Specialization",
+  "EMPLOYEES_TABLE_ADD_EMPLOYEE_BUTTON": "Add employee",
 
   "PROJECTS_TABLE_HEADER_NAME": "Project name",
   "PROJECTS_TABLE_HEADER_START_DATE": "Start date",

@@ -28,6 +28,8 @@
   "EMPLOYEE_FORM_SKILLS_LABEL": "Навыки",
   "EMPLOYEE_FORM_LEVEL_LABEL": "Уровень",
   "EMPLOYEE_FORM_CV_NAME_LABEL": "Название резюме",
+  "EMPLOYEE_INFO_SAVE_SUCCESS": "Сотрудник успешно сохранен!",
+  "EMPLOYEE_INFO_CREATE_SUCCESS": "Сотрудник успешно создан!",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
   "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
@@ -35,6 +37,7 @@
   "EMPLOYEE_PAGE_INFO_TAB_TITLE": "О сотруднике",
   "EMPLOYEE_PAGE_CV_TAB_TITLE": "Резюме",
   "EMPLOYEE_PAGE_NO_CV": "У этого сотрудника пока что нет резюме!",
+  "EMPLOYEE_PAGE_NO_EMPLOYEE_FOR_CV": "Сохраните сотрудника, прежде чем добавлять резюме!",
   "CV_LANGUAGES": "Языки",
 
   "SAVE_BUTTON": "Сохранить",
@@ -57,6 +60,7 @@
   "EMPLOYEE_TABLE_HEADER_EMAIL": "Эл. почта",
   "EMPLOYEE_TABLE_HEADER_DEPARTMENT": "Отдел",
   "EMPLOYEE_TABLE_HEADER_SPECIALIZATION": "Специализация",
+  "EMPLOYEES_TABLE_ADD_EMPLOYEE_BUTTON": "Добавить сотрудника",
 
   "PROJECTS_TABLE_HEADER_NAME": "Название проекта",
   "PROJECTS_TABLE_HEADER_START_DATE": "Дата начала",

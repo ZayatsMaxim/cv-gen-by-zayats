@@ -1,17 +1,20 @@
 <div class="cv-page">
   <div class="cv-list">
     <ng-container *ngIf="options.length === 0">
-      <p>{{ 'EMPLOYEE_PAGE_NO_CV' | translate }}</p>
+      <p *ngIf="employeeId !== -1">{{ 'EMPLOYEE_PAGE_NO_CV' | translate }}</p>
+      <p *ngIf="employeeId === -1">{{ 'EMPLOYEE_PAGE_NO_EMPLOYEE_FOR_CV' | translate }}</p>
     </ng-container>
-    <cv-list
-      *ngIf="options.length !== 0"
-      [options]="options"
-      (selectedCv)="selectCv($event)"
-      (deletedCv)="deleteCv($event)"
-    ></cv-list>
-    <button mat-mini-fab (click)="addCv()">
-      <mat-icon fontIcon="add"></mat-icon>
-    </button>
+    <ng-container *ngIf="employeeId !== -1">
+      <cv-list
+        *ngIf="options.length !== 0"
+        [options]="options"
+        (selectedCv)="selectCv($event)"
+        (deletedCv)="deleteCv($event)"
+      ></cv-list>
+      <button mat-mini-fab (click)="addCv()">
+        <mat-icon fontIcon="add"></mat-icon>
+      </button>
+    </ng-container>
   </div>
 
   <cv-form *ngIf="options.length !== 0" [CV]="selectedCv"></cv-form>

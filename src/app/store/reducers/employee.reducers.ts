@@ -21,6 +21,12 @@ export const employeeReducer = createReducer(
     }),
   ),
   on(
+    EmployeeActions.createEmployeeSuccess,
+    (state, { employee }): Employee => ({
+      ...employee,
+    }),
+  ),
+  on(
     CvActions.createNewCv,
     (state, { cv }): Employee => ({
       ...state,

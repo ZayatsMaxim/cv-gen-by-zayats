@@ -31,12 +31,14 @@ export class BaseListComponent implements OnInit {
 
   page: any[];
   pageSize: number = 5;
-  pageIndex = 0;
+  pageIndex: number = 0;
+  pageLinks: string[];
 
   pageEvent: PageEvent;
 
   ngOnInit(): void {
     this.page = this.body.slice(0, this.pageSize);
+    this.pageLinks = this.routerLinks.slice(0, this.pageSize);
   }
 
   handlePageEvent(e: PageEvent) {
@@ -44,6 +46,10 @@ export class BaseListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.page = this.body.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize,
+    );
+    this.pageLinks = this.routerLinks.slice(
       this.pageIndex * this.pageSize,
       this.pageIndex * this.pageSize + this.pageSize,
     );

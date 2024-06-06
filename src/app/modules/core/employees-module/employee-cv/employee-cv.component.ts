@@ -40,10 +40,7 @@ export class EmployeeCvComponent implements OnChanges {
   options: string[];
   selectedCv: CV;
 
-  constructor(
-    private cvService: CvService,
-    private store: Store,
-  ) {}
+  constructor(private store: Store) {}
 
   selectCv(option: string) {
     this.selectedCv = this.employeeCvs.find(CV => CV.cvName === option);

@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="rows-container" *ngIf="body">
-  <a routerLink="{{ routerLinks[i] }}" *ngFor="let row of page; let i = index">
+  <a routerLink="{{ pageLinks[i] }}" *ngFor="let row of page; let i = index">
     <div class="row">
       <p *ngFor="let option of row | keyvalue: keepOriginalOrder">
         {{ option.value.toString() }}

@@ -8,17 +8,9 @@
     label="{{ 'EMPLOYEE_PAGE_INFO_TAB_TITLE' | translate }}"
     *ngIf="employee"
   >
-    <form [formGroup]="employeeForm">
-      <employee-form formControlName="employee"></employee-form>
-      <div class="buttons">
-        <button mat-flat-button color="primary" (click)="saveEmployee()">
-          {{ 'SAVE_BUTTON' | translate }}
-        </button>
-        <button mat-stroked-button="secondary">
-          {{ 'CANCEL_BUTTON' | translate }}
-        </button>
-      </div>
-    </form>
+    <div class="employee-form">
+      <employee-form [employee]="employee"></employee-form>
+    </div>
   </mat-tab>
   <mat-tab
     label="{{ 'EMPLOYEE_PAGE_CV_TAB_TITLE' | translate }}"

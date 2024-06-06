@@ -26,6 +26,11 @@ export const createEmployee = createAction(
   props<{ employee: EmployeeDTO }>(),
 );
 
+export const createEmployeeSuccess = createAction(
+  '[Employee Effects] Create Employee Success',
+  props<{ employee: Employee }>(),
+);
+
 export const updateEmployeeById = createAction(
   '[Employee Edit Page] Update Employee',
   props<{ id: number; employee: EmployeeDTO }>(),
