@@ -1,6 +1,11 @@
-<form [formGroup]="projectForm">
+<form [formGroup]="projectForm" class="project-info">
   <app-new-project-form formGroupName="project"></app-new-project-form>
-  <button mat-flat-button color="primary" (click)="createNewProject()">
-    {{ 'EMPLOYEES_TABLE_ADD_EMPLOYEE_BUTTON' | translate }}
-  </button>
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="createNewProject()">
+      {{ 'SAVE_BUTTON' | translate }}
+    </button>
+    <button mat-stroked-button color="secondary">
+      {{ 'CANCEL_BUTTON' | translate }}
+    </button>
+  </div>
 </form>

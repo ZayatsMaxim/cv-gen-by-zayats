@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -13,9 +12,14 @@ import { Observable } from 'rxjs';
 import { Project } from '../../../../shared/models/project.model';
 import { ActivatedRoute } from '@angular/router';
 import { selectProject } from '../../../../store/selectors/project.selectors';
-import { getProjectById } from '../../../../store/actions/projects.actions';
+import {
+  getProjectById,
+  updateProjectById,
+} from '../../../../store/actions/projects.actions';
 import { NewProjectFormComponent } from '../../../../shared/forms/new-project-form/new-project-form.component';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
+import { ProjectDTO } from '../../../../shared/models/dto.model';
 
 @Component({
   selector: 'app-project-edit',
@@ -26,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     NewProjectFormComponent,
     MatButtonModule,
+    TranslateModule,
   ],
   templateUrl: './project-edit.component.html',
   styleUrl: './project-edit.component.scss',
@@ -34,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class ProjectEditComponent implements OnInit {
   projectForm: FormGroup;
   project$: Observable<Project>;
+  projectId: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,7 +62,8 @@ export class ProjectEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.store.dispatch(getProjectById({ id: params['id'] }));
+      this.projectId = params['id'];
+      this.store.dispatch(getProjectById({ id: this.projectId }));
       this.project$ = this.store.select(selectProject);
       this.fetchProject();
     });
@@ -83,5 +90,29 @@ export class ProjectEditComponent implements OnInit {
         endDate: fetchedProject.endDate,
       });
     });
+  }
+
+  updateProject() {
+    if (!this.projectForm.valid) {
+      this.projectForm.get(['project']).markAllAsTouched();
+      return;
+    }
+
+    const projectDto: ProjectDTO = {
+      projectName: this.projectForm.get(['project']).get(['projectName']).value,
+      description: this.projectForm.get(['project']).get(['description']).value,
+      startDate: this.projectForm.get(['project']).get(['startDate']).value,
+      endDate: this.projectForm.get(['project']).get(['endDate']).value,
+      teamSize: this.projectForm.get(['project']).get(['teamSize']).value,
+      techStack: this.projectForm.get(['project']).get(['techStack']).value,
+      responsibilities: this.projectForm
+        .get(['project'])
+        .get(['responsibilities']).value,
+      teamRoles: this.projectForm.get(['project']).get(['teamRoles']).value,
+    };
+
+    this.store.dispatch(
+      updateProjectById({ id: this.projectId, project: projectDto }),
+    );
   }
 }

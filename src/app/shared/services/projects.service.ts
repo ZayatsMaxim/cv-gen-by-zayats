@@ -34,4 +34,12 @@ export class ProjectsService {
       }),
     );
   }
+
+  updateProjectById(id: number, project: ProjectDTO) {
+    return this.httpClient.put(`${projectUrl}/${id}`, project).pipe(
+      map(response => {
+        return response as Project;
+      }),
+    );
+  }
 }

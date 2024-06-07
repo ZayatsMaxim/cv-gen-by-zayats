@@ -14,6 +14,12 @@ export const projectReducer = createReducer(
       ...project,
     }),
   ),
+  on(
+    ProjectActions.updateProjectSuccess,
+    (state, { updatedProject }): Project => ({
+      ...updatedProject,
+    }),
+  ),
 );
 
 export const projectsListReducer = createReducer(
@@ -25,4 +31,16 @@ export const projectsListReducer = createReducer(
     ...state,
     project,
   ]),
+  on(
+    ProjectActions.updateProjectSuccess,
+    (state, { updatedProject }): Project[] => {
+      const newProjects = [...state];
+      newProjects.splice(
+        newProjects.findIndex(project => project.id === updatedProject.id),
+        1,
+        updatedProject,
+      );
+      return newProjects;
+    },
+  ),
 );
