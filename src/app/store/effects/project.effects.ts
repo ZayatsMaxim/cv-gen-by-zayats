@@ -3,12 +3,15 @@ import { ProjectsService } from '../../shared/services/projects.service';
 import * as ProjectActions from '../actions/projects.actions';
 import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../shared/notifications/snackbar/snackbar.component';
 
 @Injectable()
 export class ProjectEffects {
   constructor(
     private $actions: Actions,
     private projectService: ProjectsService,
+    private snackBar: MatSnackBar,
   ) {}
 
   getAllProjects = createEffect(() => {
@@ -37,6 +40,25 @@ export class ProjectEffects {
               project: fetchedProject,
             }),
           ),
+        ),
+      ),
+    );
+  });
+
+  createProject$ = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(ProjectActions.createProject),
+      exhaustMap(({ project }) =>
+        this.projectService.createProject(project).pipe(
+          map(createdProject => {
+            this.snackBar.openFromComponent(SnackbarComponent, {
+              duration: 3000,
+              data: 'PROJECT_CREATE_SUCCESS_SNACKBAR',
+            });
+            return ProjectActions.createProjectSuccess({
+              project: createdProject,
+            });
+          }),
         ),
       ),
     );

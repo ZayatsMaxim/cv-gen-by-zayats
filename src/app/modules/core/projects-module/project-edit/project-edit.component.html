@@ -1,6 +1,5 @@
 <ng-container *ngIf="this.project$ | async">
-  <form [formGroup]="projectForm">
-    <!-- <project-form [formControl]="projectControl"></project-form> -->
+  <form [formGroup]="projectForm" *ngIf="projectForm">
     <app-new-project-form formGroupName="project"></app-new-project-form>
   </form>
 </ng-container>

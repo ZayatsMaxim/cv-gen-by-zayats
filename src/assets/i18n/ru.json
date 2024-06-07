@@ -18,6 +18,8 @@
   "PROJECT_FORM_ROLES_LABEL": "Роли",
   "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
   "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности",
+  "PROJECT_CREATE_SUCCESS_SNACKBAR": "Проект успешно создан!",
+  "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранен!",
 
   "EMPLOYEE_FORM_FIRST_NAME_LABEL": "Имя",
   "EMPLOYEE_FORM_LAST_NAME_LABEL": "Фамилия",
@@ -67,6 +69,7 @@
   "PROJECTS_TABLE_HEADER_END_DATE": "Дата окончания",
   "PROJECTS_TABLE_HEADER_TEAM_SIZE": "Размер команды",
   "PROJECTS_TABLE_HEADER_TECH_STACK": "Стек технологий",
+  "PROJECTS_TABLE_ADD_PROJECT_BUTTON": "Добавить проект",
 
   "SIDENAV_OPTION_EMPLOYEES": "Сотрудники",
   "SIDENAV_OPTION_PROJECTS": "Проекты",

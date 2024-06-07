@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 import { Project } from '../../../../shared/models/project.model';
 import { Store } from '@ngrx/store';
 import { selectProjectsList } from '../../../../store/selectors/project.selectors';
-import { getAllProjects } from '../../../../store/actions/projects.actions';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 export interface ProjectTableData {
   name: string;
@@ -23,7 +25,7 @@ export interface ProjectTableData {
 @Component({
   selector: 'app-project-list',
   standalone: true,
-  imports: [CommonModule, BaseListComponent],
+  imports: [CommonModule, BaseListComponent, TranslateModule, MatButtonModule],
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,6 +46,7 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private store: Store,
     private cdr: ChangeDetectorRef,
+    private router: Router,
   ) {
     this.projectsList$ = this.store.select(selectProjectsList);
   }
@@ -70,5 +73,9 @@ export class ProjectListComponent implements OnInit {
 
   private mapRouterLinks(employees: Project[]): string[] {
     return employees.map(employee => `/home/projects/edit/${employee.id}`);
+  }
+
+  navigateToCreateProject() {
+    this.router.navigate(['/home/projects/create']);
   }
 }

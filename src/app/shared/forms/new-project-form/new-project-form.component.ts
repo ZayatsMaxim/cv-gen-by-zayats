@@ -35,7 +35,11 @@ import { SharedService } from '../../services/shared.service';
     DatePickerComponent,
   ],
   templateUrl: './new-project-form.component.html',
-  styleUrl: './new-project-form.component.scss',
+  styleUrls: [
+    './new-project-form.component.scss',
+    '../../styles/inputs.scss',
+    '../../styles/form.scss',
+  ],
 })
 export class NewProjectFormComponent implements OnInit {
   roles?: string[];
@@ -50,8 +54,6 @@ export class NewProjectFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.controlContainer.control);
-
     this.formGroup = this.controlContainer.control as FormGroup;
 
     this.sharedService.getTeamRoles().subscribe(options => {

@@ -27,7 +27,7 @@ export class ProjectsService {
     );
   }
 
-  addProject(project: ProjectDTO) {
+  createProject(project: ProjectDTO) {
     return this.httpClient.post(`${projectUrl}`, project).pipe(
       map(response => {
         return response as Project;

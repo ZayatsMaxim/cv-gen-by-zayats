@@ -9,6 +9,7 @@ import { EmployeeEditComponent } from './modules/core/employees-module/employee-
 import { EmployeeCreateComponent } from './modules/core/employees-module/employee-create/employee-create.component';
 import { EmployeeCorePageComponent } from './modules/core/employees-module/employee-core-page/employee-core-page.component';
 import { ProjectsCorePageComponent } from './modules/core/projects-module/projects-core-page/projects-core-page.component';
+import { ProjectCreateComponent } from './modules/core/projects-module/project-create/project-create.component';
 
 export const routes: Routes = [
   // {
@@ -94,7 +95,7 @@ export const routes: Routes = [
           },
           {
             path: 'create',
-            component: ProjectEditComponent,
+            component: ProjectCreateComponent,
             title: 'Create Project',
             data: { breadcrumb: 'Create new project' },
           },
