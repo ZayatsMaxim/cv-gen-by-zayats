@@ -63,4 +63,23 @@ export class ProjectEffects {
       ),
     );
   });
+
+  updateProject$ = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(ProjectActions.updateProjectById),
+      exhaustMap(({ id, project }) =>
+        this.projectService.updateProjectById(id, project).pipe(
+          map(updatedProject => {
+            this.snackBar.openFromComponent(SnackbarComponent, {
+              duration: 3000,
+              data: 'PROJECT_UPDATE_SUCCESS_SNACKBAR',
+            });
+            return ProjectActions.updateProjectSuccess({
+              updatedProject: updatedProject,
+            });
+          }),
+        ),
+      ),
+    );
+  });
 }

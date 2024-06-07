@@ -1,5 +1,13 @@
 <ng-container *ngIf="this.project$ | async">
-  <form [formGroup]="projectForm" *ngIf="projectForm">
+  <form [formGroup]="projectForm" *ngIf="projectForm" class="project-info">
     <app-new-project-form formGroupName="project"></app-new-project-form>
+    <div class="buttons">
+      <button mat-flat-button color="primary" (click)="updateProject()">
+        {{ 'SAVE_BUTTON' | translate }}
+      </button>
+      <button mat-stroked-button color="secondary">
+        {{ 'CANCEL_BUTTON' | translate }}
+      </button>
+    </div>
   </form>
 </ng-container>

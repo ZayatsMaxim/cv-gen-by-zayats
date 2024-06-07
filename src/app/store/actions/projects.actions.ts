@@ -35,3 +35,8 @@ export const updateProjectById = createAction(
   '[Project Edit Page] Update Project',
   props<{ id: number; project: ProjectDTO }>(),
 );
+
+export const updateProjectSuccess = createAction(
+  '[Project Effects] Update Project Success',
+  props<{ updatedProject: Project }>(),
+);
