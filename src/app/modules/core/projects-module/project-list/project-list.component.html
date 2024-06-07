@@ -1,1 +1,6 @@
+<div class="add-project-button">
+  <button mat-flat-button color="primary" (click)="navigateToCreateProject()">
+    {{ 'PROJECTS_TABLE_ADD_PROJECT_BUTTON' | translate }}
+  </button>
+</div>
 <app-base-list *ngIf="tableBody" [body]="tableBody" [headers]="headers" [routerLinks]="routerLinks"></app-base-list>

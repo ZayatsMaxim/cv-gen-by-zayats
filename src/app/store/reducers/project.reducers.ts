@@ -21,4 +21,8 @@ export const projectsListReducer = createReducer(
   on(ProjectActions.getAllProjectsSuccess, (state, { projects }): Project[] => [
     ...projects,
   ]),
+  on(ProjectActions.createProjectSuccess, (state, { project }): Project[] => [
+    ...state,
+    project,
+  ]),
 );

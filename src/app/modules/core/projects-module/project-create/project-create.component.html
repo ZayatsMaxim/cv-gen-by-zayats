@@ -1,1 +1,6 @@
-<p>project-create works!</p>,
+<form [formGroup]="projectForm">
+  <app-new-project-form formGroupName="project"></app-new-project-form>
+  <button mat-flat-button color="primary" (click)="createNewProject()">
+    {{ 'EMPLOYEES_TABLE_ADD_EMPLOYEE_BUTTON' | translate }}
+  </button>
+</form>

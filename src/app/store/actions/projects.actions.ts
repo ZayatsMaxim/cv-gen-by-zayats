@@ -16,6 +16,11 @@ export const createProject = createAction(
   props<{ project: ProjectDTO }>(),
 );
 
+export const createProjectSuccess = createAction(
+  '[Project Effects] Create Project Success',
+  props<{ project: Project }>(),
+);
+
 export const getProjectById = createAction(
   '[Project Edit Page] Get Project',
   props<{ id: number }>(),
