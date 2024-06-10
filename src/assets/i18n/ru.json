@@ -58,6 +58,7 @@
   "CV_DELETE_CANCEL": "Отмена",
   "CV_DELETE_CONFIRM": "Подтвердить",
   "CV_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранено!",
+  "CV_CREATE_SUCCESS_SNACKBAR": "Резюме успешно создано!",
   "CV_DELETE_SUCCESS_SNACKBAR": "Резюме успешно удалено!",
 
   "EMPLOYEE_DELETE_TITLE": "Удаление",
