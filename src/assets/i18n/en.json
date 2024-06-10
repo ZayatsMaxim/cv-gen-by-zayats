@@ -47,6 +47,7 @@
   "SAVE_BUTTON": "Save",
   "CANCEL_BUTTON": "Cancel",
   "REMOVE_BUTTON": "Remove",
+  "DELETE_BUTTON": "Delete",
   "ADD_PROJECT_BUTTON": "Add project",
   "ADD_CV_BUTTON": "Add CV",
   "CV_UPDATE_SUCCESS_SNACKBAR": "CV has been updated successfully!",

@@ -98,7 +98,7 @@ export class EmployeeEffects {
               duration: 3000,
               data: 'EMPLOYEE_DELETE_SUCCESS_SNACKBAR',
             });
-            this.router.navigate([`/home/projects/list`]);
+            this.router.navigate([`/home/employees/list`]);
             return EmployeeActions.deleteEmployeeByIdSuccess({
               id: deletedEmployee.id,
             });
