@@ -20,6 +20,7 @@
   "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Responsibilities",
   "PROJECT_CREATE_SUCCESS_SNACKBAR": "Project has been created successfully!",
   "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Project has been updated successfully!",
+  "PROJECT_DELETE_SUCCESS_SNACKBAR": "Project has been deleted successfully!",
 
   "EMPLOYEE_FORM_FIRST_NAME_LABEL": "First Name",
   "EMPLOYEE_FORM_LAST_NAME_LABEL": "Last Name",
@@ -32,6 +33,7 @@
   "EMPLOYEE_FORM_CV_NAME_LABEL": "CV name",
   "EMPLOYEE_INFO_CREATE_SUCCESS": "Employee has been created successfully!",
   "EMPLOYEE_INFO_SAVE_SUCCESS": "Employee has been saved successfully!",
+  "EMPLOYEE_DELETE_SUCCESS_SNACKBAR": "Employee has been deleted successfully!",
 
   "INVALID_SPECIFY_THE_FIELD": "Please, specify the field",
   "INVALID_SPECIFY_THE_PATTERN": "Please, specify the correct pattern",
@@ -45,6 +47,7 @@
   "SAVE_BUTTON": "Save",
   "CANCEL_BUTTON": "Cancel",
   "REMOVE_BUTTON": "Remove",
+  "DELETE_BUTTON": "Delete",
   "ADD_PROJECT_BUTTON": "Add project",
   "ADD_CV_BUTTON": "Add CV",
   "CV_UPDATE_SUCCESS_SNACKBAR": "CV has been updated successfully!",

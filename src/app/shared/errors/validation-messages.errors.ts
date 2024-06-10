@@ -1,4 +1,5 @@
 export const VALUDATION_MESSAGES = {
   required: 'INVALID_SPECIFY_THE_FIELD',
   pattern: 'INVALID_SPECIFY_THE_PATTERN',
+  email: 'INVALID_SPECIFY_THE_PATTERN',
 };

@@ -16,7 +16,7 @@ export class EmployeeEffects {
     private router: Router,
   ) {}
 
-  getEmployeeById = createEffect(() => {
+  getEmployeeById$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(EmployeeActions.getEmployeeById),
       exhaustMap(({ id }) =>
@@ -32,7 +32,7 @@ export class EmployeeEffects {
     );
   });
 
-  getAllEmployees = createEffect(() => {
+  getAllEmployees$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(EmployeeActions.getAllEmployees),
       exhaustMap(() =>
@@ -47,7 +47,7 @@ export class EmployeeEffects {
     );
   });
 
-  updateEmployee = createEffect(() => {
+  updateEmployee$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(EmployeeActions.updateEmployeeById),
       exhaustMap(({ id, employee }) =>
@@ -66,7 +66,7 @@ export class EmployeeEffects {
     );
   });
 
-  createEmployee = createEffect(() => {
+  createEmployee$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(EmployeeActions.createEmployee),
       exhaustMap(({ employee }) =>
@@ -81,6 +81,26 @@ export class EmployeeEffects {
             ]);
             return EmployeeActions.createEmployeeSuccess({
               employee: createdEmployee,
+            });
+          }),
+        ),
+      ),
+    );
+  });
+
+  deleteEmployee$ = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(EmployeeActions.deleteEmployeeById),
+      exhaustMap(({ id }) =>
+        this.employeeService.deleteEmployee(id).pipe(
+          map(deletedEmployee => {
+            this.snackBar.openFromComponent(SnackbarComponent, {
+              duration: 3000,
+              data: 'EMPLOYEE_DELETE_SUCCESS_SNACKBAR',
+            });
+            this.router.navigate([`/home/employees/list`]);
+            return EmployeeActions.deleteEmployeeByIdSuccess({
+              id: deletedEmployee.id,
             });
           }),
         ),

@@ -14,7 +14,7 @@ export class ProjectEffects {
     private snackBar: MatSnackBar,
   ) {}
 
-  getAllProjects = createEffect(() => {
+  getAllProjects$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(ProjectActions.getAllProjects),
       exhaustMap(() =>
@@ -30,7 +30,7 @@ export class ProjectEffects {
     );
   });
 
-  getProjectById = createEffect(() => {
+  getProjectById$ = createEffect(() => {
     return this.$actions.pipe(
       ofType(ProjectActions.getProjectById),
       exhaustMap(({ id }) =>

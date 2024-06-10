@@ -9,7 +9,20 @@
     *ngIf="employee"
   >
     <div class="employee-form">
-      <employee-form [employee]="employee"></employee-form>
+      <form [formGroup]="employeeForm">
+        <employee-form formGroupName="employee"></employee-form>
+        <div class="buttons">
+          <button mat-flat-button color="primary" (click)="saveEmployee()">
+            {{ 'SAVE_BUTTON' | translate }}
+          </button>
+          <button mat-stroked-button="secondary">
+            {{ 'CANCEL_BUTTON' | translate }}
+          </button>
+          <button mat-flat-button color="warn" (click)="deleteEmployee()" *ngIf="employee.id !== -1">
+            {{ 'DELETE_BUTTON' | translate }}
+          </button>
+        </div>
+      </form>
     </div>
   </mat-tab>
   <mat-tab

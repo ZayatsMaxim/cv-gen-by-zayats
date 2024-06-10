@@ -40,3 +40,13 @@ export const updateEmployeeSuccess = createAction(
   '[Employee Effects] Update Employee Success',
   props<{ employee: Employee }>(),
 );
+
+export const deleteEmployeeById = createAction(
+  '[Employee Edit Page] Delete Employee by Id',
+  props<{ id: number }>(),
+);
+
+export const deleteEmployeeByIdSuccess = createAction(
+  '[Employee Effects] Delete Employee Success',
+  props<{ id: number }>(),
+);

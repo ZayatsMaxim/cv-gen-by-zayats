@@ -19,7 +19,8 @@
   "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
   "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности",
   "PROJECT_CREATE_SUCCESS_SNACKBAR": "Проект успешно создан!",
-  "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранен!",
+  "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Проект успешно сохранен!",
+  "PROJECT_DELETE_SUCCESS_SNACKBAR": "Проект успешно удален!",
 
   "EMPLOYEE_FORM_FIRST_NAME_LABEL": "Имя",
   "EMPLOYEE_FORM_LAST_NAME_LABEL": "Фамилия",
@@ -32,6 +33,7 @@
   "EMPLOYEE_FORM_CV_NAME_LABEL": "Название резюме",
   "EMPLOYEE_INFO_SAVE_SUCCESS": "Сотрудник успешно сохранен!",
   "EMPLOYEE_INFO_CREATE_SUCCESS": "Сотрудник успешно создан!",
+  "EMPLOYEE_DELETE_SUCCESS_SNACKBAR": "Сотрудник успешно удален!",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
   "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
@@ -45,6 +47,7 @@
   "SAVE_BUTTON": "Сохранить",
   "CANCEL_BUTTON": "Отменить",
   "REMOVE_BUTTON": "Удалить",
+  "DELETE_BUTTON": "Удалить",
   "ADD_PROJECT_BUTTON": "Добавить новый проект",
   "ADD_EXISTING_PROJECT_BUTTON": "Cуществующий проект",
   "ADD_CV_BUTTON": "Добавить резюме",
@@ -56,6 +59,12 @@
   "CV_DELETE_CONFIRM": "Подтвердить",
   "CV_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранено!",
   "CV_DELETE_SUCCESS_SNACKBAR": "Резюме успешно удалено!",
+
+  "EMPLOYEE_DELETE_TITLE": "Удаление сотрудника",
+  "EMPLOYEE_DELETE_QUESTION": "Вы уверены, что хотите удалить сотрудника?",
+  "EMPLOYEE_DELETE_NOTIFICATION": "Это действие необратимо",
+  "EMPLOYEE_DELETE_CANCEL": "Отмена",
+  "EMPLOYEE_DELETE_CONFIRM": "Подтвердить",
 
   "EMPLOYEE_TABLE_HEADER_FIRST_NAME": "Имя",
   "EMPLOYEE_TABLE_HEADER_LAST_NAME": "Фамилия",

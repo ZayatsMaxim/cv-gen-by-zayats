@@ -75,4 +75,12 @@ export const employeesListReducer = createReducer(
     EmployeeActions.getAllEmployeesSuccess,
     (state, { employees }): Employee[] => [...employees],
   ),
+  on(EmployeeActions.deleteEmployeeByIdSuccess, (state, { id }): Employee[] => {
+    const newEmployees = [...state];
+    newEmployees.splice(
+      newEmployees.findIndex(employee => employee.id === id),
+      1,
+    );
+    return newEmployees;
+  }),
 );

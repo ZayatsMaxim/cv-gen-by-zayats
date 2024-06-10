@@ -50,4 +50,12 @@ export class EmployeesService {
       }),
     );
   }
+
+  deleteEmployee(id: number) {
+    return this.httpClient.delete(`${employeesUrl}/${id}`).pipe(
+      map(response => {
+        return response as Employee;
+      }),
+    );
+  }
 }

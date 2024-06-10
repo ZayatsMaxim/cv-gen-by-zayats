@@ -1,4 +1,4 @@
-<form class="employee-info" [formGroup]="employeeForm">
+<ng-container class="employee-info" [formGroup]="employeeForm">
   <div class="grid-form">
     <div class="input-field">
       <text-input
@@ -47,13 +47,4 @@
       ></dropdown-list>
     </div>
   </div>
-
-  <div class="buttons">
-    <button mat-flat-button color="primary" (click)="saveEmployee()">
-      {{ 'SAVE_BUTTON' | translate }}
-    </button>
-    <button mat-stroked-button="secondary">
-      {{ 'CANCEL_BUTTON' | translate }}
-    </button>
-  </div>
-</form>
+</ng-container>
