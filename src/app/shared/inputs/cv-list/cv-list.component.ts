@@ -50,7 +50,7 @@ export class CvListComponent implements OnInit, OnChanges {
   deleteCv(option: string) {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
-        cvName: option,
+        objectName: option,
         title: 'CV_DELETE_TITLE',
         question: 'CV_DELETE_QUESTION',
         notification: 'CV_DELETE_NOTIFICATION',

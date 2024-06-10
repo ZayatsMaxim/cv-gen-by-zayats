@@ -44,7 +44,7 @@ export class DialogComponent {
 }
 
 export interface DialogData {
-  cvName?: string;
+  objectName?: string;
   warn?: boolean;
   title: string;
   question: string;

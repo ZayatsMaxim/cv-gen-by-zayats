@@ -42,7 +42,7 @@ export const updateEmployeeSuccess = createAction(
 );
 
 export const deleteEmployeeById = createAction(
-  '[Employee Edit Page] Delete Employee by Id',
+  '[Employee Edit Page] Delete Employee',
   props<{ id: number }>(),
 );
 

@@ -42,4 +42,12 @@ export class ProjectsService {
       }),
     );
   }
+
+  deleteProjectById(id: number) {
+    return this.httpClient.delete(`${projectUrl}/${id}`).pipe(
+      map(response => {
+        return response as Project;
+      }),
+    );
+  }
 }

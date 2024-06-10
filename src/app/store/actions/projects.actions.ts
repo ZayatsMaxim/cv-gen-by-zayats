@@ -26,7 +26,7 @@ export const getProjectById = createAction(
   props<{ id: number }>(),
 );
 
-export const getProjectByIdSuccess = createAction(
+export const getProjectSuccess = createAction(
   '[Project Effects] Get Project Success',
   props<{ project: Project }>(),
 );
@@ -39,4 +39,14 @@ export const updateProjectById = createAction(
 export const updateProjectSuccess = createAction(
   '[Project Effects] Update Project Success',
   props<{ updatedProject: Project }>(),
+);
+
+export const deleteProjectById = createAction(
+  '[Project Edit Page] Delete Project',
+  props<{ id: number }>(),
+);
+
+export const deleteProjectSuccess = createAction(
+  '[Project Edit Page] Delete Project Success',
+  props<{ id: number }>(),
 );

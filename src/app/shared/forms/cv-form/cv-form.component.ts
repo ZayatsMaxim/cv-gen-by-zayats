@@ -92,7 +92,7 @@ export class CvFormComponent implements OnInit, OnChanges {
       cvName: [this.CV.cvName, Validators.required],
       firstName: [this.CV.firstName, Validators.required],
       lastName: [this.CV.lastName, Validators.required],
-      email: [this.CV.email, Validators.required],
+      email: [this.CV.email, [Validators.required, Validators.email]],
       specialization: [this.CV.specialization.name, Validators.required],
       department: [this.CV.department.name, Validators.required],
       employeeId: this.CV.employeeId,

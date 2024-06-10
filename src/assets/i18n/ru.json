@@ -60,11 +60,17 @@
   "CV_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранено!",
   "CV_DELETE_SUCCESS_SNACKBAR": "Резюме успешно удалено!",
 
-  "EMPLOYEE_DELETE_TITLE": "Удаление сотрудника",
+  "EMPLOYEE_DELETE_TITLE": "Удаление",
   "EMPLOYEE_DELETE_QUESTION": "Вы уверены, что хотите удалить сотрудника?",
   "EMPLOYEE_DELETE_NOTIFICATION": "Это действие необратимо",
   "EMPLOYEE_DELETE_CANCEL": "Отмена",
   "EMPLOYEE_DELETE_CONFIRM": "Подтвердить",
+
+  "PROJECT_DELETE_TITLE": "Удаление",
+  "PROJECT_DELETE_QUESTION": "Вы уверены, что хотите удалить проект?",
+  "PROJECT_DELETE_NOTIFICATION": "Это действие необратимо",
+  "PROJECT_DELETE_CANCEL": "Отмена",
+  "PROJECT_DELETE_CONFIRM": "Подтвердить",
 
   "EMPLOYEE_TABLE_HEADER_FIRST_NAME": "Имя",
   "EMPLOYEE_TABLE_HEADER_LAST_NAME": "Фамилия",
