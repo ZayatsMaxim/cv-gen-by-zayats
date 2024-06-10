@@ -5,6 +5,7 @@ import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../shared/notifications/snackbar/snackbar.component';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ProjectEffects {
@@ -12,6 +13,7 @@ export class ProjectEffects {
     private $actions: Actions,
     private projectService: ProjectsService,
     private snackBar: MatSnackBar,
+    private router: Router,
   ) {}
 
   getAllProjects$ = createEffect(() => {
@@ -36,7 +38,7 @@ export class ProjectEffects {
       exhaustMap(({ id }) =>
         this.projectService.getProjectById(id).pipe(
           map(fetchedProject =>
-            ProjectActions.getProjectByIdSuccess({
+            ProjectActions.getProjectSuccess({
               project: fetchedProject,
             }),
           ),
@@ -55,6 +57,7 @@ export class ProjectEffects {
               duration: 3000,
               data: 'PROJECT_CREATE_SUCCESS_SNACKBAR',
             });
+            this.router.navigate([`/home/projects/edit/${createdProject.id}`]);
             return ProjectActions.createProjectSuccess({
               project: createdProject,
             });
@@ -76,6 +79,26 @@ export class ProjectEffects {
             });
             return ProjectActions.updateProjectSuccess({
               updatedProject: updatedProject,
+            });
+          }),
+        ),
+      ),
+    );
+  });
+
+  deleteProject$ = createEffect(() => {
+    return this.$actions.pipe(
+      ofType(ProjectActions.deleteProjectById),
+      exhaustMap(({ id }) =>
+        this.projectService.deleteProjectById(id).pipe(
+          map(deletedProject => {
+            this.snackBar.openFromComponent(SnackbarComponent, {
+              duration: 3000,
+              data: 'PROJECT_DELETE_SUCCESS_SNACKBAR',
+            });
+            this.router.navigate([`/home/projects/list`]);
+            return ProjectActions.deleteProjectSuccess({
+              id: deletedProject.id,
             });
           }),
         ),

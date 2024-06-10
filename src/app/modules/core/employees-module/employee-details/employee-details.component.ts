@@ -101,6 +101,7 @@ export class EmployeeDetailsComponent implements OnChanges {
 
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
+        objectName: `${this.employee.firstName} ${this.employee.lastName}`,
         title: 'EMPLOYEE_DELETE_TITLE',
         question: 'EMPLOYEE_DELETE_QUESTION',
         notification: 'EMPLOYEE_DELETE_NOTIFICATION',

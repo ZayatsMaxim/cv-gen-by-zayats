@@ -13,6 +13,7 @@ import { Project } from '../../../../shared/models/project.model';
 import { ActivatedRoute } from '@angular/router';
 import { selectProject } from '../../../../store/selectors/project.selectors';
 import {
+  deleteProjectById,
   getProjectById,
   updateProjectById,
 } from '../../../../store/actions/projects.actions';
@@ -20,6 +21,8 @@ import { NewProjectFormComponent } from '../../../../shared/forms/new-project-fo
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectDTO } from '../../../../shared/models/dto.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../../../shared/notifications/dialog/dialog.component';
 
 @Component({
   selector: 'app-project-edit',
@@ -45,6 +48,7 @@ export class ProjectEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
   ) {
     this.projectForm = this.formBuilder.group({
       project: this.formBuilder.group({
@@ -114,5 +118,29 @@ export class ProjectEditComponent implements OnInit {
     this.store.dispatch(
       updateProjectById({ id: this.projectId, project: projectDto }),
     );
+  }
+
+  deleteProject() {
+    if (!this.projectForm.valid) {
+      this.projectForm.get(['project']).markAllAsTouched();
+      return;
+    }
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        title: 'PROJECT_DELETE_TITLE',
+        question: 'PROJECT_DELETE_QUESTION',
+        notification: 'PROJECT_DELETE_NOTIFICATION',
+        dismissButton: 'PROJECT_DELETE_CANCEL',
+        confirmButton: 'PROJECT_DELETE_CONFIRM',
+        warn: true,
+        objectName: `${this.projectForm.get(['project']).get(['projectName']).value}`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+      this.store.dispatch(deleteProjectById({ id: this.projectId }));
+    });
   }
 }

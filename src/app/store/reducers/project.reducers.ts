@@ -8,7 +8,7 @@ export const projectsListInitialState: Project[] = null;
 export const projectReducer = createReducer(
   projectInitialState,
   on(
-    ProjectActions.getProjectByIdSuccess,
+    ProjectActions.getProjectSuccess,
     (state, { project }): Project => ({
       ...state,
       ...project,
@@ -43,4 +43,12 @@ export const projectsListReducer = createReducer(
       return newProjects;
     },
   ),
+  on(ProjectActions.deleteProjectSuccess, (state, { id }): Project[] => {
+    const newProjects = [...state];
+    newProjects.splice(
+      newProjects.findIndex(project => project.id === id),
+      1,
+    );
+    return newProjects;
+  }),
 );
