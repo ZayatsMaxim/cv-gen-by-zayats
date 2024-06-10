@@ -37,7 +37,7 @@ export class CvEffects {
           map(CV => {
             this.snackBar.openFromComponent(SnackbarComponent, {
               duration: 3000,
-              data: 'CV_UPDATE_SUCCESS_SNACKBAR',
+              data: 'CV_CREATE_SUCCESS_SNACKBAR',
             });
             return CvActions.saveNewCvSuccess({ cv: CV });
           }),

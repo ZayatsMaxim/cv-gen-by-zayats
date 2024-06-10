@@ -34,6 +34,7 @@ import {
   selectProjectByName,
   selectProjectsNames,
 } from '../../../store/selectors/project.selectors';
+import { NewProjectFormComponent } from '../new-project-form/new-project-form.component';
 
 @Component({
   selector: 'cv-form',
@@ -53,6 +54,7 @@ import {
     MatIconModule,
     MatFormField,
     MatSelectModule,
+    NewProjectFormComponent,
   ],
   templateUrl: './cv-form.component.html',
   styleUrls: [
@@ -147,15 +149,24 @@ export class CvFormComponent implements OnInit, OnChanges {
 
   createProjectsForms(): void {
     const projectsControls = this.CV.cvsProjects.map(project =>
-      this.formBuilder.control({
-        projectName: project.projectName,
-        teamSize: project.teamSize,
-        description: project.description,
-        teamRoles: project.teamRoles.map(role => role.name),
-        techStack: project.techStack.map(tech => tech.name),
-        responsibilities: project.responsibilities.map(resp => resp.name),
-        startDate: project.startDate,
-        endDate: project.endDate,
+      this.formBuilder.group({
+        projectName: [project.projectName, Validators.required],
+        teamSize: [project.teamSize, Validators.required],
+        description: [project.description, Validators.required],
+        teamRoles: [
+          project.teamRoles.map(role => role.name),
+          Validators.required,
+        ],
+        techStack: [
+          project.techStack.map(tech => tech.name),
+          Validators.required,
+        ],
+        responsibilities: [
+          project.responsibilities.map(resp => resp.name),
+          Validators.required,
+        ],
+        startDate: [project.startDate, Validators.required],
+        endDate: [project.endDate, Validators.required],
       }),
     );
 
@@ -253,15 +264,15 @@ export class CvFormComponent implements OnInit, OnChanges {
     this.projectsNames.push(newProjectName);
 
     this.projectsControlsArray.push(
-      this.formBuilder.control({
-        projectName: newProjectName,
-        teamSize: 0,
-        description: '',
-        teamRoles: [''],
-        techStack: [''],
-        responsibilities: [''],
-        startDate: '',
-        endDate: '',
+      this.formBuilder.group({
+        projectName: [newProjectName, Validators.required],
+        teamSize: [0, Validators.required],
+        description: ['', Validators.required],
+        teamRoles: [[''], Validators.required],
+        techStack: [[''], Validators.required],
+        responsibilities: [[''], Validators.required],
+        startDate: ['', Validators.required],
+        endDate: ['', Validators.required],
       }),
     );
   }
@@ -278,17 +289,24 @@ export class CvFormComponent implements OnInit, OnChanges {
     selectedProject$.subscribe(selectedProject => {
       this.projectsNames.push(selectedProject.projectName);
       this.projectsControlsArray.push(
-        this.formBuilder.control({
-          projectName: selectedProject.projectName,
-          teamSize: selectedProject.teamSize,
-          description: selectedProject.description,
-          teamRoles: selectedProject.teamRoles.map(role => role.name),
-          techStack: selectedProject.techStack.map(tech => tech.name),
-          responsibilities: selectedProject.responsibilities.map(
-            resp => resp.name,
-          ),
-          startDate: selectedProject.startDate,
-          endDate: selectedProject.endDate,
+        this.formBuilder.group({
+          projectName: [selectedProject.projectName, Validators.required],
+          teamSize: [selectedProject.teamSize, Validators.required],
+          description: [selectedProject.description, Validators.required],
+          teamRoles: [
+            selectedProject.teamRoles.map(role => role.name),
+            Validators.required,
+          ],
+          techStack: [
+            selectedProject.techStack.map(tech => tech.name),
+            Validators.required,
+          ],
+          responsibilities: [
+            selectedProject.responsibilities.map(resp => resp.name),
+            Validators.required,
+          ],
+          startDate: [selectedProject.startDate, Validators.required],
+          endDate: [selectedProject.endDate, Validators.required],
         }),
       );
     });
