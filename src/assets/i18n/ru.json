@@ -19,7 +19,8 @@
   "PROJECT_FORM_DESCRIPTION_LABEL": "Описание",
   "PROJECT_FORM_RESPONSIBILITIES_LABEL": "Ответственности",
   "PROJECT_CREATE_SUCCESS_SNACKBAR": "Проект успешно создан!",
-  "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Резюме успешно сохранен!",
+  "PROJECT_UPDATE_SUCCESS_SNACKBAR": "Проект успешно сохранен!",
+  "PROJECT_DELETE_SUCCESS_SNACKBAR": "Проект успешно удален!",
 
   "EMPLOYEE_FORM_FIRST_NAME_LABEL": "Имя",
   "EMPLOYEE_FORM_LAST_NAME_LABEL": "Фамилия",
@@ -32,6 +33,7 @@
   "EMPLOYEE_FORM_CV_NAME_LABEL": "Название резюме",
   "EMPLOYEE_INFO_SAVE_SUCCESS": "Сотрудник успешно сохранен!",
   "EMPLOYEE_INFO_CREATE_SUCCESS": "Сотрудник успешно создан!",
+  "EMPLOYEE_DELETE_SUCCESS_SNACKBAR": "Сотрудник успешно удален!",
 
   "INVALID_SPECIFY_THE_FIELD": "Пожалуйста, введите значение",
   "INVALID_SPECIFY_THE_PATTERN": "Пожалуйста, введите правильное значение",
