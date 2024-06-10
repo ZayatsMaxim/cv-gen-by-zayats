@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +26,7 @@ import { DialogComponent } from '../../notifications/dialog/dialog.component';
   templateUrl: './cv-list.component.html',
   styleUrl: './cv-list.component.scss',
 })
-export class CvListComponent implements OnInit {
+export class CvListComponent implements OnInit, OnChanges {
   @Input() options: string[];
   cv: string;
   @Output() selectedCv = new EventEmitter<string>();
@@ -31,9 +38,9 @@ export class CvListComponent implements OnInit {
     this.selectCv(this.options[0]);
   }
 
-  // ngOnChanges(): void {
-  //   this.selectCv(this.options[0]);
-  // }
+  ngOnChanges(): void {
+    this.selectCv(this.options[0]);
+  }
 
   selectCv(option: string) {
     this.cv = option;
