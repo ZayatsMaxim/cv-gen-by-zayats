@@ -6,7 +6,6 @@ import {
   OnChanges,
   OnInit,
 } from '@angular/core';
-import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import {
   FormArray,
   FormBuilder,
@@ -15,7 +14,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { CV } from '../../models/cv.model';
-import { ProjectFormComponent } from '../project-form/project-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedService } from '../../services/shared.service';
 import { forkJoin, map, Observable } from 'rxjs';
@@ -34,7 +32,7 @@ import {
   selectProjectByName,
   selectProjectsNames,
 } from '../../../store/selectors/project.selectors';
-import { NewProjectFormComponent } from '../new-project-form/new-project-form.component';
+import { ProjectFormComponent } from '../project-form/project-form.component';
 
 @Component({
   selector: 'cv-form',
@@ -44,8 +42,6 @@ import { NewProjectFormComponent } from '../new-project-form/new-project-form.co
     NgFor,
     ReactiveFormsModule,
     MatExpansionModule,
-    ProjectFormComponent,
-    EmployeeFormComponent,
     TextInputComponent,
     DropdownListComponent,
     CvEmployeeLanguageFormComponent,
@@ -54,7 +50,7 @@ import { NewProjectFormComponent } from '../new-project-form/new-project-form.co
     MatIconModule,
     MatFormField,
     MatSelectModule,
-    NewProjectFormComponent,
+    ProjectFormComponent,
   ],
   templateUrl: './cv-form.component.html',
   styleUrls: [

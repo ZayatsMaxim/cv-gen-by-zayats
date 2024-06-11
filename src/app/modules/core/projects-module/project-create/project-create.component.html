@@ -1,5 +1,5 @@
 <form [formGroup]="projectForm" class="project-info">
-  <app-new-project-form formGroupName="project"></app-new-project-form>
+  <project-form formGroupName="project"></project-form>
   <div class="buttons">
     <button mat-flat-button color="primary" (click)="createNewProject()">
       {{ 'SAVE_BUTTON' | translate }}

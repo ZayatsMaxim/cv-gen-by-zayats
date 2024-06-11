@@ -83,4 +83,17 @@ export const employeesListReducer = createReducer(
     );
     return newEmployees;
   }),
+  on(
+    EmployeeActions.updateEmployeeSuccess,
+    (state, { employee }): Employee[] => {
+      if (!state) return state;
+      const newEmployees = [...state];
+      newEmployees.splice(
+        newEmployees.findIndex(empl => empl.id === employee.id),
+        1,
+        employee,
+      );
+      return newEmployees;
+    },
+  ),
 );
