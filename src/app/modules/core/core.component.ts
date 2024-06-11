@@ -5,8 +5,7 @@ import { TopToolbarComponent } from './core-page-components/top-toolbar/top-tool
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavContentComponent } from './core-page-components/sidenav-content/sidenav-content.component';
 import { PageHeaderComponent } from './core-page-components/page-header/page-header.component';
-import { Store } from '@ngrx/store';
-import { getAllProjects } from '../../store/actions/projects.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-core',
@@ -26,7 +25,9 @@ import { getAllProjects } from '../../store/actions/projects.actions';
 export class CoreComponent {
   sidenavOpened: boolean = true;
 
-  constructor(private store: Store) {
-    this.store.dispatch(getAllProjects());
+  constructor(private translate: TranslateService) {
+    this.translate.use(
+      localStorage.getItem('lang') || this.translate.defaultLang,
+    );
   }
 }

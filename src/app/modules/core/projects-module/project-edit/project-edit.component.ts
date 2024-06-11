@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 import {
   FormBuilder,
   FormGroup,
@@ -17,21 +16,20 @@ import {
   getProjectById,
   updateProjectById,
 } from '../../../../store/actions/projects.actions';
-import { NewProjectFormComponent } from '../../../../shared/forms/new-project-form/new-project-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectDTO } from '../../../../shared/models/dto.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../shared/notifications/dialog/dialog.component';
+import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 
 @Component({
   selector: 'app-project-edit',
   standalone: true,
   imports: [
     CommonModule,
-    ProjectFormComponent,
     ReactiveFormsModule,
-    NewProjectFormComponent,
+    ProjectFormComponent,
     MatButtonModule,
     TranslateModule,
   ],

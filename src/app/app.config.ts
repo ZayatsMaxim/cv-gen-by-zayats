@@ -24,7 +24,6 @@ import {
   projectReducer,
   projectsListReducer,
 } from './store/reducers/project.reducers';
-import { reduce } from 'rxjs';
 import { CvEffects } from './store/effects/cv.effects';
 
 export function HttpLoaderFactory(http: HttpClient) {

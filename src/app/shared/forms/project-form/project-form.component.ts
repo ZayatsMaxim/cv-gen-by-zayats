@@ -1,30 +1,21 @@
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  forwardRef,
-  OnInit,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormBuilder,
+  ControlContainer,
   FormGroup,
-  NG_VALUE_ACCESSOR,
-  Validators,
+  ReactiveFormsModule,
 } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { SharedService } from '../../services/shared.service';
-import { TextInputComponent } from '../../inputs/text-input/text-input.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
+import { DatePickerComponent } from '../../inputs/date-picker/date-picker.component';
+import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
 import { NumberInputComponent } from '../../inputs/number-input/number-input.component';
 import { TextAreaInputComponent } from '../../inputs/text-area-input/text-area-input.component';
-import { DropdownListComponent } from '../../inputs/dropdown-list/dropdown-list.component';
-import { DatePickerComponent } from '../../inputs/date-picker/date-picker.component';
+import { TextInputComponent } from '../../inputs/text-input/text-input.component';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'project-form',
@@ -49,41 +40,21 @@ import { DatePickerComponent } from '../../inputs/date-picker/date-picker.compon
     '../../styles/inputs.scss',
     '../../styles/form.scss',
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProjectFormComponent),
-      multi: true,
-    },
-  ],
 })
-export class ProjectFormComponent implements ControlValueAccessor, OnInit {
-  projectForm!: FormGroup;
-  onTouched: () => void = () => {};
-  onChange = (value: any) => {};
-
+export class ProjectFormComponent implements OnInit {
   roles?: string[];
   techs?: string[];
   responsibilities?: string[];
+  formGroup: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    public controlContainer: ControlContainer,
     private sharedService: SharedService,
     private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
-    this.projectForm = this.formBuilder.group({
-      projectName: ['', Validators.required],
-      description: ['', Validators.required],
-      startDate: [new Date(), Validators.required],
-      endDate: [new Date(), Validators.required],
-      teamSize: [0, Validators.required],
-      techStack: [[''], Validators.required],
-      responsibilities: [[''], Validators.required],
-      teamRoles: [[''], Validators.required],
-    });
+    this.formGroup = this.controlContainer.control as FormGroup;
 
     this.sharedService.getTeamRoles().subscribe(options => {
       this.roles = options.map(option => option.name);
@@ -99,18 +70,5 @@ export class ProjectFormComponent implements ControlValueAccessor, OnInit {
       this.techs = options.map(option => option.name);
       this.cdr.detectChanges();
     });
-  }
-
-  writeValue(obj: { [key: string]: unknown }): void {
-    this.projectForm.setValue(obj);
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-    this.projectForm.valueChanges.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
   }
 }

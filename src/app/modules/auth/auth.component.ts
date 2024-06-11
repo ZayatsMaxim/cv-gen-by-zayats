@@ -86,6 +86,8 @@ export class AuthComponent {
       currentLangIndex >= 0 && currentLangIndex < langs.length - 1
         ? currentLangIndex + 1
         : 0;
-    this.translateService.use(langs[nextLangIndex]);
+    const langToUse = langs[nextLangIndex];
+    localStorage.setItem('lang', langToUse);
+    this.translateService.use(localStorage.getItem('lang'));
   }
 }

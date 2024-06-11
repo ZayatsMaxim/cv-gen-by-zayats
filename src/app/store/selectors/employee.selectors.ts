@@ -10,6 +10,11 @@ export const selectEmployee = createSelector(
   (state: Employee) => state,
 );
 
+export const selectEmployeeById = (id: number) =>
+  createSelector(selectEmployeesListState, (state: Employee[]) => {
+    return state.find(employee => employee.id === id);
+  });
+
 export const selectEmployeeId = createSelector(
   selectEmployeeState,
   (state: Employee) => state.id,

@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
-import { NewProjectFormComponent } from '../../../../shared/forms/new-project-form/new-project-form.component';
+import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 import { ProjectDTO } from '../../../../shared/models/dto.model';
 import { Store } from '@ngrx/store';
 import { createProject } from '../../../../store/actions/projects.actions';
@@ -21,7 +21,7 @@ import { createProject } from '../../../../store/actions/projects.actions';
     ReactiveFormsModule,
     MatButtonModule,
     TranslateModule,
-    NewProjectFormComponent,
+    ProjectFormComponent,
   ],
   templateUrl: './project-create.component.html',
   styleUrl: './project-create.component.scss',

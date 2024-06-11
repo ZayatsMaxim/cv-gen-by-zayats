@@ -50,7 +50,6 @@ export class EmployeesListComponent implements OnInit {
     private router: Router,
   ) {
     this.employeeList$ = this.store.select(selectEmployeesList);
-    this.store.dispatch(getAllEmployees());
   }
 
   ngOnInit(): void {

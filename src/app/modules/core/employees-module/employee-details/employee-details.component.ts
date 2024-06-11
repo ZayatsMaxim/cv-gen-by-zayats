@@ -10,7 +10,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DropdownListComponent } from '../../../../shared/inputs/dropdown-list/dropdown-list.component';
 import { TextInputComponent } from '../../../../shared/inputs/text-input/text-input.component';
@@ -23,6 +22,7 @@ import {
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../shared/notifications/dialog/dialog.component';
+import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
 
 @Component({
   selector: 'app-employee-details',
