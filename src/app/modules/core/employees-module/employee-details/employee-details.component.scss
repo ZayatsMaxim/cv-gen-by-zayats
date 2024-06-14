@@ -10,13 +10,24 @@
 .employee-form {
   margin-top: 50px;
 
-  .buttons {
+  form {
+    height: 60vh;
     display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: end;
+    flex-flow: column;
+    justify-content: space-between;
 
-    width: 100%;
-    gap: 15px;
+    employee-form {
+      width: 60%;
+    }
+
+    .buttons {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: end;
+
+      width: 100%;
+      gap: 15px;
+    }
   }
 }

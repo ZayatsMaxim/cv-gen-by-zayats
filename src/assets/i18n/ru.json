@@ -98,5 +98,14 @@
   "PAGE_HEADER_PROJECTS_LIST": "Список проектов",
   "PAGE_HEADER_PROJECT_INFO": "Информация о проекте",
   "PAGE_HEADER_NEW_PROJECT": "Создать новый проект",
-  "PAGE_HEADER_HOME_PAGE": "Домашняя страница"
+  "PAGE_HEADER_HOME_PAGE": "Домашняя страница",
+
+  "BREADCRUMB_HOME": "Домашняя",
+  "BREADCRUMB_EMPLOYEES": "Сотрудники",
+  "BREADCRUMB_LIST": "Список",
+  "BREADCRUMB_PROJECTS": "Проекты",
+  "BREADCRUMB_EDIT_PROJECT": "Редактировать проект",
+  "BREADCRUMB_EDIT_EMPLOYEE": "Редактировать сотрудника",
+  "BREADCRUMB_CREATE_NEW_EMPLOYEE": "Создать нового сотрудника",
+  "BREADCRUMB_CREATE_NEW_PROJECT": "Создать новый проект"
 }

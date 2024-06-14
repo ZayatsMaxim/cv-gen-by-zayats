@@ -5,10 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {
-  selectEmployee,
-  selectEmployeeById,
-} from '../../../../store/selectors/employee.selectors';
+import { selectEmployee } from '../../../../store/selectors/employee.selectors';
 import { getEmployeeById } from '../../../../store/actions/employee.actions';
 
 @Component({

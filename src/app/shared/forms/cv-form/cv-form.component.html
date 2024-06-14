@@ -118,7 +118,6 @@
             {{ this.projectsNames[i] }}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <!-- <project-form formControlName="{{ i }}"></project-form> -->
         <project-form formGroupName="{{ i }}"></project-form>
         <mat-action-row>
           <button mat-icon-button (click)="deleteProject(i)">

@@ -1,10 +1,10 @@
 <nav>
   <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
     <ng-container *ngIf="!last">
-      <a [routerLink]="breadcrumb.url" class="link">{{ breadcrumb.label }}</a> /
+      <a [routerLink]="breadcrumb.url" class="link">{{ breadcrumb.label | translate }}</a> /
     </ng-container>
     <ng-container *ngIf="last">
-      {{ breadcrumb.label }}
+      {{ breadcrumb.label | translate }}
     </ng-container>
   </ng-container>
 </nav>

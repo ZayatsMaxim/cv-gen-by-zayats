@@ -3,13 +3,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  forwardRef,
   OnInit,
 } from '@angular/core';
 import {
   ControlContainer,
   FormGroup,
-  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { SharedService } from '../../services/shared.service';
@@ -35,17 +33,10 @@ import { MatButtonModule } from '@angular/material/button';
     '../../styles/inputs.scss',
     '../../styles/form.scss',
   ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EmployeeFormComponent),
-      multi: true,
-    },
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeFormComponent implements OnInit {
-  employeeForm: FormGroup;
+  formGroup: FormGroup;
 
   specializations?: string[];
   departments?: string[];
@@ -57,7 +48,7 @@ export class EmployeeFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.employeeForm = this.controlContainer.control as FormGroup;
+    this.formGroup = this.controlContainer.control as FormGroup;
 
     this.sharedService.getDepartments().subscribe(options => {
       this.departments = options.map(option => option.name);

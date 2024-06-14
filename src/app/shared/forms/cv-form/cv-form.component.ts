@@ -233,13 +233,6 @@ export class CvFormComponent implements OnInit, OnChanges {
     }
   }
 
-  // name: {
-  //   name: string;
-  // };
-  // level: {
-  //   name: string;
-  // };
-
   addLanguage() {
     this.languagesControlsArray.push(
       this.formBuilder.control({

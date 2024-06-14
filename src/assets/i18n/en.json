@@ -97,5 +97,14 @@
   "PAGE_HEADER_PROJECTS_LIST": "Projects list",
   "PAGE_HEADER_PROJECT_INFO": "Project info",
   "PAGE_HEADER_NEW_PROJECT": "Create new project",
-  "PAGE_HEADER_HOME_PAGE": "Home page"
+  "PAGE_HEADER_HOME_PAGE": "Home page",
+
+  "BREADCRUMB_HOME": "Home",
+  "BREADCRUMB_EMPLOYEES": "Employees",
+  "BREADCRUMB_LIST": "List",
+  "BREADCRUMB_PROJECTS": "Projects",
+  "BREADCRUMB_EDIT_PROJECT": "Edit project",
+  "BREADCRUMB_EDIT_EMPLOYEE": "Edit employee",
+  "BREADCRUMB_CREATE_NEW_EMPLOYEE": "Create new employee",
+  "BREADCRUMB_CREATE_NEW_PROJECT": "Create new project"
 }

@@ -10,7 +10,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Employee } from '../../../../shared/models/employee.model';
 import { selectEmployeesList } from '../../../../store/selectors/employee.selectors';
-import { getAllEmployees } from '../../../../store/actions/employee.actions';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router } from '@angular/router';
