@@ -11,3 +11,4 @@ export const specializationsUrl = `${baseUrl}/api/specializations`;
 export const cvsUrl = `${baseUrl}/api/cvs`;
 export const languagesUrl = `${baseUrl}/api/languages`;
 export const levelsUrl = `${baseUrl}/api/levels`;
+export const refreshTokenUrl = `${baseUrl}/api/auth/refresh`;

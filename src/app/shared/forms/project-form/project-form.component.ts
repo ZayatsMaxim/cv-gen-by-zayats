@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import {
   ControlContainer,
   FormGroup,
@@ -40,6 +45,7 @@ import { SharedService } from '../../services/shared.service';
     '../../styles/inputs.scss',
     '../../styles/form.scss',
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectFormComponent implements OnInit {
   roles?: string[];

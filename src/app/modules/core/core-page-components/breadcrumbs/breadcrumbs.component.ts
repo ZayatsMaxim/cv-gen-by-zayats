@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, DoCheck, OnChanges } from '@angular/core';
 import { BreadcrumbService } from './breadcrumbs.service';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumbs',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './breadcrumbs.component.html',
   styleUrl: './breadcrumbs.component.scss',
 })

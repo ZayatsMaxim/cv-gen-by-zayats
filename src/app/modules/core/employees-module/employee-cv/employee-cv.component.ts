@@ -9,7 +9,6 @@ import { CvListComponent } from '../../../../shared/inputs/cv-list/cv-list.compo
 import { CvFormComponent } from '../../../../shared/forms/cv-form/cv-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CV } from '../../../../shared/models/cv.model';
-import { CvService } from '../../../../shared/services/cv.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

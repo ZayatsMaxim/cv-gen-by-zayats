@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { loginUrl, logoutUrl } from '../consts/api-routes.consts';
+import {
+  loginUrl,
+  logoutUrl,
+  refreshTokenUrl,
+} from '../consts/api-routes.consts';
 import { Tokens } from '../models/responses';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +29,9 @@ export class AuthService {
 
   logout() {
     return this.httpClient.get(`${logoutUrl}`);
+  }
+
+  refreshToken() {
+    return this.httpClient.get(`${refreshTokenUrl}`);
   }
 }

@@ -12,11 +12,6 @@ import { ProjectsCorePageComponent } from './modules/core/projects-module/projec
 import { ProjectCreateComponent } from './modules/core/projects-module/project-create/project-create.component';
 
 export const routes: Routes = [
-  // {
-  //   path: '**',
-  //   redirectTo: '/auth',
-  //   pathMatch: 'full',
-  // },
   {
     path: '',
     redirectTo: '/auth',
@@ -47,31 +42,31 @@ export const routes: Routes = [
     component: CoreComponent,
     title: 'Home',
     canActivateChild: [authGuard],
-    data: { breadcrumb: 'Home' },
+    data: { breadcrumb: 'BREADCRUMB_HOME' },
     children: [
       {
         path: 'employees',
         component: EmployeeCorePageComponent,
         title: 'Employees',
-        data: { breadcrumb: 'Employees' },
+        data: { breadcrumb: 'BREADCRUMB_EMPLOYEES' },
         children: [
           {
             path: 'list',
             component: EmployeesListComponent,
             title: 'Employees List',
-            data: { breadcrumb: 'List' },
+            data: { breadcrumb: 'BREADCRUMB_LIST' },
           },
           {
             path: 'edit/:id',
             component: EmployeeEditComponent,
             title: 'Edit employee',
-            data: { breadcrumb: 'Edit employee' },
+            data: { breadcrumb: 'BREADCRUMB_EDIT_EMPLOYEE' },
           },
           {
             path: 'create',
             component: EmployeeCreateComponent,
             title: 'Create Employee',
-            data: { breadcrumb: 'Create new employee' },
+            data: { breadcrumb: 'BREADCRUMB_CREATE_NEW_EMPLOYEE' },
           },
         ],
       },
@@ -79,25 +74,25 @@ export const routes: Routes = [
         path: 'projects',
         component: ProjectsCorePageComponent,
         title: 'Projects',
-        data: { breadcrumb: 'Projects' },
+        data: { breadcrumb: 'BREADCRUMB_PROJECTS' },
         children: [
           {
             path: 'list',
             component: ProjectListComponent,
             title: 'Projects List',
-            data: { breadcrumb: 'List' },
+            data: { breadcrumb: 'BREADCRUMB_LIST' },
           },
           {
             path: 'edit/:id',
             component: ProjectEditComponent,
             title: 'Project Info',
-            data: { breadcrumb: 'Edit project' },
+            data: { breadcrumb: 'BREADCRUMB_EDIT_PROJECT' },
           },
           {
             path: 'create',
             component: ProjectCreateComponent,
             title: 'Create Project',
-            data: { breadcrumb: 'Create new project' },
+            data: { breadcrumb: 'BREADCRUMB_CREATE_NEW_PROJECT' },
           },
         ],
       },

@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 import { EmployeeCvComponent } from '../employee-cv/employee-cv.component';
 import { Employee } from '../../../../shared/models/employee.model';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -40,6 +45,7 @@ import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/em
   ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeDetailsComponent implements OnChanges {
   @Input() employee: Employee;
@@ -64,19 +70,21 @@ export class EmployeeDetailsComponent implements OnChanges {
   ngOnChanges(): void {
     if (!this.employee) return;
 
-    this.employeeForm.patchValue({
-      employee: {
-        firstName: this.employee.firstName,
-        lastName: this.employee.lastName,
-        email: this.employee.email,
-        specialization: this.employee.specialization.name,
-        department: this.employee.department.name,
-      },
+    this.employeeForm.get(['employee']).patchValue({
+      firstName: this.employee.firstName,
+      lastName: this.employee.lastName,
+      email: this.employee.email,
+      specialization: this.employee.specialization.name,
+      department: this.employee.department.name,
     });
   }
 
   saveEmployee() {
-    if (!this.employeeForm.valid) return;
+    if (!this.employeeForm.valid) {
+      this.employeeForm.get(['employee']).markAllAsTouched();
+      return;
+    }
+
     const employeeDto: EmployeeDTO = {
       firstName: this.employeeForm.get(['employee']).get(['firstName']).value,
       lastName: this.employeeForm.get(['employee']).get(['lastName']).value,
