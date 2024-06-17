@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { getAllEmployees } from '../../../../store/actions/employee.actions';
+import { EmployeesFacade } from '../../../../store/facades/employees.facade';
 
 @Component({
   selector: 'app-employee-core-page',
@@ -12,9 +11,9 @@ import { getAllEmployees } from '../../../../store/actions/employee.actions';
   styleUrl: './employee-core-page.component.scss',
 })
 export class EmployeeCorePageComponent {
-  constructor(private store: Store) {}
+  constructor(private employeesFacade: EmployeesFacade) {}
 
   ngOnInit(): void {
-    this.store.dispatch(getAllEmployees());
+    this.employeesFacade.getAllEmployees();
   }
 }

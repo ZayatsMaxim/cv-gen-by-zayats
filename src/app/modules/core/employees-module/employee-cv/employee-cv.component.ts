@@ -12,10 +12,7 @@ import { CV } from '../../../../shared/models/cv.model';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Store } from '@ngrx/store';
-import { createNewCv } from '../../../../store/actions/cv.actions';
-import { deleteCvById } from '../../../../store/actions/cv.actions';
-import { removeCvFromStoreByName } from '../../../../store/actions/cv.actions';
+import { CvsFacade } from '../../../../store/facades/cvs.facade';
 @Component({
   selector: 'app-employee-cv',
   standalone: true,
@@ -39,7 +36,7 @@ export class EmployeeCvComponent implements OnChanges {
   options: string[];
   selectedCv: CV;
 
-  constructor(private store: Store) {}
+  constructor(private cvsFacade: CvsFacade) {}
 
   selectCv(option: string) {
     this.selectedCv = this.employeeCvs.find(CV => CV.cvName === option);
@@ -48,8 +45,8 @@ export class EmployeeCvComponent implements OnChanges {
   deleteCv(option: string) {
     const id = this.employeeCvs.find(CV => CV.cvName === option).id;
     if (id === -1) {
-      this.store.dispatch(removeCvFromStoreByName({ cvName: option }));
-    } else this.store.dispatch(deleteCvById({ id: id }));
+      this.cvsFacade.removeCvFromStoreByName(option);
+    } else this.cvsFacade.deleteCvById(id);
   }
 
   addCv() {
@@ -68,7 +65,7 @@ export class EmployeeCvComponent implements OnChanges {
       employeeId: this.employeeId,
       cvsProjects: [],
     };
-    this.store.dispatch(createNewCv({ cv: newCV }));
+    this.cvsFacade.createNewCv(newCV);
     this.options.push(newCV.cvName);
   }
 

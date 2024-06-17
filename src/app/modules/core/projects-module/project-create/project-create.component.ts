@@ -10,8 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
 import { ProjectDTO } from '../../../../shared/models/dto.model';
-import { Store } from '@ngrx/store';
-import { createProject } from '../../../../store/actions/projects.actions';
+import { ProjectsFacade } from '../../../../store/facades/projects.facade';
 
 @Component({
   selector: 'app-project-create',
@@ -32,7 +31,7 @@ export class ProjectCreateComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
+    private projectsFacade: ProjectsFacade,
   ) {
     this.projectForm = this.formBuilder.group({
       project: this.formBuilder.group({
@@ -67,6 +66,6 @@ export class ProjectCreateComponent {
       teamRoles: this.projectForm.get(['project']).get(['teamRoles']).value,
     };
 
-    this.store.dispatch(createProject({ project: projectDto }));
+    this.projectsFacade.createProject(projectDto);
   }
 }
