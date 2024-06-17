@@ -19,15 +19,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { DropdownListComponent } from '../../../../shared/inputs/dropdown-list/dropdown-list.component';
 import { TextInputComponent } from '../../../../shared/inputs/text-input/text-input.component';
 import { EmployeeDTO } from '../../../../shared/models/dto.model';
-import {
-  createEmployee,
-  deleteEmployeeById,
-  updateEmployeeById,
-} from '../../../../store/actions/employee.actions';
-import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../shared/notifications/dialog/dialog.component';
 import { EmployeeFormComponent } from '../../../../shared/forms/employee-form/employee-form.component';
+import { EmployeesFacade } from '../../../../store/facades/employees.facade';
 
 @Component({
   selector: 'app-employee-details',
@@ -53,8 +48,8 @@ export class EmployeeDetailsComponent implements OnChanges {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
     public dialog: MatDialog,
+    private employeesFacade: EmployeesFacade,
   ) {
     this.employeeForm = this.formBuilder.group({
       employee: this.formBuilder.group({
@@ -96,11 +91,9 @@ export class EmployeeDetailsComponent implements OnChanges {
     };
 
     if (this.employee.id === -1) {
-      this.store.dispatch(createEmployee({ employee: employeeDto }));
+      this.employeesFacade.createEmployee(employeeDto);
     } else {
-      this.store.dispatch(
-        updateEmployeeById({ id: this.employee.id, employee: employeeDto }),
-      );
+      this.employeesFacade.updateEmployeeById(this.employee.id, employeeDto);
     }
   }
 
@@ -121,7 +114,7 @@ export class EmployeeDetailsComponent implements OnChanges {
 
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
-      this.store.dispatch(deleteEmployeeById({ id: this.employee.id }));
+      this.employeesFacade.deleteEmployeeById(this.employee.id);
     });
   }
 }

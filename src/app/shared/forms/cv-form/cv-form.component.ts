@@ -24,15 +24,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CvDTO } from '../../models/dto.model';
-import { select, Store } from '@ngrx/store';
-import { saveNewCv, updateCvById } from '../../../store/actions/cv.actions';
 import { MatFormField } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import {
-  selectProjectByName,
-  selectProjectsNames,
-} from '../../../store/selectors/project.selectors';
 import { ProjectFormComponent } from '../project-form/project-form.component';
+import { ProjectsFacade } from '../../../store/facades/projects.facade';
+import { CvsFacade } from '../../../store/facades/cvs.facade';
 
 @Component({
   selector: 'cv-form',
@@ -74,7 +70,8 @@ export class CvFormComponent implements OnInit, OnChanges {
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
     private cdr: ChangeDetectorRef,
-    private store: Store,
+    private projectsFacade: ProjectsFacade,
+    private cvsFacade: CvsFacade,
   ) {}
 
   get projectsControlsArray() {
@@ -117,7 +114,7 @@ export class CvFormComponent implements OnInit, OnChanges {
       this.cdr.detectChanges();
     });
 
-    this.existingProjectsNames$ = this.store.select(selectProjectsNames);
+    this.existingProjectsNames$ = this.projectsFacade.selectProjectNames();
 
     this.createProjectsForms();
     this.setLanguages();
@@ -227,9 +224,9 @@ export class CvFormComponent implements OnInit, OnChanges {
     };
 
     if (this.CV.id === -1) {
-      this.store.dispatch(saveNewCv({ cv: cvDto }));
+      this.cvsFacade.saveNewCv(cvDto);
     } else {
-      this.store.dispatch(updateCvById({ id: this.CV.id, cv: cvDto }));
+      this.cvsFacade.updateCvById(this.CV.id, cvDto);
     }
   }
 
@@ -272,8 +269,8 @@ export class CvFormComponent implements OnInit, OnChanges {
   }
 
   onAddExistingProjectOptionSelected($event: MatSelectChange) {
-    const selectedProject$ = this.store.select(
-      selectProjectByName($event.value),
+    const selectedProject$ = this.projectsFacade.selectProjectByName(
+      $event.value,
     );
     selectedProject$.subscribe(selectedProject => {
       this.projectsNames.push(selectedProject.projectName);

@@ -10,18 +10,13 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Project } from '../../../../shared/models/project.model';
 import { ActivatedRoute } from '@angular/router';
-import { selectProject } from '../../../../store/selectors/project.selectors';
-import {
-  deleteProjectById,
-  getProjectById,
-  updateProjectById,
-} from '../../../../store/actions/projects.actions';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectDTO } from '../../../../shared/models/dto.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../shared/notifications/dialog/dialog.component';
 import { ProjectFormComponent } from '../../../../shared/forms/project-form/project-form.component';
+import { ProjectsFacade } from '../../../../store/facades/projects.facade';
 
 @Component({
   selector: 'app-project-edit',
@@ -47,6 +42,7 @@ export class ProjectEditComponent implements OnInit {
     private store: Store,
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    private projectsFacade: ProjectsFacade,
   ) {
     this.projectForm = this.formBuilder.group({
       project: this.formBuilder.group({
@@ -65,8 +61,8 @@ export class ProjectEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.projectId = params['id'];
-      this.store.dispatch(getProjectById({ id: this.projectId }));
-      this.project$ = this.store.select(selectProject);
+      this.projectsFacade.getProjectById(this.projectId);
+      this.project$ = this.projectsFacade.selectProject();
       this.fetchProject();
     });
   }
@@ -113,9 +109,7 @@ export class ProjectEditComponent implements OnInit {
       teamRoles: this.projectForm.get(['project']).get(['teamRoles']).value,
     };
 
-    this.store.dispatch(
-      updateProjectById({ id: this.projectId, project: projectDto }),
-    );
+    this.projectsFacade.updateProjectById(this.projectId, projectDto);
   }
 
   deleteProject() {
@@ -138,7 +132,7 @@ export class ProjectEditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
-      this.store.dispatch(deleteProjectById({ id: this.projectId }));
+      this.projectsFacade.deletProjectById(this.projectId);
     });
   }
 }

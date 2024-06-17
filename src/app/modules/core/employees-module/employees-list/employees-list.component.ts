@@ -6,13 +6,12 @@ import {
   OnInit,
 } from '@angular/core';
 import { BaseListComponent } from '../../../../shared/base-list/base-list.component';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Employee } from '../../../../shared/models/employee.model';
-import { selectEmployeesList } from '../../../../store/selectors/employee.selectors';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { EmployeesFacade } from '../../../../store/facades/employees.facade';
 
 export interface EmployeeTableData {
   firstName: string;
@@ -44,11 +43,11 @@ export class EmployeesListComponent implements OnInit {
   routerLinks: string[];
 
   constructor(
-    private store: Store,
     private cdr: ChangeDetectorRef,
     private router: Router,
+    private employeesFacade: EmployeesFacade,
   ) {
-    this.employeeList$ = this.store.select(selectEmployeesList);
+    this.employeeList$ = this.employeesFacade.selectEmployeesList$();
   }
 
   ngOnInit(): void {

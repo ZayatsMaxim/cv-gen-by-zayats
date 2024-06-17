@@ -4,9 +4,7 @@ import { EmployeeDetailsComponent } from '../employee-details/employee-details.c
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee.model';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { selectEmployee } from '../../../../store/selectors/employee.selectors';
-import { getEmployeeById } from '../../../../store/actions/employee.actions';
+import { EmployeesFacade } from '../../../../store/facades/employees.facade';
 
 @Component({
   selector: 'app-employee-edit',
@@ -20,19 +18,14 @@ export class EmployeeEditComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store,
+    private employeesFacade: EmployeesFacade,
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.employee$ = this.store.select(selectEmployee);
-
+      this.employee$ = this.employeesFacade.selectEmployee$();
       const id = params['id'] as number;
-      this.fetchEmployee(id);
+      this.employeesFacade.getEmployeeById(id);
     });
-  }
-
-  fetchEmployee(id: number) {
-    this.store.dispatch(getEmployeeById({ id }));
   }
 }

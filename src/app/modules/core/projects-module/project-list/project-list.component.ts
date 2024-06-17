@@ -8,11 +8,10 @@ import {
 import { BaseListComponent } from '../../../../shared/base-list/base-list.component';
 import { Observable } from 'rxjs';
 import { Project } from '../../../../shared/models/project.model';
-import { Store } from '@ngrx/store';
-import { selectProjectsList } from '../../../../store/selectors/project.selectors';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { ProjectsFacade } from '../../../../store/facades/projects.facade';
 
 export interface ProjectTableData {
   name: string;
@@ -44,11 +43,11 @@ export class ProjectListComponent implements OnInit {
   routerLinks: string[];
 
   constructor(
-    private store: Store,
     private cdr: ChangeDetectorRef,
     private router: Router,
+    private projectsFacade: ProjectsFacade,
   ) {
-    this.projectsList$ = this.store.select(selectProjectsList);
+    this.projectsList$ = this.projectsFacade.selectProjectsList();
   }
 
   ngOnInit(): void {
